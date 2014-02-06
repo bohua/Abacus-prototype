@@ -1,11 +1,18 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/metro-bootstrap.min.css')
-    link(rel='stylesheet', href='/js/lib/angular.min.js')
-    link(rel='stylesheet', href='/js/lib/metro.min.js')
-    link(rel='stylesheet', href='/js/lib/jquery-2.0.2.min.js')
-  body(class='metro')
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='/stylesheets/metro-bootstrap.min.css')
+		link(rel='stylesheet', href='/js/lib/angular.min.js')
+		link(rel='stylesheet', href='/js/lib/metro.min.js')
+		link(rel='stylesheet', href='/js/lib/jquery-2.0.2.min.js')
+	body(class='metro')
+		#left-stage.bleach-stage
+			#left-stage-header.bleach-header
+			#left-stage-content.bleach-content
+		#right-stage.bleach-stage
+			#right-stage-header.bleach-header
+			#right-stage-content.bleach-content
+
+		block content

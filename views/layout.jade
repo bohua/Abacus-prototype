@@ -4,15 +4,40 @@ html
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/stylesheets/metro-bootstrap.min.css')
-		link(rel='stylesheet', href='/js/lib/angular.min.js')
-		link(rel='stylesheet', href='/js/lib/metro.min.js')
-		link(rel='stylesheet', href='/js/lib/jquery-2.0.2.min.js')
+
+		script(src='/js/lib/angular.min.js')
+		script(src='/js/lib/jquery/jquery.min.js')
+		script(src='/js/lib/jquery/jquery.widget.min.js')
+		script(src='/js/lib/jquery/jquery.mousewheel.js')
+		script(src='/js/lib/jquery/jquery.easing.min.js')
+		script(src='/js/lib/metro.min.js')
+
 	body(class='metro')
 		#left-stage.bleach-stage
 			#left-stage-header.bleach-header
+
 			#left-stage-content.bleach-content
+				nav.sidebar.light: ul
+					li.title: t 功能列表
+					li
+						a(href='#')
+							i.icon-home
+							t 首页
+
+			//
+				div.menu-header
+				#left-menu.accordion(data-role='accordion')
+
+					div.accordion-frame
+						a.heading(href='#') 生产综合
+						div.content: p Content1
+
+					div.accordion-frame
+						a.heading(href='#') 水量分析
+						div.content: p Content2//
+
+
 		#right-stage.bleach-stage
 			#right-stage-header.bleach-header
-			#right-stage-content.bleach-content
 
-		block content
+			#right-stage-content.bleach-content

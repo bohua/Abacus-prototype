@@ -1,0 +1,9 @@
+//Created by Bli on 14-2-10.
+
+nav.sidebar.light(ng-controller='leftMenuController')
+	ul(ng-repeat='option in menu')
+		li.title: t 功能列表
+		li(menu-id='{{option.id}}')
+			a(href='{{option.link}}')
+				i(ng-class='{{option.icon}}')
+				t {{option.title}}

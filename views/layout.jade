@@ -1,28 +1,31 @@
 doctype html
-html
+html(ng-app='bleach')
 	head
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/stylesheets/metro-bootstrap.min.css')
 
-		script(src='/js/lib/angular.min.js')
+		script(src='/js/lib/angular.js')
 		script(src='/js/lib/jquery/jquery.min.js')
 		script(src='/js/lib/jquery/jquery.widget.min.js')
 		script(src='/js/lib/jquery/jquery.mousewheel.js')
 		script(src='/js/lib/jquery/jquery.easing.min.js')
 		script(src='/js/lib/metro.min.js')
 
+		script(src='/js/client.js')
+
 	body(class='metro')
 		#left-stage.bleach-stage
 			#left-stage-header.bleach-header
 
-			#left-stage-content.bleach-content
-				nav.sidebar.light: ul
-					li.title: t 功能列表
-					li
-						a(href='#')
-							i.icon-home
-							t 首页
+			#left-stage-content.bleach-content(ng-controller='leftMenuController')
+				nav.sidebar.light
+					ul(ng-repeat='option in menu')
+						li.title: t 功能列表
+						li(menu-id='{{option.id}}')
+							a(href='{{option.link}}')
+								i(ng-class='{{option.icon}}')
+								t {{option.title}}
 
 			//
 				div.menu-header

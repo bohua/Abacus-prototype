@@ -39,6 +39,8 @@ a {
   width: 100%;
   background-color: @green;
   border-bottom: 1px solid @grey-border;
+
+  z-index: 300;
 }
 
 .bleach-content{
@@ -51,17 +53,26 @@ a {
 }
 
 #left-stage{
+
+  body.left-collapse &{
+    display: none;
+  }
+
+  float: left;
   width: @left-panel-width;
   height: 100%;
   background-color: @grey;
   z-index: 200;
 }
 #right-stage{
-  top: -100%;
+
+  body:not(.left-collapse) &{
+    padding-left: @left-panel-width;
+  }
+
   z-index: 100;
 
   width: 100%;
-  padding-left: @left-panel-width;
   height: 100%;
 }
 
@@ -84,4 +95,16 @@ a {
   a:hover{
     background-color: @green;
   }
+}
+
+.left-menu-switcher{
+  color: @grey-border;
+
+  font-size: 35px !important;
+  padding: 7px;
+  cursor: pointer;
+
+  background: @black-bg;
+  border-left: 1px solid;
+  border-right: 1px solid;
 }

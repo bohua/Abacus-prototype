@@ -62,15 +62,15 @@ a {
   width: @left-panel-width;
   height: 100%;
   background-color: @grey;
-  z-index: 200;
+  //z-index: 200;
 }
 #right-stage{
 
   body:not(.left-collapse) &{
-    padding-left: @left-panel-width;
+    margin-left: @left-panel-width;
   }
 
-  z-index: 100;
+  //z-index: 100;
 
   width: 100%;
   height: 100%;
@@ -98,6 +98,11 @@ a {
 }
 
 .left-menu-switcher{
+
+  body:not(.left-collapse) &{
+    position: relative;
+    left: -52px;
+  }
   color: @grey-border;
 
   font-size: 35px !important;

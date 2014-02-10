@@ -9,16 +9,22 @@ bleach.controller('appController', ['$scope', function($scope){
 		if(body.hasClass('left-collapse')){
 			body.removeClass('left-collapse');
 			$('#left-stage').animate({
-				left: "+=300"
-			}, 200,function(){
-
-			});
+				left: "+=248",
+				opacity: 1
+			}, 200);
+			$('.left-menu-switcher').animate({
+				left: "+=248"
+			}, 200);
 		}else{
 			$('#left-stage').animate({
-				left: "-=300"
+				left: "-=248",
+				opacity: 0
 			}, 200,function(){
 				body.addClass('left-collapse');
 			});
+			$('.left-menu-switcher').animate({
+				left: "-=248"
+			}, 200);
 		}
 	}
 }]);

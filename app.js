@@ -13,7 +13,7 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -35,7 +35,7 @@ if ('development' == app.get('env')) {
 //DB
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/test');
+var db = monk('localhost:27017/bleach');
 
 app.get('/', routes.index);
 app.get('/users', user.list(db));

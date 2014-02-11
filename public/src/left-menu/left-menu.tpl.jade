@@ -2,7 +2,9 @@
 
 nav.sidebar.light(ng-controller='leftMenuController')
 	ul(ng-repeat='option in menu')
-		li.title: t 功能列表
+		li.title
+			t.side-menu-header 功能列表
+			i.icon-lines#left-menu-switcher(ng-click='toggleLeftMenu()')
 		li(menu-id='{{option.id}}')
 			a(href='{{option.link}}')
 				i(class='{{option.icon}}')

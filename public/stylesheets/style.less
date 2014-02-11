@@ -33,7 +33,7 @@ a {
   position: relative;
 }
 
-.bleach-header{
+#top-bar{
   position: relative;
   height: @top-bar-height;
   width: 100%;
@@ -53,33 +53,13 @@ a {
 }
 
 #left-stage{
-
-  body.left-collapse &{
-    display: none;
-  }
-
   float: left;
   width: @left-panel-width;
-  height: 100%;
+  height: ~"calc(100% - @{top-bar-height})";
   background-color: @grey;
-  //z-index: 200;
-}
-#right-stage{
-
-  body:not(.left-collapse) &{
-    margin-left: @left-panel-width;
-  }
-
-  //z-index: 100;
-
-  width: calc(100%-@left-panel-width);
-  height: 100%;
-}
-
-#left-stage-content{
-  height: 100%;
-
   border-right: 1px solid @grey-border;
+
+  z-index: 20;
 
   nav{
     background-color: @grey;
@@ -97,15 +77,45 @@ a {
   }
 }
 
+#right-stage{
+  background-color: azure;
+  width: 100%;
+  padding-left:@left-panel-width;
+  z-index: 10;
+  //width: ~"calc(100% - @{left-panel-width})";
+  height: ~"calc(100% - @{top-bar-height})";
+}
+
 #left-menu-switcher{
   position: relative;
   color: @grey-border;
-
   font-size: 35px !important;
-  padding: 7px;
   cursor: pointer;
 
-  background: @black-bg;
-  border-left: 1px solid;
-  border-right: 1px solid;
+  left: 150px;
+  top: -5px;
+}
+
+t.side-menu-header{
+  position: relative;
+  top: -10px;
+}
+
+.narrow-menu{
+  t{
+    display: none;
+  }
+
+  a{
+    padding-left: 12px!important;
+  }
+
+  i{
+    font-size:25px!important;
+  }
+
+  #left-menu-switcher{
+    left: -13px;
+    top: -3px;
+  }
 }

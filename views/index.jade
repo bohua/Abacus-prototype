@@ -18,13 +18,9 @@ html(ng-app='bleach')
 			script(src= jsFile)
 
 	body(class='metro', ng-controller='appController')
+		#top-bar.bleach-stage
 		#left-stage.bleach-stage
-			#left-stage-header.bleach-header
-			#left-stage-content.bleach-content
-				div(ng-include='"/src/left-menu/left-menu.tpl.html"')
+			div(ng-include='"/src/left-menu/left-menu.tpl.html"')
 
 		#right-stage.bleach-stage
-			#right-stage-header.bleach-header
-				i.icon-lines#left-menu-switcher(ng-click='toggleLeftMenu()')
-			#right-stage-content.bleach-content
-				div(ng-view)
+			div(ng-view)

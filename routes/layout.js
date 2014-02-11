@@ -9,7 +9,7 @@ exports.leftMenu = function(req, res){
 		id: 'home',
 		title: '主页',
 		icon: 'icon-home',
-		link: '/homePage'
+		link: '#/users'
 	});
 
 	res.contentType('json');

@@ -32,8 +32,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+//DB
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/test');
+
 app.get('/', routes.index);
-app.get('/users', user.list);
+app.get('/users', user.list(db));
 app.get('/getLeftMenu', layout.leftMenu);
 
 http.createServer(app).listen(app.get('port'), function(){

@@ -18,10 +18,9 @@ exports.index = function (req, res) {
 	var projectPath= pathArr.join('/');
 	var result = [];
 
-	// Walker options
-	var walker  = walk.walk(projectPath+'/public/src', { followLinks: false });
+	var productCodeWalker  = walk.walk(projectPath+'/public/src', { followLinks: false });
 
-	walker.on('file', function(root, stat, next) {
+	productCodeWalker.on('file', function(root, stat, next) {
 		// Add js file to the list of files
 		var suffix = '.js';
 		if(stat.name.indexOf(suffix, stat.name.length - suffix.length) !== -1){
@@ -30,7 +29,7 @@ exports.index = function (req, res) {
 		next();
 	});
 
-	walker.on('end', function() {
+	productCodeWalker.on('end', function() {
 		for(var i=0; i<jsFiles.length; i++){
 			var fileName = formatFilePath(jsFiles[i]);
 			if(fileName){
@@ -39,7 +38,7 @@ exports.index = function (req, res) {
 		}
 
 		//console.log(result);
-		res.render('index', { title: 'Express', jsFiles: result });
+		res.render('index', { title: 'Express', data: result });
 	});
 
 	//

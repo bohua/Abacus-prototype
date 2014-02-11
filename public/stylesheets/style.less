@@ -72,7 +72,7 @@ a {
 
   //z-index: 100;
 
-  width: 100%;
+  width: calc(100%-@left-panel-width);
   height: 100%;
 }
 
@@ -97,12 +97,8 @@ a {
   }
 }
 
-.left-menu-switcher{
-
-  body:not(.left-collapse) &{
-    position: relative;
-    left: -52px;
-  }
+#left-menu-switcher{
+  position: relative;
   color: @grey-border;
 
   font-size: 35px !important;

@@ -5,26 +5,26 @@
 bleach.controller('appController', ['$scope', function($scope){
 	$scope.toggleLeftMenu = function(){
 		var body = $(document.body);
+		var delay = 200;
+		var leftOffset = 300;
 
-		if(body.hasClass('left-collapse')){
-			body.removeClass('left-collapse');
+		if($('#left-stage').is(':visible')){
 			$('#left-stage').animate({
-				left: "+=248",
-				opacity: 1
-			}, 200);
-			$('.left-menu-switcher').animate({
-				left: "+=248"
-			}, 200);
-		}else{
-			$('#left-stage').animate({
-				left: "-=248",
-				opacity: 0
-			}, 200,function(){
-				body.addClass('left-collapse');
+				left: "-="+leftOffset
+			}, delay, function(){
+				$('#left-stage').hide();
 			});
-			$('.left-menu-switcher').animate({
-				left: "-=248"
-			}, 200);
+			$('#right-stage').animate({
+				'margin-left': "0px"
+			}, delay);
+		}else{
+			$('#left-stage').show();
+			$('#left-stage').animate({
+				left: "+="+leftOffset
+			}, delay);
+			$('#right-stage').animate({
+				'margin-left': leftOffset+"px"
+			}, delay);
 		}
 	}
 }]);

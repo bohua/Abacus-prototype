@@ -6,6 +6,7 @@
 @grey-border: #D5D5D5;
 @black-bg: #343539;
 @font: 'Microsoft Yahei';
+@title-width: 100px;
 
 @font-face {
   font-family: 'iconFont';
@@ -26,7 +27,7 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color:#00B7FF;
 }
 
 .bleach-stage{
@@ -35,12 +36,37 @@ a {
 
 #top-bar{
   position: relative;
+  z-index: 300;
   height: @top-bar-height;
   width: 100%;
   background-color: @green;
   border-bottom: 1px solid @grey-border;
+  margin: 0;
 
-  z-index: 300;
+  .row{
+    margin: 0;
+  }
+
+  div{
+    float: left;
+  }
+
+  #global-search-box{
+    width: 290px;
+    margin: 8px 0 0 7px;
+  }
+
+  #top-bar-center-title{
+    position: relative;
+    left: ~"calc(50% - @{title-width}/2 - 290px)";
+    padding: 0 50px 4px 50px;
+    margin-top: 8px;
+
+    t{
+      font-size: 22px;
+      color: white;
+    }
+  }
 }
 
 .bleach-content{
@@ -67,7 +93,7 @@ a {
 
   li.title{
     background-color:@black-bg;
-    color:@grey;
+    color:white;
   }
   a:not(:hover){
     background-color: @grey;
@@ -78,7 +104,6 @@ a {
 }
 
 #right-stage{
-  background-color: azure;
   width: 100%;
   padding-left:@left-panel-width;
   z-index: 10;

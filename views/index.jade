@@ -19,6 +19,10 @@ html(ng-app='bleach')
 
 	body(class='metro', ng-controller='appController')
 		#top-bar.bleach-stage
+			#global-search-box.input-control.text
+				input(type='text', value='', placeholder='请输入想要查询的关键字...')
+				button.btn-search
+			#top-bar-center-title: t 测试帐户
 		#left-stage.bleach-stage
 			div(ng-include='"/src/left-menu/left-menu.tpl.html"')
 

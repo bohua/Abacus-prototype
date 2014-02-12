@@ -13,21 +13,39 @@ exports.leftMenu = function(req, res){
 		link: '#/users'
 	});
 
-	//主页选项
+	//销售单据管理选项
 	menu.push({
-		id: 'home',
-		title: '主页',
-		icon: 'icon-home',
+		id: 'sales',
+		title: '销售单据管理',
+		icon: 'icon-cart',
 		link: '#/users'
 	});
 
-	//主页选项
+	//基础信息管理选项
 	menu.push({
-		id: 'home',
-		title: '主页',
-		icon: 'icon-home',
+		id: 'basics',
+		title: '基础信息管理',
+		icon: 'icon-clipboard',
 		link: '#/users'
 	});
+
+	//历史记录选项
+	menu.push({
+		id: 'history',
+		title: '历史记录管理',
+		icon: 'icon-history',
+		link: '#/users'
+	});
+
+	//系统功能选项
+	menu.push({
+		id: 'systems',
+		title: '系统功能',
+		icon: 'icon-list',
+		link: '#/users'
+	});
+
+
 
 	res.contentType('json');
 	res.json(menu);

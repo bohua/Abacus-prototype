@@ -41,7 +41,7 @@ a {
   position: relative;
 }
 
-#top-bar{
+#top-bar, .top-bar-wrapper{
   position: relative;
   z-index: 300;
   height: @top-bar-height;
@@ -90,6 +90,9 @@ a {
     ul{
       margin: 7px;
 
+      li{
+        cursor: pointer;
+      }
       a::after{
         color: white;
       }
@@ -100,6 +103,16 @@ a {
 
       t{
         font-size: 15px;
+      }
+
+      .dropdown-menu{
+        background: @grey;
+        right: -35px;
+
+        i,t{
+          color: @black-bg;
+          margin-left: 0;
+        }
       }
     }
   }

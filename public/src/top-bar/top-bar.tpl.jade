@@ -1,24 +1,26 @@
 //Created by Bli on 14-2-13.
-t#search-box-caption 智能搜索
-#global-search-box.input-control.text
-	input(type='text', value='', placeholder='请输入想要查询的关键字...')
-	button.btn-search
+div.top-bar-wrapper(ng-controller='topBarController')
+	t#search-box-caption 智能搜索
+	#global-search-box.input-control.text
+		input(type='text', value='', placeholder='请输入想要查询的关键字...')
+		button.btn-search
 
-#top-bar-center-title: t 测试帐户
-#top-bar-right-button-panel
-	nav.horizontal-menu: ul
-		li
-			a.dropdown-toggle(href='#')
-				i.icon-user-2
-				t 用户名
-			ul.dropdown-menu(data-role='dropdown', data-effect='fade')
-				li: a(href='#')
-					i.icon-eye 帐户信息
-				li: a(href='#')
-					i.icon-loop 切换帐套
-				li: a(href='#')
-					i.icon-locked-2 锁屏
-				li.divider
-				li: a(href='#')
-					i.icon-switch 登出系统
+	#top-bar-center-title: t 测试帐户
+	#top-bar-right-button-panel
+		nav.horizontal-menu: ul
+			li
+				a.dropdown-toggle(ng-click='showUserMenu()')
+					i.icon-user-2
+					t 用户名
+				ul.dropdown-menu#user-dropdown-menu
+					li: a(href='#')
+						i.icon-eye 帐户信息
+					li: a(href='#')
+						i.icon-loop 切换帐套
+					li: a(href='#')
+						i.icon-locked-2 锁屏
+					li.divider
+					li: a(href='#')
+						i.icon-switch 登出系统
+
 

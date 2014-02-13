@@ -2,7 +2,7 @@
  * Created by Bli on 14-2-10.
  */
 
-exports.leftMenu = function(req, res){
+exports.leftMenu = function (req, res) {
 	var menu = [];
 
 	//主页选项
@@ -18,7 +18,21 @@ exports.leftMenu = function(req, res){
 		id: 'sales',
 		title: '销售单据管理',
 		icon: 'icon-cart',
-		link: '#/users'
+		link: '#',
+		submenus: [
+			{
+				id: 'sales-manage-xsd',
+				title: '管理销售单',
+				icon: 'icon-file',
+				link: '#'
+			},
+			{
+				id: 'sales-create-xsd',
+				title: '新建销售单',
+				icon: 'icon-file',
+				link: '#'
+			}
+		]
 	});
 
 	//基础信息管理选项

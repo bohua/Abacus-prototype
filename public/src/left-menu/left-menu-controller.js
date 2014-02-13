@@ -2,10 +2,10 @@
  * Created by Bohua on 14-2-10.
  */
 
-bleach.controller('leftMenuController', ['$scope', '$http', function ($scope, $http) {
+bleach.controller('leftMenuController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
 	$http.get('/getLeftMenu')
 		.success(function(data){
-			$scope.menu = data;
+			$scope.menus = data;
 		});
 
 	$scope.toggleStatus = 'expand';
@@ -37,5 +37,22 @@ bleach.controller('leftMenuController', ['$scope', '$http', function ($scope, $h
 				'padding-left': "+="+leftOffset
 			}, delay);
 		}
-	}
+	};
+
+	$scope.hasSubMenu=function(menu){
+		return menu.submenus !== undefined;
+	};
+
+	$scope.showSubMenu = function($event){
+		var submenu = $($event.target).next('ul');
+		if(submenu.is(':visible')){
+			submenu.hide();
+		}else{
+			$timeout(function(){
+				submenu.css('display','block');
+			}, 10);
+
+		}
+	};
+
 }]);

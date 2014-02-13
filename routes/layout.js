@@ -45,8 +45,6 @@ exports.leftMenu = function(req, res){
 		link: '#/users'
 	});
 
-
-
 	res.contentType('json');
 	res.json(menu);
 };

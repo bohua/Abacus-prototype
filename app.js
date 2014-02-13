@@ -5,7 +5,6 @@
 
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var layout = require('./routes/layout');
 var http = require('http');
 var path = require('path');
@@ -38,7 +37,6 @@ var monk = require('monk');
 var db = monk('localhost:27017/bleach');
 
 app.get('/', routes.index);
-app.get('/users', user.list(db));
 app.get('/getLeftMenu', layout.leftMenu);
 
 http.createServer(app).listen(app.get('port'), function(){

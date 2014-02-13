@@ -13,7 +13,7 @@ bleach.controller('leftMenuController', ['$scope', '$http', function ($scope, $h
 	$scope.toggleLeftMenu = function(){
 		var body = $(document.body);
 		var delay = 200;
-		var leftOffset = 250;
+		var leftOffset = 150;
 
 		if($scope.toggleStatus === 'expand'){
 			$('#left-stage').addClass('narrow-menu').animate({

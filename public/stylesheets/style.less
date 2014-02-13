@@ -1,12 +1,19 @@
+//Sizes
 @top-bar-height : 50px;
-@left-panel-width : 300px;
+@left-panel-width : 200px;
+@title-width: 100px;
+@title-search-box-width: 300px;
+
+//Colors
 @green: #1ec8a6;
 @blue: #00B7FF;
 @grey: #eee;
 @grey-border: #D5D5D5;
 @black-bg: #343539;
+
+//Fonts
 @font: 'Microsoft Yahei';
-@title-width: 100px;
+
 
 @font-face {
   font-family: 'iconFont';
@@ -43,6 +50,13 @@ a {
   border-bottom: 1px solid @grey-border;
   margin: 0;
 
+  #search-box-caption{
+    float: left;
+    font-size: 15px;
+    color: white;
+    margin: 14px 0 0 20px;
+  }
+
   .row{
     margin: 0;
   }
@@ -52,13 +66,13 @@ a {
   }
 
   #global-search-box{
-    width: 290px;
+    width: @title-search-box-width;
     margin: 8px 0 0 7px;
   }
 
   #top-bar-center-title{
     position: relative;
-    left: ~"calc(50% - @{title-width}/2 - 290px)";
+    left: ~"calc(50% - @{title-width}/2 - @{title-search-box-width} - 120px)";
     padding: 0 50px 4px 50px;
     margin-top: 8px;
 
@@ -108,7 +122,6 @@ a {
   width: 100%;
   padding-left:@left-panel-width;
   z-index: 10;
-  //width: ~"calc(100% - @{left-panel-width})";
   height: ~"calc(100% - @{top-bar-height})";
 }
 
@@ -118,7 +131,7 @@ a {
   font-size: 35px !important;
   cursor: pointer;
 
-  left: 150px;
+  left: 45px;
   top: -13px;
 }
 

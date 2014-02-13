@@ -5,3 +5,20 @@ t#search-box-caption 智能搜索
 	button.btn-search
 
 #top-bar-center-title: t 测试帐户
+#top-bar-right-button-panel
+	nav.horizontal-menu: ul
+		li
+			a.dropdown-toggle(href='#')
+				i.icon-user-2
+				t 用户名
+			ul.dropdown-menu(data-role='dropdown', data-effect='fade')
+				li: a(href='#')
+					i.icon-eye 帐户信息
+				li: a(href='#')
+					i.icon-loop 切换帐套
+				li: a(href='#')
+					i.icon-locked-2 锁屏
+				li.divider
+				li: a(href='#')
+					i.icon-switch 登出系统
+

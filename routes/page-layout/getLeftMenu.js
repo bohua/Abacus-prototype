@@ -22,14 +22,14 @@ exports.getLeftMenu = function (req, res) {
 		submenus: [
 			{
 				id: 'sales-manage-xsd',
-				title: '管理销售单',
-				icon: 'icon-file',
+				title: '[管理]销售单',
+				icon: 'icon-copy',
 				link: '#'
 			},
 			{
 				id: 'sales-create-xsd',
-				title: '新建销售单',
-				icon: 'icon-file',
+				title: '[新建]销售单',
+				icon: 'icon-new',
 				link: '#'
 			}
 		]

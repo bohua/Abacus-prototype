@@ -4,10 +4,10 @@
  */
 
 var express = require('express');
-var routes = require('./routes/loadScript');
-var page_layout = require('./routes/page-layout/getLeftMenu');
+var util = require('./routes/utils');
 var http = require('http');
 var path = require('path');
+var db = require('./models');
 
 var app = express();
 
@@ -31,9 +31,18 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', routes.loadScript);
-app.get('/getLeftMenu', page_layout.getLeftMenu);
+app.get('/', util.loadJsScript);
+app.get('/getLeftMenu', util.getLeftMenu);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+db
+	.sequelize
+	.sync({ force: true })
+	.complete(function(err) {
+		if (err) {
+			throw err
+		} else {
+			http.createServer(app).listen(app.get('port'), function(){
+				console.log('Express server listening on port ' + app.get('port'))
+			})
+		}
+	})

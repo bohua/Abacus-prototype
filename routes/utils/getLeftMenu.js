@@ -2,7 +2,7 @@
  * Created by Bli on 14-2-10.
  */
 
-exports.getLeftMenu = function (req, res) {
+module.exports = function (req, res) {
 	var menu = [];
 
 	//主页选项

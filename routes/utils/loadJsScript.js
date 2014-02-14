@@ -1,6 +1,7 @@
 /*
  * GET home page.
  */
+var walk = require('walk');
 
 function formatFilePath(longPath){
 	var pathArr = longPath.split('/public');
@@ -10,10 +11,11 @@ function formatFilePath(longPath){
 	return null;
 }
 
-exports.loadScript = function (req, res) {
+module.exports = function (req, res) {
 	var walk = require('walk');
 	var jsFiles = [];
 	var pathArr = __dirname.split('\\');
+	pathArr.pop();
 	pathArr.pop();
 	var projectPath= pathArr.join('/');
 	var result = [];
@@ -37,8 +39,14 @@ exports.loadScript = function (req, res) {
 			}
 		}
 
+		db.User.findAll({
+			include: [ db.Task ]
+		}).success(function(users) {
+				res.render('index', { title: 'Express', data: result, users: users });
+			})
+
 		//console.log(result);
-		res.render('index', { title: 'Express', data: result });
+
 	});
 
 	//

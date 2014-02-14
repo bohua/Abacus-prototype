@@ -1,0 +1,89 @@
+#left-stage {
+  float: left;
+  width: @left-panel-width;
+  height: ~"calc(100% - @{top-bar-height})";
+  background-color: @grey;
+  border-right: 1px solid @grey-border;
+
+  z-index: 20;
+
+  nav {
+    background-color: @grey;
+  }
+
+  li.title {
+    background-color: @black-bg;
+    color: white;
+    height: 50px !important;
+  }
+
+  a:hover {
+    background-color: @green;
+  }
+
+  .sidebar-menu {
+    > a:not(:hover) {
+      background-color: @grey;
+    }
+    > ul {
+      background-color: @grey-light;
+    }
+  }
+
+  .sidebar-sub-menu {
+    > a:not(:hover) {
+      background: none;
+    }
+  }
+}
+
+#left-menu-switcher {
+  position: relative;
+  color: @grey-border;
+  font-size: 35px !important;
+  cursor: pointer;
+
+  left: 45px;
+  top: -13px;
+}
+
+t.side-menu-header {
+  position: relative;
+  top: -19px;
+}
+
+.narrow-menu {
+  li.title {
+    t {
+      display: none;
+    }
+  }
+
+  li:not(.sidebar-sub-menu) {
+    > a {
+      padding-left: 12px !important;
+
+      > i {
+        font-size: 25px !important;
+      }
+
+      > t {
+        display: none;
+      }
+    }
+  }
+
+  li > ul {
+    left: 50px;
+    width: 200px !important;
+
+    i {
+      font-size: 15px;
+    }
+  }
+
+  #left-menu-switcher {
+    left: -13px;
+    top: -13px;
+  }
+}

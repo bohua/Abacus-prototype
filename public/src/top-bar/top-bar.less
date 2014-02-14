@@ -1,0 +1,77 @@
+#top-bar, .top-bar-wrapper {
+  position: relative;
+  z-index: 300;
+  height: @top-bar-height;
+  width: 100%;
+  background-color: @green;
+  border-bottom: 1px solid @grey-border;
+  margin: 0;
+
+  #search-box-caption {
+    float: left;
+    font-size: 15px;
+    color: white;
+    margin: 14px 0 0 20px;
+  }
+
+  .row {
+    margin: 0;
+  }
+
+  div {
+    float: left;
+  }
+
+  #global-search-box {
+    width: @title-search-box-width;
+    margin: 8px 0 0 7px;
+  }
+
+  #top-bar-center-title {
+    position: relative;
+    left: ~"calc(50% - @{title-width}/2 - @{title-search-box-width} - 120px)";
+    padding: 0 50px 4px 50px;
+    margin-top: 8px;
+
+    t {
+      font-size: 22px;
+      color: white;
+    }
+  }
+
+  #top-bar-right-button-panel {
+    height: @top-bar-height;
+    float: right;
+    margin-right: 10px;
+
+    ul {
+      margin: 7px;
+
+      li {
+        cursor: pointer;
+      }
+      a::after {
+        color: white;
+      }
+      i, t {
+        color: white;
+        margin-left: 10px;
+      }
+
+      t {
+        font-size: 15px;
+      }
+
+      .dropdown-menu {
+        background: @grey;
+        right: -35px;
+
+        i, t {
+          color: @black-bg;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+}

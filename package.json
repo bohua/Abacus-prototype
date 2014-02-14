@@ -1,16 +1,28 @@
 {
-	"name": "application-name",
+	"author": "Bohua Li & Wenyuan Sun",
+	"name": "Bleach_demo",
 	"version": "0.0.1",
 	"private": true,
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
+	"start": "node app.js",
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "https://raw.github.com/angular-app/angular-app/master/LICENSE"
+		}
+	],
+	"devDependencies": {
 		"express": "3.4.8",
 		"jade": "*",
 		"less-middleware": "*",
 		"walk": "*",
-		"mongodb": "*",
-		"monk": "*"
+
+		"grunt": "*",
+		"grunt-contrib-less": "*",
+		"grunt-contrib-concat": "*",
+		"grunt-contrib-clean": "*",
+		"grunt-contrib-watch": "*",
+		"grunt-html2js": "*",
+		"grunt-contrib-uglify": "*",
+		"grunt-contrib-copy": "*"
 	}
 }

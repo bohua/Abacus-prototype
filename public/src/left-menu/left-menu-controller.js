@@ -50,7 +50,10 @@ bleach.controller('leftMenuController', ['$scope', '$http', '$timeout', function
 				submenu.hide();
 			} else {
 				$timeout(function () {
-					submenu.css('display', 'block');
+					submenu.show();
+					$(document.body).one('click', function(){
+						submenu.hide();
+					});
 				}, 10);
 			}
 		}

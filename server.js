@@ -4,8 +4,8 @@
  */
 
 var express = require('express');
-var routes = require('./routes');
-var layout = require('./routes/layout');
+var routes = require('./routes/loadScript');
+var page_layout = require('./routes/page-layout/getLeftMenu');
 var http = require('http');
 var path = require('path');
 
@@ -31,13 +31,8 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-//DB
-var mongo = require('mongodb');
-var monk = require('monk');
-var db = monk('localhost:27017/bleach');
-
-app.get('/', routes.index);
-app.get('/getLeftMenu', layout.leftMenu);
+app.get('/', routes.loadScript);
+app.get('/getLeftMenu', page_layout.getLeftMenu);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -10,7 +10,7 @@ function formatFilePath(longPath){
 	return null;
 }
 
-exports.index = function (req, res) {
+exports.loadScript = function (req, res) {
 	var walk = require('walk');
 	var jsFiles = [];
 	var pathArr = __dirname.split('\\');

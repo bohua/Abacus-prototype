@@ -1,8 +1,6 @@
 /*
  * GET home page.
  */
-var walk = require('walk');
-
 function formatFilePath(longPath){
 	var pathArr = longPath.split('/public');
 	if(pathArr.length >=2 && pathArr[0].length < longPath.length){
@@ -38,6 +36,8 @@ module.exports = function (req, res) {
 				result.push(fileName);
 			}
 		}
+
+		var db = require('../../models')
 
 		db.User.findAll({
 			include: [ db.Task ]

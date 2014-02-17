@@ -42,7 +42,7 @@ module.exports = function (req, res) {
 		db.User.findAll({
 			include: [ db.Task ]
 		}).success(function(users) {
-				res.render('index', { title: 'Express', data: result, users: users });
+				res.render('./src/index/index', { title: 'Express', data: result, users: users });
 			})
 
 		//console.log(result);

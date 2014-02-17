@@ -22,41 +22,7 @@
   src: local('/fonts/iconFont'), local('/fonts/iconFont'), url("/fonts/iconFont.woff") format("woff"), url("/fonts/iconFont.otf") format("opentype"), url("/fonts/iconFont.svg") format("svg");
 }
 
+@import "..\src\index\index.less";
 @import "..\src\top-bar\top-bar.less";
 @import "..\src\left-menu\left-menu.less";
-
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-t {
-  font-family: @font !important;
-}
-
-.bleach-stage {
-  position: relative;
-}
-
-.bleach-content {
-  position: relative;
-  top: -@top-bar-height;
-  padding-top: @top-bar-height;
-
-  width: 100%;
-  height: 100%;
-}
-
-.dropdown-menu{
-  li:hover{
-    background: @green-light !important;
-    border-color: @green !important;
-  }
-}
-
-#right-stage {
-  width: 100%;
-  padding-left: @left-panel-width;
-  z-index: 10;
-  height: ~"calc(100% - @{top-bar-height})";
-}
+@import "..\src\router-guide\router-guide.less";

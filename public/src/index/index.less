@@ -1,0 +1,35 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+t {
+  font-family: @font !important;
+}
+
+.bleach-stage {
+  position: relative;
+}
+
+.bleach-content {
+  position: relative;
+  top: -@top-bar-height;
+  padding-top: @top-bar-height;
+
+  width: 100%;
+  height: 100%;
+}
+
+.dropdown-menu{
+  li:hover{
+    background: @green-light !important;
+    border-color: @green !important;
+  }
+}
+
+#right-stage {
+  width: 100%;
+  padding-left: @left-panel-width;
+  z-index: 10;
+  height: ~"calc(100% - @{top-bar-height})";
+}

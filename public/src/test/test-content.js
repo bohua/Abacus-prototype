@@ -1,9 +1,6 @@
 /**
  * Created by Bli on 14-2-11.
  */
-/**
- * Created by wenyuan on 13-10-6.
- */
 
 /* global angular*/
 angular.module('test-content', ['ngRoute'])

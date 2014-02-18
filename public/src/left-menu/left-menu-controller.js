@@ -2,7 +2,7 @@
  * Created by Bohua on 14-2-10.
  */
 
-bleach.controller('leftMenuController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+app.controller('leftMenuController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
 	$http.get('/getLeftMenu')
 		.success(function (data) {
 			$scope.menus = data;

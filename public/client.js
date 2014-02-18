@@ -1,4 +1,4 @@
 /**
  * Created by Bli on 14-2-10.
  */
-var bleach = angular.module('bleach',['test-content']);
+var app = angular.module('app',['test-content']);

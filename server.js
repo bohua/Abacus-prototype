@@ -33,6 +33,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', util.loadJsScript);
 app.get('/getLeftMenu', util.getLeftMenu);
+app.get('/template/:file', util.getTemplate);
 
 db
 	.sequelize

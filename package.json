@@ -26,6 +26,7 @@
 		"grunt-contrib-watch": "*",
 		"grunt-html2js": "*",
 		"grunt-contrib-uglify": "*",
-		"grunt-contrib-copy": "*"
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-jade": "*"
 	}
 }

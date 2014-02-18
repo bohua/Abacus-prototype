@@ -3,3 +3,4 @@
  */
 module.exports.getLeftMenu = require('./getLeftMenu.js');
 module.exports.loadJsScript = require('./loadJsScript.js');
+module.exports.getTemplate = require('./getTemplate.js');

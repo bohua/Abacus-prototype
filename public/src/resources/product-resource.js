@@ -7,5 +7,5 @@ resource.factory('Product', ['$resource'], function($resource){
 		{product_id: '@id'}
 	);
 
-	return Product
+	return Product;
 });

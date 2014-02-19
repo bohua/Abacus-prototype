@@ -1,0 +1,60 @@
+{
+	"name": "customer",
+	"columns": [
+		{
+			"col_name": "customer_name",
+			"data_type": "STRING",
+			"description": "客户名称",
+			"display_title": "名称"
+		},
+		{
+			"col_name": "customer_address",
+			"data_type": "STRING",
+			"description": "客户地址",
+			"display_title": "地址"
+		},
+		{
+			"col_name": "customer_tel",
+			"data_type": "STRING",
+			"description": "客户电话",
+			"display_title": "电话"
+		},
+		{
+			"col_name": "customer_fax",
+			"data_type": "STRING",
+			"description": "客户传真",
+			"display_title": "传真"
+		},
+		{
+			"col_name": "customer_contact",
+			"data_type": "STRING",
+			"description": "客户联系人",
+			"display_title": "联系人"
+		},
+		{
+			"col_name": "customer_bank",
+			"data_type": "STRING",
+			"description": "客户银行帐号",
+			"display_title": "银行帐号"
+		},
+		{
+			"col_name": "customer_taxno",
+			"data_type": "STRING",
+			"description": "客户税号",
+			"display_title": "税号"
+		},
+		{
+			"col_name": "customer_meno",
+			"data_type": "STRING",
+			"description": "客户备注",
+			"display_title": "备注"
+		},
+		{
+			"col_name": "customer_active",
+			"data_type": "BOOLEAN",
+			"description": "客户激活标志",
+			"display_title": "激活"
+		}
+	]
+
+}

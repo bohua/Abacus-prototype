@@ -8,6 +8,7 @@ var util = require('./routes/utils');
 var http = require('http');
 var path = require('path');
 var db = require('./models');
+var cusomter = require('./routes/customer');
 
 var app = express();
 
@@ -33,17 +34,17 @@ if ('development' == app.get('env')) {
 
 app.get('/', util.loadJsScript);
 app.get('/getLeftMenu', util.getLeftMenu);
-app.get('/template/:file', util.getTemplate);
+app.get('/customer/:customer_id',cusomter.getCustomer );
 
 db
 	.sequelize
 	.sync({ force: true })
 	.complete(function(err) {
 		if (err) {
-			throw err
+			throw err;
 		} else {
 			http.createServer(app).listen(app.get('port'), function(){
-				console.log('Express server listening on port ' + app.get('port'))
+				console.log('Express server listening on port ' + app.get('port'));
 			})
 		}
-	})
+	});

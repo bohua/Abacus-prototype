@@ -51,37 +51,23 @@
         cursor: pointer;
       }
 
-      i,t{
-        margin-left: 10px;
-      }
       t {
         font-size: 15px;
       }
 
-      &:hover{
-        a::after {
-          color: @white
-        }
-        i, t {
-          color: @white;
-        }
+      a::after {
+        color: @white
       }
-
-      &:not(:hover){
-        a::after {
-          color: @grey-light;
-        }
-        i, t {
-          color: @grey-light;
-        }
+      i, t {
+        color: @white;
+        margin-left: 10px;
       }
 
       .dropdown-menu {
-        background: @grey;
+        top: 40px;
         right: -35px;
 
         i, t {
-          color: @black-bg;
           margin-left: 0;
         }
       }

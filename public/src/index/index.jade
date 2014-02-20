@@ -18,7 +18,7 @@ html(ng-app='app')
 		each jsFile in jsFilesToAppend
 			script(src= jsFile)
 
-	body(class='metro', ng-controller='index')
+	body.metro(ng-controller='index')
 		#top-bar.bleach-stage(ng-include='"/src/top-bar/top-bar.tpl.html"')
 		#left-stage.bleach-stage(ng-include='"/src/left-menu/left-menu.tpl.html"')
 		#right-stage.bleach-stage

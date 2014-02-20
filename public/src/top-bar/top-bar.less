@@ -50,16 +50,30 @@
       li {
         cursor: pointer;
       }
-      a::after {
-        color: @white;
-      }
-      i, t {
-        color: @white;
+
+      i,t{
         margin-left: 10px;
       }
-
       t {
         font-size: 15px;
+      }
+
+      &:hover{
+        a::after {
+          color: @white
+        }
+        i, t {
+          color: @white;
+        }
+      }
+
+      &:not(:hover){
+        a::after {
+          color: @grey-light;
+        }
+        i, t {
+          color: @grey-light;
+        }
       }
 
       .dropdown-menu {

@@ -29,6 +29,11 @@
     }
     > ul {
       background-color: @grey-light;
+
+      &.hide-submenu {
+        height: 0;
+        opacity: 0;
+      }
     }
   }
 
@@ -61,9 +66,13 @@ t.side-menu-header {
     }
   }
 
-  li:not(.sidebar-sub-menu) {
+  > nav > ul > li {
     > a {
       padding-left: 12px !important;
+
+      &:after {
+        display: none;
+      }
 
       > i {
         font-size: 25px !important;
@@ -71,6 +80,16 @@ t.side-menu-header {
 
       > t {
         display: none;
+      }
+
+    }
+
+    &:hover{
+      height: 47px;
+
+      >ul{
+        top: -46px;
+        display: block !important;
       }
     }
   }

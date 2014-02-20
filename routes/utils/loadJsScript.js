@@ -37,6 +37,9 @@ module.exports = function (req, res) {
 			}
 		}
 
+		res.render('./src/index/index', { title: 'Express', data: result });
+
+		/*
 		var db = require('../../models')
 
 		db.User.findAll({
@@ -46,6 +49,7 @@ module.exports = function (req, res) {
 			})
 
 		//console.log(result);
+*/
 
 	});
 

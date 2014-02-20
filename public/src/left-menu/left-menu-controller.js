@@ -14,6 +14,9 @@ app.controller('leftMenuController', ['$scope', '$http', '$timeout', function ($
 		var delay = 200;
 		var leftOffset = 150;
 
+		//hide all submenus when toggling left panel
+		$('.sidebar-menu>ul').hide();
+
 		if ($scope.toggleStatus === 'expand') {
 			$('#left-stage').addClass('narrow-menu').animate({
 				width: "-=" + leftOffset
@@ -45,18 +48,12 @@ app.controller('leftMenuController', ['$scope', '$http', '$timeout', function ($
 	$scope.showSubMenu = function ($event) {
 		var submenu = $($event.currentTarget).next('ul');
 
-		if (submenu.length > 0) {
+		if (submenu.length > 0 && $scope.toggleStatus === 'expand') {
 			if (submenu.is(':visible')) {
 				submenu.hide();
 			} else {
-				$timeout(function () {
-					submenu.show();
-					$(document.body).one('click', function(){
-						submenu.hide();
-					});
-				}, 10);
+				submenu.show();
 			}
 		}
 	};
-
 }]);

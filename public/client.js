@@ -1,6 +1,7 @@
 /**
  * Created by Bli on 14-2-10.
  */
-var app = angular.module('app',['test-content']);
+angular.module('app', ['left-menu', 'router-guide', 'top-bar', 'product-view'])
+	.controller('appController', ['$rootScope', function ($rootScope) {
 
-var resource = angular.module('resource', ['ngResource']);
+	}]);

@@ -1,6 +1,18 @@
 /**
  * Created by Bli on 14-2-18.
  */
-app.controller('routerGuideController', ['$scope', '$rootScope', function ($scope, $rootScope) {
-	$scope.titles = $rootScope.titleArr;
-}]);
+angular.module('router-guide', [])
+	.controller('routerGuideController', [
+		'$scope',
+		'$rootScope',
+		'routerGuideService',
+		function ($scope, $rootScope, routerGuideService) {
+			//$scope.titles = $rootScope.titleArr;
+			function generateRouterGuide(model) {
+				$scope.titleArr = model;
+			}
+
+			routerGuideService.bindObserver(generateRouterGuide);
+
+			routerGuideService.resetModel(['home']);
+		}]);

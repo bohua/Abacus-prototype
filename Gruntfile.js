@@ -20,9 +20,12 @@ module.exports = function (grunt) {
 				},
 				files: [
 					{
-						src: "public/**/*.jade",
+						src: [
+							"public/**/*.jade",
+							"!public/src/index/index.jade"
+						],
 						expand: true,
-						ext: ".html"
+						ext: ".tpl.html"
 					}
 				]
 			}
@@ -30,8 +33,11 @@ module.exports = function (grunt) {
 
 		// running `grunt watch` will watch for changes
 		watch: {
-			files: "./public/**/*.less",
-			tasks: ["less"]
+			files: [
+				"./public/**/*.less",
+				"./public/**/*.jade"
+				],
+			tasks: ["default"]
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-less');

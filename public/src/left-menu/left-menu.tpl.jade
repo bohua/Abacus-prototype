@@ -6,9 +6,14 @@ nav.sidebar.light(ng-controller='leftMenuController')
 			t.side-menu-header 功能列表
 			i.icon-lines#left-menu-switcher(ng-click='toggleLeftMenu()')
 		li.sidebar-menu(ng-repeat='menu in menus', menu-id='{{menu.id}}')
-			a(href='#', ng-class='{"dropdown-toggle": hasSubMenu(menu)}', ng-click="showSubMenu($event)")
+
+			a(ng-if='hasLink(menu.link)' href='{{menu.link}}' ng-class='{"dropdown-toggle": hasSubMenu(menu)}', ng-click="showSubMenu($event)")
 				i(class='{{menu.icon}}')
 				t {{menu.title}}
+			a(ng-if='!hasLink(menu.link)' ng-class='{"dropdown-toggle": hasSubMenu(menu)}', ng-click="showSubMenu($event)")
+				i(class='{{menu.icon}}')
+				t {{menu.title}}
+
 			ul(ng-if='hasSubMenu(menu)')
 				li.sidebar-sub-menu(ng-repeat='submenu in menu.submenus', menu-id='{{submenu.id}}')
 					a(href='{{submenu.link}}')

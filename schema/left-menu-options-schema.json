@@ -31,13 +31,12 @@
 		"id": "basics",
 		"title": "基础信息管理",
 		"icon": "icon-clipboard",
-		"link": "#",
 		"submenus": [
 			{
 				"id": "basics-manage-product",
 				"title": "我的产品",
 				"icon": "icon-cube",
-				"link": "#"
+				"link": "#/basics/productView"
 			},
 			{
 				"id": "sales-create-xsd",

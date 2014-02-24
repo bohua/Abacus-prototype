@@ -12,16 +12,14 @@ html(ng-app='app')
 		script(src='/lib/jquery/jquery.mousewheel.js')
 		script(src='/lib/jquery/jquery.easing.min.js')
 		script(src='/lib/metro.min.js')
-		//script(src='/lib/metro-loader.js')
-		script(src='/client.js')
 
 	- var jsFilesToAppend = data || [];
 		each jsFile in jsFilesToAppend
 			script(src= jsFile)
 
 	body.metro.unselectable(ng-controller='appController')
-		#top-bar.bleach-stage(ng-include='"/src/top-bar/top-bar.tpl.html"')
-		#left-stage.bleach-stage(ng-include='"/src/left-menu/left-menu.tpl.html"')
+		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
+		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu/left-menu.tpl.html"')
 		#right-stage.bleach-stage
-			#router-guide(ng-include='"/src/router-guide/router-guide.tpl.html"')
+			#router-guide(ng-include='"/src/platform/router-guide/router-guide.tpl.html"')
 			#view-port(ng-view)

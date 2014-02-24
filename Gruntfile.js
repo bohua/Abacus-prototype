@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 					{
 						src: [
 							"public/**/*.jade",
-							"!public/src/index/index.jade"
+							"!public/src/platform/index/index.jade"
 						],
 						expand: true,
 						ext: ".tpl.html"

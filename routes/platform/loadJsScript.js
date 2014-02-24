@@ -23,7 +23,7 @@ module.exports = function (req, res) {
 	productCodeWalker.on('file', function(root, stat, next) {
 		// Add js file to the list of files
 		var suffix = '.js';
-		if(stat.name.indexOf(suffix, stat.name.length - suffix.length) !== -1){
+		if(stat.name.indexOf(suffix, stat.name.length - suffix.length) !== -1 /*&& stat.name !== 'client.js'*/){
 			jsFiles.push(root + '/' + stat.name);
 		}
 		next();
@@ -37,7 +37,7 @@ module.exports = function (req, res) {
 			}
 		}
 
-		res.render('./src/index/index', { title: 'Express', data: result });
+		res.render('./src/platform/index/index', { title: 'Express', data: result });
 
 		/*
 		var db = require('../../models')

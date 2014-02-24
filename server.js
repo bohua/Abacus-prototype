@@ -4,11 +4,11 @@
  */
 
 var express = require('express');
-var util = require('./routes/utils');
+var platform = require('./routes/platform');
 var http = require('http');
 var path = require('path');
 var db = require('./models');
-var cusomter = require('./routes/customer');
+var cusomter = require('./routes/customer-view');
 
 var app = express();
 
@@ -32,9 +32,9 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', util.loadJsScript);
-app.get('/getLeftMenu', util.getLeftMenu);
-app.get('/getLocationArray', util.getLocationArray);
+app.get('/', platform.loadJsScript);
+app.get('/getLeftMenu', platform.getLeftMenu);
+app.get('/getLocationArray', platform.getLocationArray);
 app.get('/customer/:customer_id',cusomter.getCustomer );
 
 db

@@ -5,8 +5,9 @@ angular.module('router-guide', [])
 	.controller('routerGuideController', [
 		'$scope',
 		'$rootScope',
+		'$location',
 		'routerGuideService',
-		function ($scope, $rootScope, routerGuideService) {
+		function ($scope, $rootScope,$location, routerGuideService) {
 			//$scope.titles = $rootScope.titleArr;
 			function generateRouterGuide(model) {
 				$scope.titleArr = model;
@@ -18,5 +19,5 @@ angular.module('router-guide', [])
 				routerGuideService.resetModelByLocation(next);
 			});
 
-			routerGuideService.resetModelByLocation('#/home');
+			routerGuideService.resetModelByLocation($location.$$absUrl);
 		}]);

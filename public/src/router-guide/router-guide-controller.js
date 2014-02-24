@@ -14,5 +14,9 @@ angular.module('router-guide', [])
 
 			routerGuideService.bindObserver(generateRouterGuide);
 
-			routerGuideService.resetModel(['home']);
+			$rootScope.$on("$locationChangeStart", function(event, next, current) {
+				routerGuideService.resetModelByLocation(next);
+			});
+
+			//routerGuideService.resetModel(['home']);
 		}]);

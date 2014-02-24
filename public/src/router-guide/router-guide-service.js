@@ -5,56 +5,31 @@ angular.module('router-guide')
 	.factory('routerGuideService', ['$http', function ($http) {
 		var observers = [];
 		var routerGuideModel = [];
-/*
-		var routerList = {
-			home: {
-				id: "home",
-				content: "主页",
-				icon: "icon-home",
-				link: "#"
-			},
-			basics: {
-				id: "basics",
-				content: "基础信息管理",
-				icon: "icon-clipboard",
-				link: "#/basics"
-			},
-			productView: {
-				id: "productView",
-				content: "我的产品",
-				icon: "icon-cube",
-				link: "#/basics/productView"
-			},
-			customerView: {
-				id: "productView",
-				content: "我的客户",
-				icon: "icon-",
-				link: "#/basics/productView"
+
+		function callObservers(){
+			for (var i = 0; i < observers.length; i++) {
+				var observer = observers[i];
+				observer(routerGuideModel);
 			}
-		};
-*/
+		}
+
+		function getLocation(){
+
+		}
+
 		var Service = {
 			bindObserver: function (callback) {
 				observers.push(callback);
 			},
-			/*
 
-			resetModel: function (OpList) {
-				routerGuideModel = [];
-
+			appendModel: function (OpList) {
 				for (var i = 0; i < OpList.length; i++) {
-					var id = OpList[i];
-					if (id && routerList[id]) {
-						routerGuideModel.push(routerList[id]);
-					}
+					routerGuideModel.push(OpList[i]);
 				}
 
-				for (var i = 0; i < observers.length; i++) {
-					var observer = observers[i];
-					observer(routerGuideModel);
-				}
+				callObservers();
 			},
-*/
+
 			resetModelByLocation: function(path){
 				var p = [];
 				var locationArr = path.split('#');
@@ -65,10 +40,7 @@ angular.module('router-guide')
 						.success(function (data) {
 							routerGuideModel = data;
 
-							for (var i = 0; i < observers.length; i++) {
-								var observer = observers[i];
-								observer(routerGuideModel);
-							}
+							callObservers();
 						});
 				}
 				else{
@@ -79,18 +51,8 @@ angular.module('router-guide')
 						.success(function (data) {
 							routerGuideModel = data;
 
-							for (var i = 0; i < observers.length; i++) {
-								var observer = observers[i];
-								observer(routerGuideModel);
-							}
+							callObservers();
 						});
-					/*
-					for(var i = 0; i< tmp.length; i++){
-						if(routerList[tmp[i]]){
-							routerGuideModel.push(routerList[tmp[i]]);
-						}
-					}
-					*/
 				}
 			}
 		}

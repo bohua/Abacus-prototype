@@ -18,5 +18,5 @@ angular.module('router-guide', [])
 				routerGuideService.resetModelByLocation(next);
 			});
 
-			//routerGuideService.resetModel(['home']);
+			routerGuideService.resetModelByLocation('#/home');
 		}]);

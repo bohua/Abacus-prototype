@@ -10,18 +10,19 @@
 		"id": "sales",
 		"title": "销售单据管理",
 		"icon": "icon-cart",
+		"link": "#/sales",
 		"submenus": [
 			{
-				"id": "sales-manage-salesorder",
+				"id": "saleorderBrowserView",
 				"title": "[管理]销售单",
 				"icon": "icon-copy",
-				"link": "#/sales/saleorderView/browse"
+				"link": "#/sales/saleorderBrowserView"
 			},
 			{
-				"id": "sales-create-salesorder",
+				"id": "saleorderCreateView",
 				"title": "[新建]销售单",
 				"icon": "icon-new",
-				"link": "#/sales/saleorderView/create"
+				"link": "#/sales/saleorderCreateView"
 			}
 		]
 	},
@@ -30,6 +31,7 @@
 		"id": "basics",
 		"title": "基础信息管理",
 		"icon": "icon-clipboard",
+		"link": "#/basics",
 		"submenus": [
 			{
 				"id": "productView",

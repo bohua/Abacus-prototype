@@ -11,5 +11,5 @@ angular.module('product-view', ['ngRoute', 'router-guide', 'product-resource'])
 		'routerGuideService',
 		'Product',
 		function ($scope, routerGuideService, Product) {
-			routerGuideService.resetModel(['basics', 'productView']);
+			//routerGuideService.resetModel(['basics', 'productView']);
 		}]);

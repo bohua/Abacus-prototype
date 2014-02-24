@@ -3,26 +3,25 @@
 		"id": "home",
 		"title": "主页",
 		"icon": "icon-home",
-		"link": "#/users"
+		"link": "#"
 	},
 
 	{
 		"id": "sales",
 		"title": "销售单据管理",
 		"icon": "icon-cart",
-		"link": "#",
 		"submenus": [
 			{
 				"id": "sales-manage-salesorder",
 				"title": "[管理]销售单",
 				"icon": "icon-copy",
-				"link": "#"
+				"link": "#/sales/saleorderView/browse"
 			},
 			{
 				"id": "sales-create-salesorder",
 				"title": "[新建]销售单",
 				"icon": "icon-new",
-				"link": "#"
+				"link": "#/sales/saleorderView/create"
 			}
 		]
 	},
@@ -33,16 +32,16 @@
 		"icon": "icon-clipboard",
 		"submenus": [
 			{
-				"id": "basics-manage-product",
+				"id": "productView",
 				"title": "我的产品",
 				"icon": "icon-cube",
 				"link": "#/basics/productView"
 			},
 			{
-				"id": "sales-create-xsd",
+				"id": "customerView",
 				"title": "我的客户",
 				"icon": "icon-user-3",
-				"link": "#"
+				"link": "#/basics/customerView"
 			}
 		]
 	},
@@ -51,13 +50,13 @@
 		"id": "history",
 		"title": "历史记录管理",
 		"icon": "icon-history",
-		"link": "#/users"
+		"link": "#/history"
 	},
 
 	{
-		"id": "systems",
+		"id": "system",
 		"title": "系统功能",
 		"icon": "icon-list",
-		"link": "#/users"
+		"link": "#/system"
 	}
 ]

@@ -34,6 +34,7 @@ if ('development' == app.get('env')) {
 
 app.get('/', util.loadJsScript);
 app.get('/getLeftMenu', util.getLeftMenu);
+app.get('/getLocationArray', util.getLocationArray);
 app.get('/customer/:customer_id',cusomter.getCustomer );
 
 db

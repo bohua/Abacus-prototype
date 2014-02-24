@@ -2,15 +2,16 @@
  * Created by Bli on 14-2-18.
  */
 angular.module('router-guide')
-	.factory('routerGuideService', function () {
+	.factory('routerGuideService', ['$http', function ($http) {
 		var observers = [];
 		var routerGuideModel = [];
+/*
 		var routerList = {
 			home: {
 				id: "home",
 				content: "主页",
 				icon: "icon-home",
-				link: "#/"
+				link: "#"
 			},
 			basics: {
 				id: "basics",
@@ -23,13 +24,20 @@ angular.module('router-guide')
 				content: "我的产品",
 				icon: "icon-cube",
 				link: "#/basics/productView"
+			},
+			customerView: {
+				id: "productView",
+				content: "我的客户",
+				icon: "icon-",
+				link: "#/basics/productView"
 			}
 		};
-
+*/
 		var Service = {
 			bindObserver: function (callback) {
 				observers.push(callback);
 			},
+			/*
 
 			resetModel: function (OpList) {
 				routerGuideModel = [];
@@ -45,9 +53,47 @@ angular.module('router-guide')
 					var observer = observers[i];
 					observer(routerGuideModel);
 				}
+			},
+*/
+			resetModelByLocation: function(path){
+				var p = [];
+				var locationArr = path.split('#');
+
+				routerGuideModel = [];
+				if(locationArr.length < 2){
+					$http.get('/getLocationArray', {params: {locationId: 'home'}})
+						.success(function (data) {
+							routerGuideModel = data;
+
+							for (var i = 0; i < observers.length; i++) {
+								var observer = observers[i];
+								observer(routerGuideModel);
+							}
+						});
+				}
+				else{
+					var tmp = locationArr[1].split('/');
+					var locationId = tmp[tmp.length -1];
+
+					$http.get('/getLocationArray', {params: {locationId: locationId}})
+						.success(function (data) {
+							routerGuideModel = data;
+
+							for (var i = 0; i < observers.length; i++) {
+								var observer = observers[i];
+								observer(routerGuideModel);
+							}
+						});
+					/*
+					for(var i = 0; i< tmp.length; i++){
+						if(routerList[tmp[i]]){
+							routerGuideModel.push(routerList[tmp[i]]);
+						}
+					}
+					*/
+				}
 			}
 		}
 
 		return Service;
-	})
-;
+	}]);

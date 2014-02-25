@@ -4,7 +4,10 @@ html(ng-app='app')
 		title= title
 		link(rel='stylesheet', href='/css/client.css')
 		link(rel='stylesheet', href='/css/metro-bootstrap.min.css')
+		link(rel='stylesheet', href='/css/loading-bar.min.css')
+		link(href='http://fonts.googleapis.com/css?family=Audiowide', rel='stylesheet', type='text/css')
 		script(src='/lib/angular/angular.js')
+		script(src='/lib/angular/loading-bar.min.js')
 		script(src='/lib/angular/angular-route.js')
 		script(src='/lib/angular/angular-resource.js')
 		script(src='/lib/jquery/jquery.min.js')
@@ -18,6 +21,7 @@ html(ng-app='app')
 			script(src= jsFile)
 
 	body.metro.unselectable(ng-controller='appController')
+		#preload-mask(preload-mask-directive, ng-show='enablePreload')
 		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
 		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu/left-menu.tpl.html"')
 		#right-stage.bleach-stage

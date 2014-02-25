@@ -1,0 +1,27 @@
+#preload-mask{
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+
+  background-color: @green-dark;
+
+  .loader-title{
+    position: relative;
+    color: @white;
+    font-size: 100px;
+    //left: ~"calc(50% - 308px)";
+    text-align: center;
+    top: ~"calc(50% - 94px)";
+    width: 100%;
+
+    >span{
+      text-shadow: 0 0 300px;
+
+      span{
+        font-family: 'Audiowide', cursive !important;
+        text-shadow: 0 0 4px @black-bg;
+      }
+    }
+  }
+}

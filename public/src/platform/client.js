@@ -7,7 +7,8 @@ angular.module('app', ['preload-mask', 'left-menu', 'router-guide', 'top-bar', '
 	})
 	.controller('appController', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {
 
+
 		$timeout(function(){
 			$scope.$broadcast('emitPreloadMask', false);
-		}, 1000);
+		}, 400);
 	}]);

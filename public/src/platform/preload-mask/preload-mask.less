@@ -8,7 +8,6 @@
 
   .loader-title{
     position: relative;
-    color: @white;
     font-size: 100px;
     //left: ~"calc(50% - 308px)";
     text-align: center;
@@ -18,9 +17,24 @@
     >span{
       text-shadow: 0 0 300px;
 
-      span{
-        font-family: 'Audiowide', cursive !important;
+      i{
+        color: @red;
         text-shadow: 0 0 4px @black-bg;
+      }
+
+      span{
+        color: @black-bg;
+        font-family: 'Audiowide', cursive !important;
+        text-shadow: 0 0 4px @white;
+      }
+    }
+
+    .login-button{
+      background-color: @black-bg;
+      color: @grey-light;
+
+      &:hover{
+        color: @white;
       }
     }
   }

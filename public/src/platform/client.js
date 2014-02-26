@@ -9,6 +9,6 @@ angular.module('app', ['preload-mask', 'left-menu', 'router-guide', 'top-bar', '
 
 
 		$timeout(function(){
-			$scope.$broadcast('emitPreloadMask', false);
+			//$scope.$broadcast('emitPreloadMask', false);
 		}, 400);
 	}]);

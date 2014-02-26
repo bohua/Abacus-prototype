@@ -1,0 +1,17 @@
+{
+	"name": "user",
+	"columns": [
+		{
+			"col_name": "user_name",
+			"data_type": "STRING",
+			"description": "用户名称",
+			"display_title": "名称"
+		},
+		{
+			"col_name": "user_pass",
+			"data_type": "STRING",
+			"description": "客户密码",
+			"display_title": "密码"
+		}
+	]
+}

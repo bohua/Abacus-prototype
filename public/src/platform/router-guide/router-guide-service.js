@@ -35,7 +35,7 @@ angular.module('router-guide')
 				var locationArr = path.split('#');
 
 				routerGuideModel = [];
-				if(locationArr.length < 2){
+				if(locationArr.length < 2 || locationArr[1] === '/'){
 					$http.get('/getLocationArray', {params: {locationId: 'home'}})
 						.success(function (data) {
 							routerGuideModel = data;

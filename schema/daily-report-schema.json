@@ -1,0 +1,164 @@
+{
+	"name": "dailyReport",
+	"columns": [
+		{
+			"col_name": "record_time",
+			"data_type": "DATE",
+			"description": "时间",
+			"display_title": "时间"
+		},
+		{
+			"col_name": "inbound_NTU",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "原水浊度",
+			"display_title": "浊度(NTU)"
+		},
+		{
+			"col_name": "inbound_PH",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "原水pH值",
+			"display_title": "pH值"
+		},
+		{
+			"col_name": "inbound_throughput_1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "原水流量 1#流量计",
+			"display_title": "1#流量计(m3)"
+		},
+		{
+			"col_name": "inbound_throughput_2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "原水流量 2#流量计",
+			"display_title": "2#流量计(m3)"
+		},
+		{
+			"col_name": "inbound_throughput_3",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "原水流量 3#流量计",
+			"display_title": "3#流量计(m3)"
+		},
+		{
+			"col_name": "sediment_NTU_1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "沉淀出水 1#浊度",
+			"display_title": "1#(NTU)"
+		},
+		{
+			"col_name": "sediment_NTU_2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "沉淀出水 2#浊度",
+			"display_title": "2#(NTU)"
+		},
+		{
+			"col_name": "filtered_NTU",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "滤后水 浊度",
+			"display_title": "浊度(NTU)"
+		},
+		{
+			"col_name": "filtered_PH",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "滤后水 pH值",
+			"display_title": "pH值"
+		},
+		{
+			"col_name": "filtered_leftCl",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "滤后水 余氯",
+			"display_title": "余氯(mg/l)"
+		},
+		{
+			"col_name": "cleared_leftCl",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "清水池 余氯",
+			"display_title": "余氯(mg/l)"
+		},
+		{
+			"col_name": "outbound_NTU",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 浊度",
+			"display_title": "浊度(NTU)"
+		},
+		{
+			"col_name": "outbound_PH",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 pH值",
+			"display_title": "pH值"
+		},
+		{
+			"col_name": "outbound_leftCl",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 余氯",
+			"display_title": "余氯(mg/l)"
+		},
+		{
+			"col_name": "outbound_MPA",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 压力",
+			"display_title": "压力(MPa)"
+		},
+		{
+			"col_name": "outbound_throughput_1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 流量 1#流量计",
+			"display_title": "1#流量计(m3)"
+		},
+		{
+			"col_name": "outbound_throughput_2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 流量 2#流量计",
+			"display_title": "2#流量计(m3)"
+		},
+		{
+			"col_name": "outbound_throughput_oldtownregion",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 流量 老城区方向",
+			"display_title": "老城区方向(m3)"
+		},
+		{
+			"col_name": "outbound_throughput_southregion",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 流量 南区方向",
+			"display_title": "南区方向(m3)"
+		},
+		{
+			"col_name": "outbound_total",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "出厂水 流量合计",
+			"display_title": "流量合计(m3)"
+		},
+		{
+			"col_name": "power_consumption",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "机组总用电量",
+			"display_title": "机组总用电量(kwh)"
+		},
+		{
+			"col_name": "manufactory_consumption",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "配水单耗",
+			"display_title": "配水单耗(kwh/km3.MPa)"
+		}
+	]}

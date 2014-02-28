@@ -10,6 +10,7 @@ var path = require('path');
 var db = require('./models');
 var security = require('./routes/security');
 var cusomter = require('./routes/customer-view');
+var reports = require('./routes/reports');
 
 var app = express();
 
@@ -38,6 +39,7 @@ app.get('/getLeftMenu', platform.getLeftMenu);
 app.get('/getLocationArray', platform.getLocationArray);
 app.get('/customer/:customer_id',cusomter.getCustomer );
 app.post('/login', security.userLogin);
+app.get('/getReport', reports);
 
 db
 	.sequelize

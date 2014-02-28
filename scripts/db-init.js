@@ -37,7 +37,7 @@ function getColumns(schema) {
 
 function transformDailyReports() {
 	var path = __dirname + "/../tests/data/综/";
-	var connector = require(__dirname + "/../routes/ETL-module/bleach-data-connector.js");
+	var connector = require(__dirname + "/../routes/ETL-module").bleachDataConnector;
 	var schema = require("../schema/daily-report-schema.json");
 	var colList = getColumns(schema);
 

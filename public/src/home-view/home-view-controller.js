@@ -10,8 +10,4 @@ angular.module('home-view', ['ngRoute', 'bar-chart', 'line-chart'])
 		'$scope',
 		'$http',
 		function ($scope, $http) {
-			$http.get('/getReport', {params: {reportId: 'production-daily-waterconsumption'}})
-				.success(function(data){
-					$scope
-				});
 		}]);

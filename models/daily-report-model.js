@@ -8,16 +8,9 @@ var schema = require("../schema/daily-report-schema.json");
 module.exports = function (sequelize, DataTypes) {
 	var col_option = util.generateOption(schema);
 
-	var DailyReport = sequelize.define(
-		'DailyReport',
-		col_option/*,
-		 {
-		 classMethods: {
-		 associate: function (models) {
-		 Product.belongsTo(models.SalesSlave);
-		 }
-		 }
-		 }*/);
+	var DailyReport = sequelize.define('DailyReport',
+		col_option
+	);
 
 	return DailyReport;
 };

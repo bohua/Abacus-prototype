@@ -15,7 +15,8 @@ angular.module('line-chart', [])
 							end_time: "20130502"
 						}
 					}).success(function (data) {
-							$scope.chart.series[0].setData(data, true);
+							$scope.chart.xAxis[0].setCategories(data.xAxis.categories, true);
+							$scope.chart.series[0].setData(data.series[0].data, true);
 						});
 				}
 			},
@@ -31,7 +32,10 @@ angular.module('line-chart', [])
 						text: 'Fruit Consumption'
 					},
 					xAxis: {
-						categories: ['Apples', 'Bananas', 'Oranges']
+						categories: ['Apples', 'Bananas', 'Oranges'],
+						labels: {
+							rotation: 45
+						}
 					},
 					yAxis: {
 						title: {
@@ -42,10 +46,6 @@ angular.module('line-chart', [])
 						{
 							name: 'Jane',
 							data: [1, 0, 4]
-						},
-						{
-							name: 'John',
-							data: [5, 7, 3]
 						}
 					]
 

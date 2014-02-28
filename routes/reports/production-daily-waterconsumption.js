@@ -13,13 +13,37 @@ module.exports = function (req, res) {
 				between: [start_time, end_time]
 			}
 		},
+		order: 'record_time',
 		attributes: [
+			'record_time',
 			'outbound_MPA',
 			'outbound_total',
 			'power_consumption'
 		]
-	}).success(function (dailyReport) {
+	}).complete(function (err, dailyReport) {
+			var chartData = {
+				xAxis: {
+					categories: []
+				},
+				series: [
+					{
+						name: 'OUTBOUND',
+						data: []
+					}
+				]
+			};
+
+			for (var entry in dailyReport) {
+				var t = dailyReport[entry].record_time;
+				var hour = t.getUTCHours() === 0 ? 24 : t.getUTCHours();
+				var formattedT = hour +':00';
+
+				chartData.xAxis.categories.push(formattedT);
+
+				chartData.series[0].data.push(dailyReport[entry].power_consumption);
+			}
+
 			res.contentType('json');
-			res.json(dailyReport);
+			res.json(chartData);
 		});
 }

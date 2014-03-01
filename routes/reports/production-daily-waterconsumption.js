@@ -22,9 +22,7 @@ module.exports = function (req, res) {
 		]
 	}).complete(function (err, dailyReport) {
 			var chartData = {
-				xAxis: {
-					categories: []
-				},
+				xAxis: [],
 				series: [
 					{
 						name: 'OUTBOUND',
@@ -38,7 +36,7 @@ module.exports = function (req, res) {
 				var hour = t.getUTCHours() === 0 ? 24 : t.getUTCHours();
 				var formattedT = hour +':00';
 
-				chartData.xAxis.categories.push(formattedT);
+				chartData.xAxis.push(formattedT);
 
 				chartData.series[0].data.push(dailyReport[entry].power_consumption);
 			}

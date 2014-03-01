@@ -78,7 +78,7 @@
                 multiSelect: false,
                 format: that.options.format,
                 buttons: false,
-                locale: that.options.locale,
+	                locale: that.options.locale,
                 otherDays: that.options.otherDays,
                 weekStart: that.options.weekStart,
                 click: function(d, d0){

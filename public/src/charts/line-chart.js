@@ -6,24 +6,24 @@ angular.module('line-chart', [])
 		var LineChart = {
 			restrict: 'E',
 			controller: function ($scope, $element) {
-				$scope.reloadChart = function () {
+				$scope.reloadChart = function (queryOption) {
 					var reportId = $($element).attr('report-id');
 					$http.get('/getReport', {
 						params: {
 							reportId: reportId,
-							start_time: "20130501",
-							end_time: "20130502"
+							start_time: queryOption.start_date,
+							end_time: queryOption.end_date
 						}
 					}).success(function (data) {
-							$scope.chart.xAxis[0].setCategories(data.xAxis.categories, true);
-							$scope.chart.series[0].setData(data.series[0].data, true);
+							$scope[reportId].xAxis[0].setCategories(data.xAxis, true);
+							$scope[reportId].series[0].setData(data.series[0].data, true);
 						});
 				}
 			},
 			link: function ($scope, $element, $attributes) {
 				var reportId = $($element).attr('report-id');
 
-				$scope.chart = new Highcharts.Chart({
+				$scope[reportId] = new Highcharts.Chart({
 					chart: {
 						renderTo: $element[0],
 						type: 'line'
@@ -51,7 +51,18 @@ angular.module('line-chart', [])
 
 				});
 
-				$scope.reloadChart();
+				$($element).on('reloadChart', function (event, queryOption) {
+					$http.get('/getReport', {
+						params: {
+							reportId: reportId,
+							start_time: queryOption.start_date,
+							end_time: queryOption.end_date
+						}
+					}).success(function (data) {
+							$scope[reportId].xAxis[0].setCategories(data.xAxis, true);
+							$scope[reportId].series[0].setData(data.series[0].data, true);
+						});
+				});
 			}
 		}
 		return LineChart;

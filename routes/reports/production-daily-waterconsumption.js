@@ -22,10 +22,13 @@ module.exports = function (req, res) {
 		]
 	}).complete(function (err, dailyReport) {
 			var chartData = {
+				title:{
+					text: '配水单耗走势'
+				},
 				xAxis: [],
 				series: [
 					{
-						name: 'OUTBOUND',
+						name: '配水单耗  Kwh/Km3.Mpa',
 						data: []
 					}
 				]

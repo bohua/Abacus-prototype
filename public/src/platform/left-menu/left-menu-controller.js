@@ -26,7 +26,9 @@ angular.module('left-menu', [])
 				});
 				$('#right-stage').animate({
 					'padding-left': "-=" + leftOffset
-				}, delay);
+				}, delay,function(){
+					$(window).resize();
+				});
 			} else {
 				//$('#left-stage').show();
 				$('#left-stage').animate({
@@ -37,7 +39,9 @@ angular.module('left-menu', [])
 				});
 				$('#right-stage').animate({
 					'padding-left': "+=" + leftOffset
-				}, delay);
+				}, delay,function(){
+					$(window).resize();
+				});
 			}
 		};
 

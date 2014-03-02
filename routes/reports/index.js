@@ -4,7 +4,7 @@
 //module.exports.ProductionDailyWaterconsumption = require('./production-daily-waterconsumption.js');
 
 module.exports = function (req, res) {
-	var requstedReport = require('./' + req.query.reportId + '.js');
+	var requstedReport = require('./' + req.query.reportId + '/report.js');
 
 	requstedReport(req, res);
 }

@@ -1,11 +1,25 @@
+#home-view{
+  height:100%;
+}
+
 #filterPanel{
   width: 98%;
-  margin: 1%;
+  padding: 1%;
+  margin-left: 1%;
   height: 50px;
   background-color: @white;
   border-bottom: 2px solid @black-bg;
 }
 
-line-chart.home-view-chart{
-  width: ~"calc(100% - @{left-panel-width})";
+#contentPanel{
+  width: 100%;
+  height: ~"calc(100% - @{top-bar-height})";
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.chart-wrapper{
+  width: 100%;
+  padding: 15px;
 }

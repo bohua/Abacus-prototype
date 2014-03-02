@@ -1,0 +1,18 @@
+{
+	"title": {
+		"text": "配水单耗走势"
+	},
+	"xAxis": {
+		"categories": []
+	},
+	"yAxis": {
+		"title": {
+			"text": "配水单耗  Kwh/Km3.Mpa"
+		}
+	},
+	"series": [
+		{
+			"data": []
+		}
+	]
+}

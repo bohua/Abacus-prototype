@@ -11,6 +11,7 @@ angular.module('home-view', ['ngRoute', 'bar-chart', 'line-chart'])
 		'$http',
 		'$timeout',
 		function ($scope, $http, $timeout) {
+			/*
 			function getTomorrow(d,offset){
 				if (!offset){
 					offset = 1;
@@ -20,12 +21,18 @@ angular.module('home-view', ['ngRoute', 'bar-chart', 'line-chart'])
 					d = new Date(t[0],t[1] - 1, t[2]);
 				}
 
-				var k = new Date(d.setDate(d.getDate() + offset));
-				return k.getFullYear()+'-'+(k.getMonth()+1)+'-'+k.getDate();
+				var d2 = new Date(d.setDate(d.getDate() + offset));
+				//var d2 = new Date(d1.getTime() -1000);
+				return d2.getFullYear()+'-'+(d2.getMonth()+1)+'-'+d2.getDate();
+			}
+			*/
+
+			function getEndOfTheDay(start_date){
+				return start_date.split(' ')[0] + " 23:59:59";
 			}
 
-			$scope.start_date = "2013-05-01";
-			$scope.end_date = getTomorrow($scope.start_date,1);
+			$scope.start_date = "2013-05-01 00:00:00";
+			$scope.end_date = getEndOfTheDay($scope.start_date);
 
 			$('.bleach-datefilter').datepicker({
 				date: "2013-05-01", // set init date
@@ -34,8 +41,8 @@ angular.module('home-view', ['ngRoute', 'bar-chart', 'line-chart'])
 				position: "bottom", // top or bottom
 				locale: 'zhCN',
 				selected: function (date) {
-					$scope.start_date = date;
-					$scope.end_date = getTomorrow($scope.start_date,1);
+					$scope.start_date = date + " 00:00:00";
+					$scope.end_date = getEndOfTheDay($scope.start_date);
 					$scope.$apply();
 				}
 			});

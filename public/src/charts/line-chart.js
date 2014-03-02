@@ -20,7 +20,7 @@ angular.module('line-chart', [])
 					}).success(function (data) {
 							if ($scope[reportId]) {
 								//upadate chart if found
-								$scope[reportId].xAxis[0].update(data.xAxis[0], true);
+								$scope[reportId].xAxis[0].update(data.xAxis, true);
 								$scope[reportId].series[0].update(data.series[0], true);
 
 							} else {

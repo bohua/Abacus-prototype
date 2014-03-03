@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 14-2-21.
  */
-angular.module('home-view', ['ngRoute', 'bar-chart', 'line-chart'])
+angular.module('home-view', ['ngRoute', 'chart'])
 	.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.
 			when('/', {templateUrl: '/src/home-view/home-view.tpl.html', controller: 'homeViewController'});

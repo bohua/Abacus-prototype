@@ -6,5 +6,7 @@
 			button.btn-date
 		button.default(ng-click='query') search
 	#contentPanel
-		div.chart-wrapper
-			line-chart.home-view-chart(report-id="production-daily-waterconsumption")
+		div.chart-wrapper#home-view-chart-1
+			chart.home-view-chart(report-id="production-daily-inboundwater")
+		div.chart-wrapper#home-view-chart-2
+			chart.home-view-chart(report-id="production-daily-waterconsumption")

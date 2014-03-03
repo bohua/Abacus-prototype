@@ -1,19 +1,19 @@
 {
 	"chart": {
-		"type": "line"
+		"type": "column"
 	},
 	"credits": {
 		"enabled": false
 	},
 	"title": {
-		"text": "配水单耗走势"
+		"text": "进水量"
 	},
 	"xAxis": {
-		"categories": []
+		"categories": ["1#流量计", "2#流量计", "3#流量计", "总流量"]
 	},
 	"yAxis": {
 		"title": {
-			"text": "配水单耗  Kwh/Km3.Mpa"
+			"text": "流量 Km3"
 		}
 	},
 	"series": [

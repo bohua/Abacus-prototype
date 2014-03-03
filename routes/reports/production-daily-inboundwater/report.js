@@ -1,22 +1,21 @@
 /**
- * Created by bli on 14-2-28.
+ * Created by Bohua on 14-3-1.
  */
 module.exports = function (input) {
 	var start_time = input.req.query.start_time;
 	var end_time = input.req.query.end_time;
 
-	input.db.DailyReport.findAll({
+	input.db.DailyReport.find({
 		where: {
 			record_time: {
 				between: [start_time, end_time]
 			}
 		},
-		order: 'record_time',
 		attributes: [
 			'record_time',
-			'outbound_MPA',
-			'outbound_total',
-			'power_consumption'
+			input.db.sequelize.fn('SUM', input.db.sequelize.col('inbound_throughput_1')),
+			input.db.sequelize.fn('SUM', input.db.sequelize.col('inbound_throughput_2')),
+			input.db.sequelize.fn('SUM', input.db.sequelize.col('inbound_throughput_3'))
 		]
 	}).complete(function (err, dailyReport) {
 			if (err) {
@@ -26,15 +25,26 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				for (var entry in dailyReport) {
-					var formattedT = dailyReport[entry].record_time.getUTCHours() + ':00';
+				var total = 0;
 
-					input.chartData.xAxis.categories.push(formattedT);
-					input.chartData.series[0].data.push(dailyReport[entry].power_consumption);
+				for (var entry in dailyReport.dataValues) {
+					if(entry === 'record_time'){
+						continue;
+					}
+
+					var tmpD = dailyReport.dataValues[entry];
+
+					if (tmpD !== null) {
+						input.chartData.series[0].data.push(tmpD);
+						total += tmpD;
+					}
 				}
 
+				//add 总流量
+				input.chartData.series[0].data.push(total);
+
 				//add series name e.g 2013年5月1日
-				var d = dailyReport[0].record_time;
+				var d = dailyReport.dataValues.record_time;
 				input.chartData.series[0].name = d.getUTCFullYear() + "年" + (d.getUTCMonth() + 1) + "月" + d.getUTCDate() + "日";
 
 				input.res.contentType('json');

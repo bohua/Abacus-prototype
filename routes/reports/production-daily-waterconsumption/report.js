@@ -30,7 +30,10 @@ module.exports = function (input) {
 					var formattedT = dailyReport[entry].record_time.getUTCHours() + ':00';
 
 					input.chartData.xAxis.categories.push(formattedT);
-					input.chartData.series[0].data.push(dailyReport[entry].power_consumption);
+
+					//KPI 单耗 = 用电量*1000/((0.02+出厂水压力)*出厂水总流量)
+					var kpi = (dailyReport[entry].power_consumption * 1000 / ((0.02 + dailyReport[entry].outbound_MPA) * dailyReport[entry].outbound_total)).toFixed(2);
+					input.chartData.series[0].data.push(parseFloat(kpi));
 				}
 
 				//add series name e.g 2013年5月1日

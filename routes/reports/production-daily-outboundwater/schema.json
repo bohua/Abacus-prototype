@@ -1,0 +1,24 @@
+{
+	"chart": {
+		"type": "column"
+	},
+	"credits": {
+		"enabled": false
+	},
+	"title": {
+		"text": "出水量"
+	},
+	"xAxis": {
+		"categories": ["1#流量计", "2#流量计", "老城区方向", "南区方向", "总流量"]
+	},
+	"yAxis": {
+		"title": {
+			"text": "流量 Km3"
+		}
+	},
+	"series": [
+		{
+			"data": []
+		}
+	]
+}

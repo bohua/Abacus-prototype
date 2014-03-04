@@ -6,23 +6,24 @@ angular.module('chart', [])
 
 		var LineChart = {
 			restrict: 'E',
+			scope: {},
 			link: function ($scope, $element, $attributes) {
-				var reportId = $attributes.reportId;
-				var chartWidth = $($element).parents('.chart-wrapper').width();
-				var chartHeight = $($element).parents('.chart-wrapper').height();
+				var wrapper = $($element).parents('.chart-wrapper');
+				var chartWidth = wrapper.width();
+				var chartHeight = wrapper.height();
 
 				$($element).on('reloadChart', function (event, queryOption, renderOption) {
 					$http.get('/getReport', {
 						params: {
-							reportId: reportId,
+							reportId: $attributes.reportId,
 							start_time: queryOption.start_date,
 							end_time: queryOption.end_date
 						}
 					}).success(function (chartOption) {
-							if ($scope[reportId]) {
+							if ($scope.chart) {
 								//upadate chart if found
-								$scope[reportId].xAxis[0].update(chartOption.xAxis, true);
-								$scope[reportId].series[0].update(chartOption.series[0], true);
+								$scope.chart.xAxis[0].update(chartOption.xAxis, true);
+								$scope.chart.series[0].update(chartOption.series[0], true);
 
 							} else {
 								//Generate new chart if not found
@@ -30,15 +31,14 @@ angular.module('chart', [])
 								chartOption.chart.width = chartWidth;
 								chartOption.chart.height = chartHeight;
 
-								$scope[reportId] = new Highcharts.Chart(chartOption);
+								$scope.chart = new Highcharts.Chart(chartOption);
 							}
 						});
 				});
 
-				var wrapper = $($element).parents('.chart-wrapper');
 				$(window).resize(
 					function () {
-						$scope[reportId].setSize(
+						$scope.chart.setSize(
 							wrapper.width(),
 							wrapper.height(),
 							false

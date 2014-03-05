@@ -1,23 +1,25 @@
 /**
- * Created by Bohua on 14-3-1.
+ * Created by Bli on 14-3-5.
  */
 module.exports = function (input) {
 	var start_time = input.req.query.start_time;
 	var end_time = input.req.query.end_time;
 
-	input.db.HourlyReport.find({
+	input.db.DailyReport.find({
 		where: {
-			record_time: {
+			report_date: {
 				between: [start_time, end_time]
 			}
 		},
 		attributes: [
-			'record_time',
-			input.db.sequelize.fn('SUM', input.db.sequelize.col('inbound_throughput_1')),
-			input.db.sequelize.fn('SUM', input.db.sequelize.col('inbound_throughput_2')),
-			input.db.sequelize.fn('SUM', input.db.sequelize.col('inbound_throughput_3'))
+			'report_date',
+			'daily_sum_electron_highprofile_within_marktotal',
+			'daily_sum_electron_highprofile_without_marktotal',
+			'daily_sum_electron_lowprofile_within_marktotal',
+			'daily_sum_electron_lowprofile_without_marktotal',
+			'daily_sum_electron_lowprofile_washroom_marktotal'
 		]
-	}).complete(function (err, hourlyReport) {
+	}).complete(function (err, dailyReport) {
 			if (err) {
 				input.res.statusCode = "400";
 				input.res.end({
@@ -25,26 +27,20 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				var total = 0;
-
-				for (var entry in hourlyReport.dataValues) {
-					if(entry === 'record_time'){
+				for (var entry in dailyReport.dataValues) {
+					if(entry === 'report_date'){
 						continue;
 					}
 
-					var tmpD = hourlyReport.dataValues[entry];
+					var tmpD = dailyReport.dataValues[entry];
 
 					if (tmpD !== null) {
 						input.chartData.series[0].data.push(tmpD);
-						total += tmpD;
 					}
 				}
 
-				//add 总流量
-				input.chartData.series[0].data.push(total);
-
 				//add series name e.g 2013年5月1日
-				var d = hourlyReport.dataValues.record_time;
+				var d = dailyReport.dataValues.report_date;
 				input.chartData.series[0].name = d.getUTCFullYear() + "年" + (d.getUTCMonth() + 1) + "月" + d.getUTCDate() + "日";
 
 				input.res.contentType('json');

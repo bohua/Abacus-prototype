@@ -11,46 +11,38 @@ angular.module('home-view', ['ngRoute', 'chart'])
 		'$http',
 		'$timeout',
 		function ($scope, $http, $timeout) {
-			/*
-			function getTomorrow(d,offset){
-				if (!offset){
-					offset = 1;
-				}
-				if(typeof(d) === "string"){
-					var t = d.split("-");
-					d = new Date(t[0],t[1] - 1, t[2]);
-				}
-
-				var d2 = new Date(d.setDate(d.getDate() + offset));
-				//var d2 = new Date(d1.getTime() -1000);
-				return d2.getFullYear()+'-'+(d2.getMonth()+1)+'-'+d2.getDate();
-			}
-			*/
-
-			function getEndOfTheDay(start_date){
-				return start_date.split(' ')[0] + " 23:59:59";
+			function getEndOfTheDay(date){
+				return date + " 23:59:59";
 			}
 
-			$scope.start_date = "2013-05-01 00:00:00";
-			$scope.end_date = getEndOfTheDay($scope.start_date);
+			function getStartOfTheDay(date){
+				return date + " 00:00:00";
+			}
+
+			var today = "2013-05-01";
 
 			$('.bleach-datefilter').datepicker({
-				date: "2013-05-01", // set init date
+				date: today, // set init date
 				format: "yyyy-mm-dd", // set output format
 				effect: "none", // none, slide, fade
 				position: "bottom", // top or bottom
 				locale: 'zhCN',
 				selected: function (date) {
-					$scope.start_date = date + " 00:00:00";
-					$scope.end_date = getEndOfTheDay($scope.start_date);
+					$scope.start_date = getStartOfTheDay(date);
+					$scope.end_date = getEndOfTheDay(date);
 					$scope.$apply();
 				}
 			});
 
-			$scope.$watch('start_date', function (newValue, oldValue) {
-				$('.home-view-chart').trigger('reloadChart', {
-					start_date: $scope.start_date,
-					end_date: $scope.end_date
+			$timeout(function(){
+				$scope.start_date = getStartOfTheDay(today);
+				$scope.end_date = getEndOfTheDay(today);
+
+				$scope.$watch('start_date', function (newValue, oldValue) {
+					$('.home-view-chart').trigger('reloadChart', {
+						start_date: $scope.start_date,
+						end_date: $scope.end_date
+					});
 				});
-			});
+			}, 100);
 		}]);

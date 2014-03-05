@@ -12,7 +12,7 @@ db
 			throw err;
 		} else {
 			generateUser();
-			transformDailyReports();
+			transformHourlyReports();
 		}
 	});
 
@@ -35,10 +35,10 @@ function getColumns(schema) {
 	return cols;
 }
 
-function transformDailyReports() {
+function transformHourlyReports() {
 	var path = __dirname + "/../tests/data/综/";
 	var connector = require(__dirname + "/../routes/ETL-module").bleachDataConnector;
-	var schema = require("../schema/daily-report-schema.json");
+	var schema = require("../schema/hourly-report-schema.json");
 	var colList = getColumns(schema);
 
 	fs.readdir(path, function (err, files) {
@@ -54,18 +54,35 @@ function transformDailyReports() {
 					return;
 				}
 
-				var data = result.json.hourly_records;
-				for (var j = 0; j < data.length; j++) {
+				var data = result.json;
+				var option = {};
 
-					var option = {};
-					for (var k = 0; k < colList.length; k++) {
-						option[colList[k]] = data[j][colList[k]]
+				//Generate hourly data table
+				for (var prop in data) {
+					if (data[prop] === 'hourly_records') {
+						//Generate hourly data table
+						var hourlyData = data.hourly_records;
+						for (var j = 0; j < hourlyData.length; j++) {
+
+							var hourlyOption = {};
+							for (var k = 0; k < colList.length; k++) {
+								hourlyOption[colList[k]] = hourlyData[j][colList[k]]
+							}
+
+							db.HourlyReport.create(hourlyOption).success(function (sdepold) {
+								console.log(sdepold.values)
+							});
+						}
+
+					}else{
+						//Generate daily data table
+						option[prop] = data[prop];
 					}
-
-					db.DailyReport.create(option).success(function (sdepold) {
-						console.log(sdepold.values)
-					});
 				}
+
+				db.DailyReport.create(option).success(function (sdepold) {
+					console.log(sdepold.values)
+				});
 			});
 		}
 	});

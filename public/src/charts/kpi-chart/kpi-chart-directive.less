@@ -1,3 +1,44 @@
 /**
  * Created by Bli on 14-3-4.
  */
+.kpi-chart-bg {
+  width: 100%;
+
+  background-color: @grey-light;
+
+  .kpi-title {
+    line-height: 52px;
+
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari and Chrome */
+    -ms-flex: 1.0; /* Internet Explorer 10 */
+    box-flex: 1.0;
+
+    margin-top: 0px;
+    font-size: 16px !important;
+    color: @black-bg;
+  }
+
+  .kpi-value {
+    font-size: 30px !important;
+    margin: 2px 10px;
+    float: right;
+
+    -moz-box-flex: 2.0; /* Firefox */
+    -webkit-box-flex: 2.0; /* Safari and Chrome */
+    -ms-flex: 2.0; /* Internet Explorer 10 */
+    box-flex: 2.0;
+  }
+
+  .good-value{
+    color: @green;
+  }
+
+  .bad-value{
+    color: @red;
+  }
+
+  .warning-value {
+    color: @yellow;
+  }
+}

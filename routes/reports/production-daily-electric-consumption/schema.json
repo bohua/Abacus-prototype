@@ -1,0 +1,24 @@
+{
+	"chart": {
+		"type": "column"
+	},
+	"credits": {
+		"enabled": false
+	},
+	"title": {
+		"text": "用电量"
+	},
+	"xAxis": {
+		"categories": ["[高配]总有功","[高配]总无功","[低配]总有功","[低配]总无功","[低配]反冲洗房"]
+	},
+	"yAxis": {
+		"title": {
+			"text": "用电量 Kwh"
+		}
+	},
+	"series": [
+		{
+			"data": []
+		}
+	]
+}

@@ -4,13 +4,15 @@
 		div.bleach-datefilter.input-control.text.span3
 			input(type="text")
 			button.btn-date
-		button.default(ng-click='query') search
+		//button.default(ng-click='query') search
 	#contentPanel
+		div.chart-wrapper#home-view-chart-0
+			kpi-chart.home-view-chart(report-id="production-daily-kpi-test")
 		div.chart-wrapper#home-view-chart-1
 			chart.home-view-chart(report-id="production-daily-inboundwater")
 		div.chart-wrapper#home-view-chart-2
 			chart.home-view-chart(report-id="production-daily-outboundwater")
 		div.chart-wrapper#home-view-chart-3
-			kpi-chart.home-view-chart(report-id="production-daily-kpi-test", ng-controller="kpiChartController")
+			chart.home-view-chart(report-id="production-daily-electric-consumption")
 		div.chart-wrapper#home-view-chart-5
 			chart.home-view-chart(report-id="production-daily-waterconsumption")

@@ -2,163 +2,363 @@
 	"name": "dailyReport",
 	"columns": [
 		{
-			"col_name": "record_time",
+			"col_name": "report_date",
 			"data_type": "DATE",
-			"description": "时间",
-			"display_title": "时间"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "inbound_NTU",
+			"col_name": "daily_sum_inbound_throughput_1",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "原水浊度",
-			"display_title": "浊度(NTU)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "inbound_PH",
+			"col_name": "daily_sum_inbound_throughput_2",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "原水pH值",
-			"display_title": "pH值"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "inbound_throughput_1",
+			"col_name": "daily_sum_inbound_throughput_3",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "原水流量 1#流量计",
-			"display_title": "1#流量计(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "inbound_throughput_2",
+			"col_name": "daily_sum_inbound_total",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "原水流量 2#流量计",
-			"display_title": "2#流量计(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "inbound_throughput_3",
+			"col_name": "daily_sum_outbound_throughput_1",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "原水流量 3#流量计",
-			"display_title": "3#流量计(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "sediment_NTU_1",
+			"col_name": "daily_sum_outbound_throughput_2",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "沉淀出水 1#浊度",
-			"display_title": "1#(NTU)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "sediment_NTU_2",
+			"col_name": "daily_sum_outbound_throughput_oldcityregion",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "沉淀出水 2#浊度",
-			"display_title": "2#(NTU)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "filtered_NTU",
+			"col_name": "daily_sum_outbound_throughput_southregion",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "滤后水 浊度",
-			"display_title": "浊度(NTU)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "filtered_PH",
+			"col_name": "daily_sum_outbound_throughput_total",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "滤后水 pH值",
-			"display_title": "pH值"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "filtered_leftCl",
+			"col_name": "daily_sum_consumption_cl_1",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "滤后水 余氯",
-			"display_title": "余氯(mg/l)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "cleared_leftCl",
+			"col_name": "daily_sum_consumption_cl_2",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "清水池 余氯",
-			"display_title": "余氯(mg/l)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_NTU",
+			"col_name": "daily_sum_consumption_cl_total",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 浊度",
-			"display_title": "浊度(NTU)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_PH",
+			"col_name": "daily_sum_consumption_cl_avg",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 pH值",
-			"display_title": "pH值"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_leftCl",
+			"col_name": "daily_sum_consumption_alun_1",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 余氯",
-			"display_title": "余氯(mg/l)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_MPA",
+			"col_name": "daily_sum_consumption_alun_2",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 压力",
-			"display_title": "压力(MPa)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_throughput_1",
+			"col_name": "daily_sum_consumption_alun_3",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 流量 1#流量计",
-			"display_title": "1#流量计(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_throughput_2",
+			"col_name": "daily_sum_consumption_alun_total",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 流量 2#流量计",
-			"display_title": "2#流量计(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_throughput_oldtownregion",
+			"col_name": "daily_sum_consumption_alun_avg",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 流量 老城区方向",
-			"display_title": "老城区方向(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_throughput_southregion",
+			"col_name": "daily_sum_consumption_alkali_1",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 流量 南区方向",
-			"display_title": "南区方向(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "outbound_total",
+			"col_name": "daily_sum_consumption_alkali_2",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "出厂水 流量合计",
-			"display_title": "流量合计(m3)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "power_consumption",
+			"col_name": "daily_sum_consumption_alkali_3",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "机组总用电量",
-			"display_title": "机组总用电量(kwh)"
+			"description": "",
+			"display_title": ""
 		},
 		{
-			"col_name": "manufactory_consumption",
+			"col_name": "daily_sum_consumption_alkali_total",
 			"data_type": "DECIMAL",
 			"decimal_digit": [10, 2],
-			"description": "配水单耗",
-			"display_title": "配水单耗(kwh/km3.MPa)"
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_consumption_alkali_avg",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_sediment_NTU_1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_sediment_NTU_2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_filtered_NTU",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_filtered_PH",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_filtered_leftCl",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+
+		{
+			"col_name": "daily_sum_water_qulity_outbound_NTU",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_outbound_PH",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_outbound_leftCl",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_water_qulity_outbound_MPA",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+
+
+		{
+			"col_name": "daily_sum_electron_highprofile_within_mark1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_highprofile_within_mark2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_highprofile_within_marktotal",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+
+		{
+			"col_name": "daily_sum_electron_highprofile_without_mark1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_highprofile_without_mark2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_highprofile_without_marktotal",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_within_mark1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_within_mark2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_within_marktotal",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+
+		{
+			"col_name": "daily_sum_electron_lowprofile_without_mark1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_without_mark2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_without_marktotal",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+
+		{
+			"col_name": "daily_sum_electron_lowprofile_washroom_mark1",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_washroom_mark2",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "daily_sum_electron_lowprofile_washroom_marktotal",
+			"data_type": "DECIMAL",
+			"decimal_digit": [10, 2],
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "guard_night",
+			"data_type": "STRING",
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "guard_morning",
+			"data_type": "STRING",
+			"description": "",
+			"display_title": ""
+		},
+		{
+			"col_name": "guard_afternoon",
+			"data_type": "STRING",
+			"description": "",
+			"display_title": ""
 		}
-	]}
+	]
+}

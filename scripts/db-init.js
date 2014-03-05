@@ -59,7 +59,7 @@ function transformHourlyReports() {
 
 				//Generate hourly data table
 				for (var prop in data) {
-					if (data[prop] === 'hourly_records') {
+					if (prop === 'hourly_records') {
 						//Generate hourly data table
 						var hourlyData = data.hourly_records;
 						for (var j = 0; j < hourlyData.length; j++) {

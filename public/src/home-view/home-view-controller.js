@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 14-2-21.
  */
-angular.module('home-view', ['ngRoute', 'chart'])
+angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 	.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.
 			when('/', {templateUrl: '/src/home-view/home-view.tpl.html', controller: 'homeViewController'});
@@ -45,4 +45,5 @@ angular.module('home-view', ['ngRoute', 'chart'])
 					});
 				});
 			}, 100);
+
 		}]);

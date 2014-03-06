@@ -1,10 +1,13 @@
 //Created by Bli on 14-2-21.
 #home-view(ng-controller="homeViewController")
 	#filterPanel
-		div.bleach-datefilter.input-control.text.span3
+		div.bleach-datefilter.input-control.text.span3.hint--bottom(data-hint="选择日期")
 			input(type="text")
 			button.btn-date
-		//button.default(ng-click='query') search
+
+		div.func-button-panel
+			popup-dialog.btn-compare.hint--bottom(data-hint="比较", dialog-style="comparison")
+				i.icon-copy
 	#contentPanel
 		div.chart-wrapper#home-view-chart-0
 			kpi-chart.home-view-chart(report-id="production-daily-kpi-test")

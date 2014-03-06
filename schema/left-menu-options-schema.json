@@ -7,58 +7,46 @@
 	},
 
 	{
-		"id": "sales",
-		"title": "销售单据管理",
-		"icon": "icon-cart",
-		"link": "#/sales",
+		"id": "production",
+		"title": "生产报表",
+		"icon": "icon-meter-fast",
 		"submenus": [
 			{
-				"id": "saleorderBrowserView",
-				"title": "[管理]销售单",
-				"icon": "icon-copy",
-				"link": "#/sales/saleorderBrowserView"
+				"id": "productionDailyReport",
+				"title": "日报表",
+				"icon": "icon-stats-up",
+				"link": "#/production/productionDailyReport"
 			},
 			{
-				"id": "saleorderCreateView",
-				"title": "[新建]销售单",
-				"icon": "icon-new",
-				"link": "#/sales/saleorderCreateView"
+				"id": "productionMonthlyReport",
+				"title": "月报表",
+				"icon": "icon-calendar",
+				"link": "#/production/productionDailyReport"
+			},
+			{
+				"id": "productionCustomReport",
+				"title": "自由查询",
+				"icon": "icon-equalizer",
+				"link": "#/production/productionCustomReport"
 			}
 		]
 	},
 
 	{
-		"id": "basics",
-		"title": "基础信息管理",
-		"icon": "icon-clipboard",
-		"link": "#/basics",
-		"submenus": [
-			{
-				"id": "productView",
-				"title": "我的产品",
-				"icon": "icon-cube",
-				"link": "#/basics/productView"
-			},
-			{
-				"id": "customerView",
-				"title": "我的客户",
-				"icon": "icon-user-3",
-				"link": "#/basics/customerView"
-			}
-		]
+		"id": "water",
+		"title": "水质分析",
+		"icon": "icon-droplet"
 	},
 
 	{
-		"id": "history",
-		"title": "历史记录管理",
-		"icon": "icon-history",
-		"link": "#/history"
+		"id": "medicine",
+		"title": "药量分析",
+		"icon": "icon-lab"
 	},
 
 	{
 		"id": "system",
-		"title": "系统功能",
-		"icon": "icon-list",
-		"link": "#/system"
+		"title": "电量分析",
+		"icon": "icon-power"
 	}
 ]

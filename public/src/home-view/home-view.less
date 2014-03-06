@@ -9,6 +9,23 @@
   height: 50px;
   background-color: @white;
   border-bottom: 2px solid @black-bg;
+
+  .func-button-panel{
+    float: right;
+
+    .btn-compare{
+      background: none;
+
+      i{
+        font-size: 30px;
+        cursor: pointer;
+
+        &:active{
+          color: @grey-border;
+        }
+      }
+    }
+  }
 }
 
 #contentPanel{

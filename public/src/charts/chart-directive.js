@@ -4,7 +4,7 @@
 angular.module('chart', [])
 	.directive('chart', ['$http', function ($http) {
 
-		var LineChart = {
+		var Chart = {
 			restrict: 'E',
 			scope: {},
 			link: function ($scope, $element, $attributes) {
@@ -13,11 +13,22 @@ angular.module('chart', [])
 				var chartHeight = wrapper.height();
 
 				$($element).on('reloadChart', function (event, queryOption, renderOption) {
+					function getQueryString(queryOption){
+						var result;
+
+						if($.isArray(queryOption)){
+							result = JSON.stringify(queryOption);
+						}else{
+							result = JSON.stringify([queryOption]);
+						}
+
+						return result;
+					}
+
 					$http.get('/getReport', {
 						params: {
 							reportId: $attributes.reportId,
-							start_time: queryOption.start_date,
-							end_time: queryOption.end_date
+							series: getQueryString()
 						}
 					}).success(function (chartOption) {
 							if ($scope.chart) {
@@ -46,5 +57,5 @@ angular.module('chart', [])
 					});
 			}
 		}
-		return LineChart;
+		return Chart;
 	}]);

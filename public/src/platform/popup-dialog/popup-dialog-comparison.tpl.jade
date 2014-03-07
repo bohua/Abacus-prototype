@@ -1,12 +1,13 @@
 //Created by Bli on 14-3-6.
-form.user-input
+div.user-input
 	div.input-control.radio
 		label
 			input(type="radio", name="c1", checked)
 			span.check
 			t 与指定日期比较
 
-	div.form-actions
-		button.button(type="button" onclick="$.Dialog.close()") Cancel
-		button.button.primary 进行比较
+	div#comparison-dialog-calendar.calendar
 
+	div.form-actions
+		button.button(type="button", ng-click="close()") Cancel
+		button.button.primary(ng-click="compare()") 进行比较

@@ -19,6 +19,7 @@
 		"sequelize": "*",
 		"lodash":"*",
 		"extend":"*",
+		"q": "*",
 
 		"grunt": "*",
 		"grunt-contrib-less": "*",

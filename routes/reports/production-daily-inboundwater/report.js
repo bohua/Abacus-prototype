@@ -1,9 +1,12 @@
 /**
  * Created by Bohua on 14-3-1.
  */
+var Q = require('q');
+
 module.exports = function (input) {
-	var start_time = input.req.query.start_time;
-	var end_time = input.req.query.end_time;
+	var deferred = Q.defer();
+	var start_time = input.start_time;
+	var end_time = input.end_time;
 
 	input.db.HourlyReport.find({
 		where: {
@@ -19,8 +22,7 @@ module.exports = function (input) {
 		]
 	}).complete(function (err, hourlyReport) {
 			if (err) {
-				input.res.statusCode = "400";
-				input.res.end({
+				deferred.reject({
 					message: err.message,
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
@@ -46,9 +48,10 @@ module.exports = function (input) {
 				//add series name e.g 2013年5月1日
 				var d = hourlyReport.dataValues.record_time;
 				input.chartData.series[0].name = d.getUTCFullYear() + "年" + (d.getUTCMonth() + 1) + "月" + d.getUTCDate() + "日";
+				input.chartData.series[0].data_desc = input.data_desc;
 
-				input.res.contentType('json');
-				input.res.json(input.chartData);
+				deferred.resolve(input.chartData);
 			}
 		});
+	return deferred.promise;
 };

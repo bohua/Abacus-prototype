@@ -13,7 +13,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 		function ($scope, $http, $timeout) {
 
 			var today = "2013-05-10";
-			var compareSeries;
+			$scope.compareSeries = null;
 
 			function getEndOfTheDay(date) {
 				return date + " 23:59:59";
@@ -23,7 +23,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				return date + " 00:00:00";
 			}
 
-			function getYesterday(date){
+			function getYesterday(date) {
 				var timestamp = new Date(getStartOfTheDay(date)).getTime();
 				timestamp -= 86400000;
 
@@ -32,17 +32,20 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				return d;
 			}
 
-			function gatherQueryOptions(){
+			function gatherQueryOptions($scope) {
 				var options = [];
 
-				if(compareSeries){
-					options.push(compareSeries);
+				if ($scope.compareSeries) {
+					options.push($.extend(true, {}, $scope.compareSeries));
 				}
 
 				options.push({
-					start_date: $scope.start_date,
-					end_date: $scope.end_date
+					data_desc: 'current',
+					start_time: $scope.start_time,
+					end_time: $scope.end_time
 				});
+
+				return options;
 			}
 
 
@@ -54,19 +57,23 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				locale: 'zhCN',
 				weekStart: -1,
 				selected: function (date) {
-					$scope.start_date = getStartOfTheDay(date);
-					$scope.end_date = getEndOfTheDay(date);
+					$scope.start_time = getStartOfTheDay(date);
+					$scope.end_time = getEndOfTheDay(date);
 					$scope.$apply();
+
+					$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				}
 			});
 
 			$timeout(function () {
-				$scope.start_date = getStartOfTheDay(today);
-				$scope.end_date = getEndOfTheDay(today);
+				$scope.start_time = getStartOfTheDay(today);
+				$scope.end_time = getEndOfTheDay(today);
 
-				$scope.$watch('start_date', function (newValue, oldValue) {
-					$('.home-view-chart').trigger('reloadChart', gatherQueryOptions());
+				/*
+				$scope.$watch('start_time', function (newValue, oldValue) {
+					$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions()]);
 				});
+				*/
 			}, 100);
 
 			$scope.comparisonDialogConfig = {
@@ -81,7 +88,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 					height: 450
 				},
 
-				calendarOption:{
+				calendarOption: {
 					format: 'yyyy-mm-dd', //default 'yyyy-mm-dd'
 					multiSelect: false, //default true (multi select date)
 					startMode: 'day', //year, month, day
@@ -92,12 +99,17 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				}
 			};
 
-			$scope.compareData = function(date){
-				compareSeries = {
-					start_date: getStartOfTheDay(date),
-					end_date: getEndOfTheDay(date)
+			$scope.compareData = function (date) {
+				$scope.compareSeries = {
+					data_desc: 'compare',
+					start_time: getStartOfTheDay(date),
+					end_time: getEndOfTheDay(date)
 				};
 
-				$('.home-view-chart').trigger('reloadChart', gatherQueryOptions());
+				var icon = $('#filterPanel .btn-compare');
+				icon.addClass('toggled');
+
+				$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
+
 		}]);

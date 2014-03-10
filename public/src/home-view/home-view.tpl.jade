@@ -6,6 +6,8 @@
 			button.btn-date
 
 		div.func-button-panel
+			div.btn-dataplot.hint--bottom(data-hint="数据", ng-click="toggleData($event)")
+				i.icon-attachment
 			popup-dialog.btn-compare.hint--bottom(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="enableCompare(date)", on-cancel="disableCompare()")
 				i.icon-eye-2
 

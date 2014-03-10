@@ -18,6 +18,9 @@
 	},
 	"series": [
 		{
+			"dataLabels": {
+				"enabled": false
+			},
 			"data": []
 		}
 	]

@@ -14,20 +14,35 @@
     float: right;
     margin-right: 20px;
 
-    .btn-compare{
+    .btn-compare,{
       background: none;
-
-      &.toggled i{
-        //color: @green-dark;
-        color: @red;
-      }
+      margin: 0 10px;
 
       i{
         font-size: 33px;
-        cursor: pointer;
-
-        color: @grey-dark;
       }
+    }
+
+    .btn-dataplot{
+      background: none;
+      margin: 0 10px;
+
+      i{
+        font-size: 24px;
+        top: -3px;
+        position: relative;
+      }
+    }
+
+    .toggled i{
+      //color: @green-dark;
+      color: @black-bg;
+    }
+
+    i{
+      cursor: pointer;
+
+      color: @grey-dark;
     }
   }
 }

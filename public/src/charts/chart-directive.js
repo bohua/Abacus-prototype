@@ -29,6 +29,9 @@ angular.module('chart', [])
 				var chartWidth = wrapper.width();
 				var chartHeight = wrapper.height();
 
+				/********************************
+				 * Render Chart
+				 * ******************************/
 				$($element).on('reloadChart', function (event, queryOption, renderOption) {
 					$http.get('/getReport', {
 						params: {
@@ -47,21 +50,44 @@ angular.module('chart', [])
 
 							//Set render colors for each series
 							for (var seriesNew in chartOption.series) {
-								chartOption.series[seriesNew].color = colorList[chartOption.series[seriesNew].data_desc];
+								var s = chartOption.series[seriesNew];
+
+								s.color = colorList[s.data_desc];
+								s.dataLabels.enabled = $scope.toggleData;
 							}
 
 							$scope.chart = new Highcharts.Chart(chartOption);
 						});
 				});
 
-				$(window).resize(
-					function () {
-						$scope.chart.setSize(
-							wrapper.width(),
-							wrapper.height(),
-							false
-						);
-					});
+				function resize() {
+					$scope.chart.setSize(
+						wrapper.width(),
+						wrapper.height(),
+						false
+					);
+				};
+
+				$(window).resize(resize);
+
+
+				/********************************
+				 * Toggle Data Plots
+				 * ******************************/
+				$scope.toggleData = false;
+				$($element).on('toggleData', function (event, toggle) {
+					$scope.toggleData = toggle;
+				});
+				$scope.$watch('toggleData', function () {
+					if ($scope.chart) {
+						for (var seriesNew in $scope.chart.series) {
+							var s = $scope.chart.series[seriesNew];
+							s.options.dataLabels.enabled = $scope.toggleData;
+							s.update(s.options);
+						}
+					}
+				});
+
 			}
 		}
 		return Chart;

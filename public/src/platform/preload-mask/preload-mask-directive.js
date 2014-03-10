@@ -12,9 +12,9 @@ angular.module('preload-mask', [])
 
 				function enterSystem(event, arg) {
 					$($element).animate({
-						opacity: 0,
+						//opacity: 0,
 						top: '-100%'
-					}, 1000, function () {
+					}, 400, function () {
 						$scope.enablePreload = false;
 
 					});

@@ -1,1 +1,10 @@
-{}
+{
+	"xAxis": {
+		"categories": ["1#浊度(NTU)"]
+	},
+	"series": [
+		{
+			"data": []
+		}
+	]
+}

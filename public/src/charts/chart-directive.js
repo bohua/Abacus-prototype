@@ -47,6 +47,8 @@ angular.module('chart', [])
 							chartOption.chart.renderTo = $element[0];
 							chartOption.chart.width = chartWidth;
 							chartOption.chart.height = chartHeight;
+							//chartOption.chart.animation = false;
+							chartOption.plotOptions = {series:{animation: false}};
 
 							//Set render colors for each series
 							for (var seriesNew in chartOption.series) {

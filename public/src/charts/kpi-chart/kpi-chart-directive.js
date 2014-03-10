@@ -3,6 +3,18 @@
  */
 angular.module('chart')
 	.directive('kpiChart', ['$http', function ($http) {
+
+		function getQueryString(queryOption) {
+			var result;
+
+			if ($.isArray(queryOption)) {
+				result = JSON.stringify(queryOption);
+			} else {
+				result = JSON.stringify([queryOption]);
+			}
+			return result;
+		}
+
 		var KpiChart = {
 			restrict: 'E',
 			scope: {},
@@ -20,8 +32,7 @@ angular.module('chart')
 					$http.get('/getReport', {
 						params: {
 							reportId: $attributes.reportId,
-							start_time: queryOption.start_date,
-							end_time: queryOption.end_date
+							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
 							$scope.chart.label = chartOption.xAxis.categories[0];

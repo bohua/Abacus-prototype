@@ -1,6 +1,11 @@
 //Created by Bli on 14-3-4.
-table.kpi-chart-bg
-	tr
-		td.kpi-title(nowrap): t {{chart.label + ": "}}
-		td.kpi-value(nowrap): t(class='{{getStyle()}}') {{chart.kpi}}
+table.table.kpi-chart-bg
+	thead
+		tr
+			th.text-center: t {{chart.title}}
+
+	tbody
+		tr
+			td.kpi-title(nowrap): t {{chart.label + ": "}}
+			td.kpi-value(nowrap): t(class='{{getStyle()}}') {{chart.kpi}}
 

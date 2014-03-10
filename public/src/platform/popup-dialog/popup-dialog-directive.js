@@ -7,7 +7,8 @@ angular.module('popup-dialog', [])
 			restrict: 'E',
 			scope: {
 				dialogConfig: "=",
-				emitCompare : '&onCompare'
+				emitCompare : '&onCompare',
+				emitCancel : '&onCancel'
 			},
 			link: function ($scope, $element, $attributes) {
 				var template,
@@ -50,15 +51,16 @@ angular.module('popup-dialog', [])
 					});
 				}
 
-				$scope.compare = function(){
+				$scope.Compare = function(){
 					var compareDate = $('#comparison-dialog-calendar').calendar('getDate');
 					$scope.emitCompare({date: compareDate});
 
 					$.Dialog.close();
 				};
 
-				$scope.close = function(){
+				$scope.Cancel = function(){
 					$.Dialog.close();
+					$scope.emitCancel();
 				};
 			}
 		};

@@ -5,7 +5,8 @@ angular.module('chart', [])
 	.directive('chart', ['$http', function ($http) {
 
 		var colorList = {
-			current: '#4572A7',
+			//current: '#4572A7',
+			current: '#179b82',
 			compare: '#AA4643'
 		};
 
@@ -20,20 +21,6 @@ angular.module('chart', [])
 			return result;
 		}
 
-		function getSeriesByName(scope, name) {
-			for (var serie in scope.chart.series) {
-				if (scope.chart.series[serie].data_desc === name) {
-					return scope.chart.series[serie];
-				}
-			}
-			return null;
-		}
-
-
-		function updateSeries(seriesOption){
-
-		}
-
 		var Chart = {
 			restrict: 'E',
 			scope: {},
@@ -43,10 +30,6 @@ angular.module('chart', [])
 				var chartHeight = wrapper.height();
 
 				$($element).on('reloadChart', function (event, queryOption, renderOption) {
-					var compareMode = $('#filterPanel .btn-compare').hasClass('toggled');
-
-
-
 					$http.get('/getReport', {
 						params: {
 							reportId: $attributes.reportId,
@@ -54,45 +37,20 @@ angular.module('chart', [])
 						}
 					}).success(function (chartOption) {
 							if ($scope.chart) {
-								//update chart if found
+								//destroy chart if found
 								$scope.chart.destroy();
+							}
+							//Generate new chart
+							chartOption.chart.renderTo = $element[0];
+							chartOption.chart.width = chartWidth;
+							chartOption.chart.height = chartHeight;
 
-								/*
-								//update the x Axis
-								$scope.chart.xAxis[0].update(chartOption.xAxis, true);
+							//Set render colors for each series
+							for (var seriesNew in chartOption.series) {
+								chartOption.series[seriesNew].color = colorList[chartOption.series[seriesNew].data_desc];
+							}
 
-
-
-								//add or update new series
-								for (var seriesNew in chartOption.series) {
-									var s = getSeriesByName($scope, chartOption.series[seriesNew].data_desc);
-
-									if(s){
-										s.update(chartOption.series[seriesNew]);
-									}else{
-										chartOption.series[seriesNew].color = colorList[chartOption.series[seriesNew].data_desc];
-										$scope.chart.addSeries(chartOption.series[seriesNew]);
-									}
-								}
-
-								/*
-								if(!compareMode){
-									//update all compare series
-									var s = getSeriesByName($scope, 'compare');
-									if(s){
-										s.remove(true);
-									}
-								}
-								*/
-
-							} //else {
-								//Generate new chart if not found
-								chartOption.chart.renderTo = $element[0];
-								chartOption.chart.width = chartWidth;
-								chartOption.chart.height = chartHeight;
-
-								$scope.chart = new Highcharts.Chart(chartOption);
-							//}
+							$scope.chart = new Highcharts.Chart(chartOption);
 						});
 				});
 

@@ -69,11 +69,11 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				$scope.start_time = getStartOfTheDay(today);
 				$scope.end_time = getEndOfTheDay(today);
 
-				/*
 				$scope.$watch('start_time', function (newValue, oldValue) {
-					$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions()]);
+					//if(newValue === oldValue)return;
+
+					$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				});
-				*/
 			}, 100);
 
 			$scope.comparisonDialogConfig = {
@@ -99,7 +99,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				}
 			};
 
-			$scope.compareData = function (date) {
+			$scope.enableCompare = function (date) {
 				$scope.compareSeries = {
 					data_desc: 'compare',
 					start_time: getStartOfTheDay(date),
@@ -109,6 +109,14 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				var icon = $('#filterPanel .btn-compare');
 				icon.addClass('toggled');
 
+				$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+			}
+
+			$scope.disableCompare = function(){
+				$scope.compareSeries = null;
+
+				var icon = $('#filterPanel .btn-compare');
+				icon.removeClass('toggled');
 				$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 

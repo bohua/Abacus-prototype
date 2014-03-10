@@ -1,12 +1,12 @@
 //Created by Bli on 14-2-21.
-#home-view(ng-controller="homeViewController")
+#home-view
 	#filterPanel
 		div.bleach-datefilter.input-control.text.span3.hint--bottom(data-hint="选择日期")
 			input(type="text")
 			button.btn-date
 
 		div.func-button-panel
-			popup-dialog.btn-compare.hint--bottom(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="compareData(date)")
+			popup-dialog.btn-compare.hint--bottom(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="enableCompare(date)", on-cancel="disableCompare()")
 				i.icon-eye-2
 
 	#contentPanel

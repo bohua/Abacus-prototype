@@ -3,7 +3,9 @@
 nav.sidebar.light(ng-controller='leftMenuController')
 	ul
 		li.title
-			t.side-menu-header  功能列表
+			div.side-menu-header
+				i.icon-firefox
+				t 功能列表
 			i.icon-lines#left-menu-switcher(ng-click='toggleLeftMenu()')
 		li.sidebar-menu(ng-repeat='menu in menus', menu-id='{{menu.id}}')
 

@@ -13,8 +13,8 @@
   }
 
   li.title {
-    background-color: @black-bg;
-    color: @white;
+    background-color: @grey;
+    color: @black-bg;
     height: 50px !important;
     border-bottom: 1px solid @grey-border;
   }
@@ -49,23 +49,22 @@
 }
 
 #left-menu-switcher {
-  position: relative;
-  color: @grey-border;
+  position: absolute;
+  color: @black-bg;
   font-size: 35px !important;
   cursor: pointer;
-
-  left: 45px;
-  top: -13px;
+  right: 6px;
+  top: 7px;
 }
 
-t.side-menu-header {
+.side-menu-header {
   position: relative;
-  top: -19px;
+  top: -8px;
 }
 
 .narrow-menu {
   li.title {
-    t {
+    >div {
       display: none;
     }
   }
@@ -109,7 +108,7 @@ t.side-menu-header {
   }
 
   #left-menu-switcher {
-    left: -13px;
-    top: -13px;
+    left: 8px;
+    top: 6px;
   }
 }

@@ -2,10 +2,13 @@
 table.table.kpi-chart-bg
 	thead
 		tr
-			th.text-center: t {{chart.title}}
+			th.text-center: t {{title}}
 
 	tbody
-		tr
-			td.kpi-title(nowrap): t {{chart.label + ": "}}
-			td.kpi-value(nowrap): t(class='{{getStyle()}}') {{chart.kpi}}
+		tr(ng-repeat="kpi in kpis")
+			td.kpi-title(nowrap): t {{kpi.label + ": "}}
+			td.kpi-value(nowrap, ng-class="{'compare-mode-current-value': kpi.compare!=null}")
+				t(class='{{getStyle(kpi.value)}}') {{kpi.value}}
+			td(ng-if="kpi.compare!=null").kpi-value(nowrap, ng-class="{'compare-mode-compare-value': kpi.compare!=null}")
+				t(class='{{getStyle(kpi.compare)}}') {{kpi.compare}}
 

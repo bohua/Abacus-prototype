@@ -15,6 +15,16 @@ angular.module('chart')
 			return result;
 		}
 
+		function getSeriesByDesc(series, desc){
+			for(var i in series){
+				if(series[i].data_desc === desc){
+					return series[i];
+				}
+			}
+
+			return null;
+		}
+
 		var KpiChart = {
 			restrict: 'E',
 			scope: {},
@@ -24,9 +34,11 @@ angular.module('chart')
 				var chartWidth = wrapper.width();
 				var chartHeight = wrapper.height();
 
-				$scope.chart = {};
-				$scope.chart.label = ' ';
-				$scope.chart.kpi = '0';
+				$scope.title = ' ';
+				$scope.kpis = [{
+					label: '读取中...',
+					value: '...'
+				}];
 
 				function reloadChart(event, queryOption, renderOption) {
 					$http.get('/getReport', {
@@ -35,15 +47,33 @@ angular.module('chart')
 							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
-							$scope.chart.label = chartOption.xAxis.categories[0];
-							$scope.chart.kpi = chartOption.series[0].data[0];
+							var kpis = [];
+							for(var x in chartOption.xAxis.categories){
+								var kpi = {
+									label : chartOption.xAxis.categories[x]
+								};
+
+								var value = getSeriesByDesc(chartOption.series, 'current');
+								if(value && value.data && value.data[x]){
+									kpi.value = value.data[x];
+								}
+								var compare = getSeriesByDesc(chartOption.series, 'compare');
+								if(compare && compare.data && compare.data[x]){
+									kpi.compare = compare.data[x];
+								}
+
+								kpis.push(kpi);
+							}
+
+							$scope.title = chartOption.title.text;
+							$scope.kpis = kpis;
 						});
 				}
 
 				$($element).on('reloadChart', reloadChart);
 
-				$scope.getStyle = function(){
-					var value = parseInt($scope.chart.kpi);
+				$scope.getStyle = function(kpi){
+					var value = parseInt(kpi);
 					if(value == NaN){
 						return 'none';
 					}

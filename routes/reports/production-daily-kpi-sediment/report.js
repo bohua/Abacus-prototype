@@ -15,7 +15,8 @@ module.exports = function (input) {
 			}
 		},
 		attributes: [
-			'daily_sum_water_qulity_sediment_NTU_1'
+			'daily_sum_water_qulity_sediment_NTU_1',
+			'daily_sum_water_qulity_sediment_NTU_2'
 		]
 	}).complete(function (err, dailyReport) {
 			if (err) {
@@ -24,13 +25,19 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				var kpi = dailyReport.daily_sum_water_qulity_sediment_NTU_1;
-				if(isNaN(kpi)){
-					kpi = 0;
+
+				for (var entry in dailyReport.dataValues) {
+					var tmpD = dailyReport.dataValues[entry];
+					if (isNaN(tmpD)) {
+						tmpD = 0;
+					}
+
+					if (tmpD !== null) {
+						input.chartData.series[0].data.push(tmpD + '%');
+					}
+
+					input.chartData.series[0].data_desc = input.data_desc;
 				}
-
-				input.chartData.series[0].data.push(kpi + '%');
-
 				deferred.resolve(input.chartData);
 			}
 		});

@@ -1,0 +1,16 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": {
+		"text": "滤后水"
+	},
+	"xAxis": {
+		"categories": ["浊度(NTU)", "pH值", "余氯(mg/L)"]
+	},
+	"series": [
+		{
+			"data": []
+		}
+	]
+}

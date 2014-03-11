@@ -12,9 +12,17 @@
 				i.icon-eye-2
 
 	#contentPanel
+		div.dashboard-row(style="height:350px;")
+			div.chart-wrapper#home-view-chart-medicine-pie
+				chart.home-view-chart(report-id="production-daily-medicine-consumption")
+
 		div.dashboard-row
-			div.chart-wrapper#home-view-chart-0
+			div.chart-wrapper#home-view-chart-kpi-1
 				kpi-chart.home-view-chart(report-id="production-daily-kpi-sediment")
+			div.chart-wrapper#home-view-chart-kpi-2
+				kpi-chart.home-view-chart(report-id="production-daily-kpi-filtered")
+			div.chart-wrapper#home-view-chart-kpi-3
+				kpi-chart.home-view-chart(report-id="production-daily-kpi-outbound")
 
 		div.dashboard-row
 			div.chart-wrapper#home-view-chart-1

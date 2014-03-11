@@ -48,7 +48,15 @@ angular.module('chart', [])
 							chartOption.chart.width = chartWidth;
 							chartOption.chart.height = chartHeight;
 							//chartOption.chart.animation = false;
-							chartOption.plotOptions = {series:{animation: false}};
+							var plotOption = {
+								series:{
+									animation: false
+								}
+							}
+							if(!chartOption.plotOptions){
+								chartOption.plotOptions = {};
+							}
+							$.extend(true, chartOption.plotOptions, plotOption);
 
 							//Set render colors for each series
 							for (var seriesNew in chartOption.series) {
@@ -89,7 +97,6 @@ angular.module('chart', [])
 						}
 					}
 				});
-
 			}
 		}
 		return Chart;

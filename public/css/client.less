@@ -27,6 +27,14 @@
   src: local('/fonts/iconFont'), local('/fonts/iconFont'), url("/fonts/iconFont.woff") format("woff"), url("/fonts/iconFont.otf") format("opentype"), url("/fonts/iconFont.svg") format("svg");
 }
 
+tspan{
+  font-family: @font;
+}
+
+th{
+  color: #274b6d;
+}
+
 @import "..\src\platform\index\index.less";
 @import "..\src\platform\top-bar\top-bar.less";
 @import "..\src\platform\left-menu\left-menu.less";

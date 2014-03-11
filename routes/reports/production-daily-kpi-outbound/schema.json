@@ -1,0 +1,16 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": {
+		"text": "出厂水"
+	},
+	"xAxis": {
+		"categories": ["浊度(NTU)", "pH值", "余氯(mg/L)", "压力(MPa)"]
+	},
+	"series": [
+		{
+			"data": []
+		}
+	]
+}

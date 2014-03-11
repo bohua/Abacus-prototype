@@ -1,0 +1,40 @@
+{
+	"chart": {
+		"type": "pie"
+	},
+	"credits": {
+		"enabled": false
+	},
+	"title": {
+		"text": "加药量统计"
+	},
+	"xAxis": {
+		"categories": ["耗氯", "耗矾", "耗碱"]
+	},
+	"yAxis": {
+		"title": {
+			"text": "Kg"
+		}
+	},
+	"plotOptions":{
+		"pie":{
+			"colors":[
+				"#00B7FF",
+				"#179b82",
+				"#ffa733"
+			],
+			"showInLegend": true,
+			"dataLabels":{
+				"format": "<b>{point.name}</b>: {point.y}"
+			}
+		}
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"data": []
+		}
+	]
+}

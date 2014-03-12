@@ -21,7 +21,7 @@
 				"id": "productionMonthlyReport",
 				"title": "月报表",
 				"icon": "icon-calendar",
-				"link": "#/production/productionDailyReport"
+				"link": "#/production/productionMonthlyReport"
 			},
 			{
 				"id": "productionCustomReport",

@@ -53,9 +53,9 @@ angular.module('popup-dialog', [])
 
 				$scope.Compare = function(){
 					var compareDate = $('#comparison-dialog-calendar').calendar('getDate');
-					$scope.emitCompare({date: compareDate});
-
 					$.Dialog.close();
+
+					$scope.emitCompare({date: compareDate});
 				};
 
 				$scope.Cancel = function(){

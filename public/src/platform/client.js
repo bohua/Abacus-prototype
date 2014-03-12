@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 14-2-10.
  */
-angular.module('app', [/*'preload-mask', */'left-menu', 'router-guide', 'top-bar', 'home-view']).
+angular.module('app', [/*'preload-mask', */'left-menu', 'router-guide', 'top-bar', 'daily-report-view']).
 	config(function ($routeProvider) {
 
 	})

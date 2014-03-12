@@ -1,12 +1,12 @@
 /**
  * Created by Bli on 14-2-21.
  */
-angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
+angular.module('daily-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 	.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.
-			when('/', {templateUrl: '/src/home-view/home-view.tpl.html', controller: 'homeViewController'});
+			when('/production/productionDailyReport', {templateUrl: '/src/views/daily-report-view/daily-report-view.tpl.html', controller: 'dailyReportViewController'});
 	}])
-	.controller('homeViewController', [
+	.controller('dailyReportViewController', [
 		'$scope',
 		'$http',
 		'$timeout',
@@ -61,7 +61,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 					$scope.end_time = getEndOfTheDay(date);
 					$scope.$apply();
 
-					$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+					$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				}
 			});
 
@@ -72,7 +72,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				$scope.$watch('start_time', function (newValue, oldValue) {
 					//if(newValue === oldValue)return;
 
-					$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+					$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				});
 			}, 100);
 
@@ -109,7 +109,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				var icon = $('#filterPanel .btn-compare');
 				icon.addClass('toggled');
 
-				$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+				$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 
 			$scope.disableCompare = function(){
@@ -117,7 +117,7 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 
 				var icon = $('#filterPanel .btn-compare');
 				icon.removeClass('toggled');
-				$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+				$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 
 			$scope.toggleData = true;
@@ -125,6 +125,5 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				var target = $($event.currentTarget);
 				target.toggleClass('toggled');
 				$scope.toggleData = target.hasClass('toggled');
-				//$('.home-view-chart').trigger('toggleData', [target.hasClass('toggled')]);
 			}
 		}]);

@@ -1,0 +1,40 @@
+//Created by Bli on 14-2-21.
+#daily-report-view
+	#filterPanel
+		div.bleach-datefilter.input-control.text.span3.hint--bottom(data-hint="选择日期")
+			input(type="text")
+			button.btn-date
+
+		div.func-button-panel
+			div.btn-dataplot.hint--bottom.toggled(data-hint="数据", ng-click="toggleDataFun($event)")
+				i.icon-attachment
+			popup-dialog.btn-compare.hint--bottom(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="enableCompare(date)", on-cancel="disableCompare()")
+				i.icon-eye-2
+
+	#contentPanel
+		div.dashboard-row(style="height:350px;")
+			div.chart-wrapper#daily-report-view-chart-medicine-pie
+				chart.daily-report-view-chart(report-id="production-daily-medicine-consumption", toggle-data="toggleData")
+			div.chart-wrapper#daily-report-view-chart-medicine-avg
+				kpi-chart.daily-report-view-chart(report-id="production-daily-kpi-medicine-avg")
+				kpi-chart.daily-report-view-chart(report-id="production-daily-kpi-medicine-total")
+
+		div.dashboard-row
+			div.chart-wrapper#daily-report-view-chart-kpi-1
+				kpi-chart.daily-report-view-chart(report-id="production-daily-kpi-sediment")
+			div.chart-wrapper#daily-report-view-chart-kpi-2
+				kpi-chart.daily-report-view-chart(report-id="production-daily-kpi-filtered")
+			div.chart-wrapper#daily-report-view-chart-kpi-3
+				kpi-chart.daily-report-view-chart(report-id="production-daily-kpi-outbound")
+
+		div.dashboard-row
+			div.chart-wrapper#daily-report-view-chart-1
+				chart.daily-report-view-chart(report-id="production-daily-inboundwater", toggle-data="toggleData")
+			div.chart-wrapper#daily-report-view-chart-2
+				chart.daily-report-view-chart(report-id="production-daily-outboundwater", toggle-data="toggleData")
+			div.chart-wrapper#daily-report-view-chart-3
+				chart.daily-report-view-chart(report-id="production-daily-electric-consumption", toggle-data="toggleData")
+
+		div.dashboard-row
+			div.chart-wrapper#daily-report-view-chart-5
+				chart.daily-report-view-chart(report-id="production-daily-waterconsumption", toggle-data="toggleData")

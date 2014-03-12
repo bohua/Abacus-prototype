@@ -1,7 +1,7 @@
 /**
  * Created by bli on 14-2-28.
  */
-angular.module('chart', [])
+angular.module('chart', ['ngSanitize'])
 	.directive('chart', ['$http', function ($http) {
 
 		var colorList = {
@@ -23,7 +23,9 @@ angular.module('chart', [])
 
 		var Chart = {
 			restrict: 'E',
-			scope: {},
+			scope: {
+				toggleData : '='
+			},
 			link: function ($scope, $element, $attributes) {
 				var wrapper = $($element).parents('.chart-wrapper');
 				var chartWidth = wrapper.width();
@@ -84,10 +86,12 @@ angular.module('chart', [])
 				/********************************
 				 * Toggle Data Plots
 				 * ******************************/
-				$scope.toggleData = false;
+				/*
+ 				$scope.toggleData = false;
 				$($element).on('toggleData', function (event, toggle) {
 					$scope.toggleData = toggle;
 				});
+				*/
 				$scope.$watch('toggleData', function () {
 					if ($scope.chart) {
 						for (var seriesNew in $scope.chart.series) {

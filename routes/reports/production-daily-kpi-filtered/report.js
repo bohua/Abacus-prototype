@@ -34,7 +34,7 @@ module.exports = function (input) {
 					}
 
 					if (tmpD !== null) {
-						input.chartData.series[0].data.push(tmpD + '%');
+						input.chartData.series[0].data.push(tmpD);
 					}
 
 					input.chartData.series[0].data_desc = input.data_desc;

@@ -120,9 +120,11 @@ angular.module('home-view', ['ngRoute', 'chart', 'popup-dialog'])
 				$('.home-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 
-			$scope.toggleData = function($event){
+			$scope.toggleData = true;
+			$scope.toggleDataFun = function($event){
 				var target = $($event.currentTarget);
 				target.toggleClass('toggled');
-				$('.home-view-chart').trigger('toggleData', [target.hasClass('toggled')]);
+				$scope.toggleData = target.hasClass('toggled');
+				//$('.home-view-chart').trigger('toggleData', [target.hasClass('toggled')]);
 			}
 		}]);

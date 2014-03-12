@@ -54,8 +54,15 @@ angular.module('chart')
 								};
 
 								var value = getSeriesByDesc(chartOption.series, 'current');
+								if(value && value.colorful && value.colorful.enabled === false){
+									kpi.colorful = false;
+								}else{
+									kpi.colorful = true;
+								}
+
 								if(value && value.data && value.data[x]){
 									kpi.value = value.data[x];
+									kpi.unit = value.dataLabels.unit;
 								}
 								var compare = getSeriesByDesc(chartOption.series, 'compare');
 								if(compare && compare.data && compare.data[x]){
@@ -73,7 +80,10 @@ angular.module('chart')
 				$($element).on('reloadChart', reloadChart);
 
 				$scope.getStyle = function(kpi){
-					var value = parseInt(kpi);
+					if(!kpi.colorful){
+						return 'good-value';
+					}
+					var value = parseInt(kpi.value);
 					if(value == NaN){
 						return 'none';
 					}

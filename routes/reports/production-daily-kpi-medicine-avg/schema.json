@@ -1,0 +1,22 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": {
+		"text": "日加药单耗"
+	},
+	"xAxis": {
+		"categories": ["氯单耗", "矾单耗", "碱单耗"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "Kg/Km<sup>3</sup>"
+			},
+			"colorful": {
+				"enabled": false
+			},
+			"data": []
+		}
+	]
+}

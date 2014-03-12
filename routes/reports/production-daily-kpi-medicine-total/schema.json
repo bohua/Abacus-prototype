@@ -1,0 +1,22 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": {
+		"text": "日加药合计"
+	},
+	"xAxis": {
+		"categories": ["氯用量合计", "矾用量合计", "碱用量合计"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "Kg"
+			},
+			"colorful": {
+				"enabled": false
+			},
+			"data": []
+		}
+	]
+}

@@ -15,8 +15,9 @@ module.exports = function (input) {
 			}
 		},
 		attributes: [
-			'daily_sum_water_qulity_sediment_NTU_1',
-			'daily_sum_water_qulity_sediment_NTU_2'
+			'daily_sum_consumption_cl_total',
+			'daily_sum_consumption_alun_total',
+			'daily_sum_consumption_alkali_total'
 		]
 	}).complete(function (err, dailyReport) {
 			if (err) {

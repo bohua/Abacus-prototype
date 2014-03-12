@@ -1,6 +1,7 @@
 {
 	"chart": {
-		"type": "pie"
+		"type": "pie",
+		"marginTop": 60
 	},
 	"credits": {
 		"enabled": false
@@ -16,21 +17,32 @@
 			"text": "Kg"
 		}
 	},
+	"legend":{
+		"align": "right",
+		"verticalAlign": "top",
+		"x": 0,
+		"y": 100,
+		"layout": "vertical"
+	},
 	"plotOptions":{
 		"pie":{
 			"colors":[
 				"#00B7FF",
 				"#179b82",
-				"#ffa733"
+				"#ffa733",
+				"#9B177B",
+				"#C22443",
+				"#FF6C33"
 			],
 			"showInLegend": true,
 			"dataLabels":{
-				"format": "<b>{point.name}</b>: {point.y}"
+				"format": "<b>{point.name}</b>: {point.y} <b>Kg</b>"
 			}
 		}
 	},
 	"series": [
 		{
+			"name": "日加药量统计",
 			"dataLabels": {
 				"enabled": false
 			},

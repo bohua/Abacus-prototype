@@ -23,7 +23,11 @@ module.exports = function (req, res) {
 	productCodeWalker.on('file', function(root, stat, next) {
 		// Add js file to the list of files
 		var suffix = '.js';
-		if(stat.name.indexOf(suffix, stat.name.length - suffix.length) !== -1 /*&& stat.name !== 'client.js'*/){
+		//var minFolder = 'minified';
+
+		if(stat.name.indexOf(suffix, stat.name.length - suffix.length) !== -1
+			/*&& root.indexOf(minFolder, root.length - minFolder.length) !== -1*/){
+
 			jsFiles.push(root + '/' + stat.name);
 		}
 		next();
@@ -38,20 +42,5 @@ module.exports = function (req, res) {
 		}
 
 		res.render('./src/platform/index/index', { title: 'Express', data: result });
-
-		/*
-		var db = require('../../models')
-
-		db.User.findAll({
-			include: [ db.Task ]
-		}).success(function(users) {
-				res.render('./src/index/index', { title: 'Express', data: result, users: users });
-			})
-
-		//console.log(result);
-*/
-
 	});
-
-	//
 };

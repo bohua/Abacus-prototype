@@ -1,0 +1,70 @@
+.bleach-view{
+  height:100%;
+}
+
+.bleach-filter-panel{
+  width: 98%;
+  padding: 7px;
+  margin-left: 1%;
+  height: 50px;
+  background-color: @white;
+  border-bottom: 2px solid @black-bg;
+
+  .func-button-panel{
+    float: right;
+    margin-right: 20px;
+
+    .btn-compare,{
+      background: none;
+      margin: 0 10px;
+
+      i{
+        font-size: 33px;
+      }
+    }
+
+    .btn-dataplot{
+      background: none;
+      margin: 0 10px;
+
+      i{
+        font-size: 24px;
+        top: -3px;
+        position: relative;
+      }
+    }
+
+    .toggled i{
+      //color: @green-dark;
+      color: @black-bg;
+    }
+
+    i{
+      cursor: pointer;
+
+      color: @grey-dark;
+    }
+  }
+}
+
+div.bleach-content-panel{
+  width: 100%;
+  height: ~"calc(100% - @{top-bar-height})";
+
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.chart-wrapper{
+  padding: 15px;
+  height: 250px;
+  float: left;
+}
+
+.dashboard-row{
+  width: 100%;
+  height: 250px;
+}
+
+@import "daily-report-view\daily-report-view.less";
+@import "monthly-report-view\monthly-report-view.less";

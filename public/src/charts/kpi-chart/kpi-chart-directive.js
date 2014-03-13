@@ -2,7 +2,7 @@
  * Created by Bli on 14-3-4.
  */
 angular.module('chart')
-	.directive('kpiChart', ['$http', function ($http) {
+	.directive('kpiChart', ['$http', '$timeout', function ($http, $timeout) {
 
 		function getQueryString(queryOption) {
 			var result;

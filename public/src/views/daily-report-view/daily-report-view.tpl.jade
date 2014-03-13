@@ -1,17 +1,17 @@
 //Created by Bli on 14-2-21.
-#daily-report-view
-	#filterPanel
-		div.bleach-datefilter.input-control.text.span3.hint--bottom(data-hint="选择日期")
+#daily-report-view.bleach-view
+	div.bleach-filter-panel
+		div.bleach-datefilter.input-control.text.span3.hint--top(data-hint="选择日期")
 			input(type="text")
 			button.btn-date
 
 		div.func-button-panel
-			div.btn-dataplot.hint--bottom.toggled(data-hint="数据", ng-click="toggleDataFun($event)")
+			div.btn-dataplot.hint--top.toggled(data-hint="数据", ng-click="toggleDataFun($event)")
 				i.icon-attachment
-			popup-dialog.btn-compare.hint--bottom(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="enableCompare(date)", on-cancel="disableCompare()")
+			popup-dialog.btn-compare.hint--top(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="enableCompare(date)", on-cancel="disableCompare()")
 				i.icon-eye-2
 
-	#contentPanel
+	div.bleach-content-panel
 		div.dashboard-row(style="height:350px;")
 			div.chart-wrapper#daily-report-view-chart-medicine-pie
 				chart.daily-report-view-chart(report-id="production-daily-medicine-consumption", toggle-data="toggleData")

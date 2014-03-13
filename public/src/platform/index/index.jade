@@ -7,6 +7,7 @@ html(ng-app='app')
 		link(rel='stylesheet', href='/css/loading-bar.min.css')
 		link(rel='stylesheet', href='/css/hint.min.css')
 		link(href='http://fonts.googleapis.com/css?family=Audiowide', rel='stylesheet', type='text/css')
+
 		script(src='/lib/angular/angular.js')
 		script(src='/lib/angular/loading-bar.min.js')
 		script(src='/lib/angular/angular-route.js')
@@ -18,13 +19,13 @@ html(ng-app='app')
 		script(src='/lib/jquery/jquery.easing.min.js')
 		script(src='/lib/metro-loader.js')
 		script(src='/lib/highcharts/highcharts.src.js')
-		script(src='/lib/highcharts/modules/no-data-to-display.js')
+		script(src='/lib/highcharts/modules/no-data-to-display.src.js')
 
 	- var jsFilesToAppend = data || [];
 		each jsFile in jsFilesToAppend
 			script(src= jsFile)
 
-	body.metro.unselectable(ng-controller='appController')
+	body.metro.unselectable(ng-controller='platformController')
 		#preload-mask(preload-mask-directive, ng-show='enablePreload')
 		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
 		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu/left-menu.tpl.html"')

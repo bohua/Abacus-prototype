@@ -1,0 +1,35 @@
+{
+	"chart": {
+		"type": "line"
+	},
+	"credits": {
+		"enabled": false
+	},
+	"title": {
+		"text": "月水量统计"
+	},
+	"xAxis": {
+		"categories": []
+	},
+	"yAxis": {
+		"title": {
+			"text": "流量 m3"
+		}
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"进水量 ",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"出水量 ",
+			"data": []
+		}
+	]
+}

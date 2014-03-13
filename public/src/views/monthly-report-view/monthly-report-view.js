@@ -12,14 +12,14 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 		'$timeout',
 		function ($scope, $http, $timeout) {
 
-			var today = "2013-05-10";
+			var today = "2013-05";
 			$scope.compareSeries = null;
 
-			function getEndOfTheDay(date) {
+			function getEndOfTheMonth(date) {
 				return date + " 23:59:59";
 			}
 
-			function getStartOfTheDay(date) {
+			function getStartOfTheMonth(date) {
 				return date + " 00:00:00";
 			}
 

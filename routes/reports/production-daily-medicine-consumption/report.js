@@ -34,22 +34,22 @@ module.exports = function (input) {
 			} else {
 				if (input.data_desc === 'current') {
 					input.chartData.series[0].data.push(
-						{name: '1#氯瓶', y: dailyReport.daily_sum_consumption_cl_1, color:'#00B7FF'},
-						{name: '2#氯瓶', y: dailyReport.daily_sum_consumption_cl_2, color:'#00B7FF'},
+						{name: '1#氯瓶', y: dailyReport.daily_sum_consumption_cl_1, color:'#C22443'},
+						{name: '2#氯瓶', y: dailyReport.daily_sum_consumption_cl_2, color:'#C22443'},
 						{name: '1#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#179b82'},
 						{name: '2#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#179b82'},
 						{name: '3#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#179b82'},
-						{name: '1#碱', y: dailyReport.daily_sum_consumption_alkali_1, color:'#ffa733'},
-						{name: '2#碱', y: dailyReport.daily_sum_consumption_alkali_2, color:'#ffa733'},
-						{name: '3#碱', y: dailyReport.daily_sum_consumption_alkali_3, color:'#ffa733'}
+						{name: '1#碱', y: dailyReport.daily_sum_consumption_alkali_1, color:'#00B7FF'},
+						{name: '2#碱', y: dailyReport.daily_sum_consumption_alkali_2, color:'#00B7FF'},
+						{name: '3#碱', y: dailyReport.daily_sum_consumption_alkali_3, color:'#00B7FF'}
 					);
 				} else {
 					input.chartData.series[0].data.push(
 						{name: '对比1#氯瓶', y: dailyReport.daily_sum_consumption_cl_1, color:'#9B177B'},
 						{name: '对比2#氯瓶', y: dailyReport.daily_sum_consumption_cl_2, color:'#9B177B'},
-						{name: '对比1#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#C22443'},
-						{name: '对比2#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#C22443'},
-						{name: '对比3#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#C22443'},
+						{name: '对比1#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#ffa733'},
+						{name: '对比2#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#ffa733'},
+						{name: '对比3#矾', y: dailyReport.daily_sum_consumption_alun_1, color:'#ffa733'},
 						{name: '对比1#碱', y: dailyReport.daily_sum_consumption_alkali_1, color:'#FF6C33'},
 						{name: '对比2#碱', y: dailyReport.daily_sum_consumption_alkali_2, color:'#FF6C33'},
 						{name: '对比3#碱', y: dailyReport.daily_sum_consumption_alkali_3, color:'#FF6C33'}
@@ -59,7 +59,7 @@ module.exports = function (input) {
 				}
 
 				//add series name e.g 2013年5月1日
-				var d = new Date(start_time);
+				var d = dailyReport.report_date;
 				//input.chartData.series[0].name = d.getUTCFullYear() + "年" + (d.getUTCMonth() + 1) + "月" + d.getUTCDate() + "日";
 				input.chartData.series[0].data_desc = input.data_desc;
 				if (input.data_desc === 'current') {

@@ -26,14 +26,6 @@
 	},
 	"plotOptions":{
 		"pie":{
-			"colors":[
-				"#00B7FF",
-				"#179b82",
-				"#ffa733",
-				"#9B177B",
-				"#C22443",
-				"#FF6C33"
-			],
 			"showInLegend": true,
 			"dataLabels":{
 				"format": "<b>{point.name}</b>: {point.y} <b>Kg</b>"

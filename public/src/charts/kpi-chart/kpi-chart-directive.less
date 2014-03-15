@@ -46,18 +46,30 @@
   }
 
   .compare-mode-current-value{
-    background-color: @green-dark;
-
     t{
-      font-size: 15px;
-      color: @white;
+      font-size: 20px;
+
+
+    }
+
+    i{
+      font-size: 10px;
+      &.icon-arrow-up-right{
+        color: @green-dark;
+      }
+      &.icon-arrow-down-right{
+        color: @red;
+      }
+      &.icon-arrow-right{
+        color: @grey-darker;
+      }
     }
   }
   .compare-mode-compare-value{
-    background-color: @red;
+
     t{
       font-size: 15px;
-      color: @white;
+      color: @grey-darker;
     }
   }
 }

@@ -10,8 +10,8 @@ angular.module('chart', ['ngSanitize'])
 			//compare: '#AA4643'
 
 			return {
-				current: ['#179b82', '#ffa733', '#00B7FF'],
-				compare: ['#C22443', '#FF6C33', '#9B177B'],
+				current: ['#179b82', '#C22443', '#00B7FF'],
+				compare: ['#ffa733', '#FF6C33', '#9B177B'],
 				current_flag: 0,
 				compare_flag: 0,
 

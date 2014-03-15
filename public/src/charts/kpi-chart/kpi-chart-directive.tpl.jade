@@ -10,6 +10,7 @@ table.table.kpi-chart-bg
 			td.kpi-value(nowrap, ng-class="{'compare-mode-current-value': kpi.compare!=null}")
 				t(class='{{getStyle(kpi)}}') {{kpi.value}}
 				span.kpi-unit(ng-bind-html="kpi.unit")
+				i(ng-if="kpi.compare!=null", ng-class="{'icon-arrow-up-right': kpi.value>kpi.compare, 'icon-arrow-down-right': kpi.value<kpi.compare, 'icon-arrow-right':kpi.value==kpi.compare}")
 			td(ng-if="kpi.compare!=null").kpi-value(nowrap, ng-class="{'compare-mode-compare-value': kpi.compare!=null}")
 				t(class='{{getStyle(kpi.compare)}}') {{kpi.compare}}
 				span.kpi-unit(ng-bind-html="kpi.unit")

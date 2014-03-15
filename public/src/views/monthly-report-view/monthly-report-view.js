@@ -115,7 +115,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 					end_time: getEndOfTheMonth(date)
 				};
 
-				var icon = $('#filterPanel .btn-compare');
+				var icon = $('.bleach-filter-panel .btn-compare');
 				icon.addClass('toggled');
 
 				$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
@@ -124,7 +124,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 			$scope.disableCompare = function () {
 				$scope.compareSeries = null;
 
-				var icon = $('#filterPanel .btn-compare');
+				var icon = $('.bleach-filter-panel .btn-compare');
 				icon.removeClass('toggled');
 				$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}

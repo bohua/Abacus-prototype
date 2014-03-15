@@ -16,13 +16,18 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 			$scope.compareSeries = null;
 
 			function getEndOfTheMonth(date) {
-				return date + " 23:59:59";
+				var d0 = new Date(date);
+				var d1 = new Date(d0.setMonth(d0.getMonth() + 1));
+				var d2 = new Date(d0.setDate(d0.getDate() - 1));
+				return    new Date(d2).format("yyyy-mm-dd");
+				//return lastday.getFullYear() + '-' + (lastday.getMonth()+1) + '-' + lastday.getDate();
 			}
 
 			function getStartOfTheMonth(date) {
-				return date + " 00:00:00";
+				return date + "-01";
 			}
 
+			/*
 			function getYesterday(date) {
 				var timestamp = new Date(getStartOfTheDay(date)).getTime();
 				timestamp -= 86400000;
@@ -31,6 +36,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				//var d = d0.getFullYear() + '-' + (d0.getMonth()+1) + '-' + d0.getDate();
 				return d;
 			}
+			*/
 
 			function gatherQueryOptions($scope) {
 				var options = [];
@@ -58,22 +64,22 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				locale: 'zhCN',
 				weekStart: -1,
 				selected: function (date) {
-					$scope.start_time = getStartOfTheDay(date);
-					$scope.end_time = getEndOfTheDay(date);
+					$scope.start_time = getStartOfTheMonth(date);
+					$scope.end_time = getEndOfTheMonth(date);
 					$scope.$apply();
 
-					$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+					$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				}
 			});
 
 			$timeout(function () {
-				$scope.start_time = getStartOfTheDay(today);
-				$scope.end_time = getEndOfTheDay(today);
+				$scope.start_time = getStartOfTheMonth(today);
+				$scope.end_time = getEndOfTheMonth(today);
 
 				$scope.$watch('start_time', function (newValue, oldValue) {
 					//if(newValue === oldValue)return;
 
-					$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+					$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				});
 			}, 100);
 
@@ -93,7 +99,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 					format: 'yyyy-mm-dd', //default 'yyyy-mm-dd'
 					multiSelect: false, //default true (multi select date)
 					startMode: 'day', //year, month, day
-					date: getYesterday(today), //the init calendar date (example: '2013-01-01' or '2012-01')
+					//date: getYesterday(today), //the init calendar date (example: '2013-01-01' or '2012-01')
 					locale: 'zhCN', // 'ru', 'ua', 'fr' or 'en', default is $.Metro.currentLocale
 					otherDays: false, // show days for previous and next months,
 					weekStart: -1 //start week from sunday - 0 or monday - 1
@@ -103,14 +109,14 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 			$scope.enableCompare = function (date) {
 				$scope.compareSeries = {
 					data_desc: 'compare',
-					start_time: getStartOfTheDay(date),
-					end_time: getEndOfTheDay(date)
+					start_time: getStartOfTheMonth(date),
+					end_time: getEndOfTheMonth(date)
 				};
 
 				var icon = $('#filterPanel .btn-compare');
 				icon.addClass('toggled');
 
-				$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+				$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 
 			$scope.disableCompare = function(){
@@ -118,7 +124,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 
 				var icon = $('#filterPanel .btn-compare');
 				icon.removeClass('toggled');
-				$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+				$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 
 			$scope.toggleData = true;

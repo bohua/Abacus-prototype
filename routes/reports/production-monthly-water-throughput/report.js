@@ -17,7 +17,7 @@ module.exports = function (input) {
 		attributes: [
 			'report_date',
 			'daily_sum_inbound_total',
-			'daily_sum_outbound_total'
+			'daily_sum_outbound_throughput_total'
 		]
 	}).complete(function (err, dailyReport) {
 			if (err) {
@@ -27,20 +27,25 @@ module.exports = function (input) {
 				});
 			} else {
 				for (var i in dailyReport) {
-					var formattedD = new dailyReport[i].report_date.format("dd", null) + '日';
-					input.chartData.xAxis.categories.push(formattedD);
+					var formattedD = dailyReport[i].report_date.getDate();
+					input.chartData.xAxis.categories.push(formattedD + '日');
 
 					input.chartData.series[0].data.push(dailyReport[i].daily_sum_inbound_total);
-					input.chartData.series[1].data.push(dailyReport[i].daily_sum_outbound_total);
+					input.chartData.series[1].data.push(dailyReport[i].daily_sum_outbound_throughput_total);
 				}
 
-				//add series name e.g 2013年5月
-				var d0 = dailyReport.report_date;
-				var d = d0.getUTCFullYear() + "年" + (d0.getUTCMonth() + 1) + "月";
-				input.chartData.series[0].name += d;
-				input.chartData.series[1].name += d;
-				input.chartData.series[0].data_desc = input.data_desc;
-				input.chartData.series[1].data_desc = input.data_desc;
+				if (dailyReport.length > 0) {
+					//add series name e.g 2013年5月
+					var d0 = dailyReport[0].report_date;
+					var d = d0.getUTCFullYear() + "年" + (d0.getUTCMonth() + 1) + "月";
+					input.chartData.series[0].name += d;
+					input.chartData.series[1].name += d;
+					input.chartData.series[0].data_desc = input.data_desc;
+					input.chartData.series[1].data_desc = input.data_desc;
+				}
+				input.chartData.xAxis.categories.sort(function (a, b) {
+					return parseInt(a) - parseInt(b)
+				});
 
 				deferred.resolve(input.chartData);
 			}

@@ -7,9 +7,11 @@ angular.module('platform', ['ngRoute', /*'preload-mask', */'left-menu', 'router-
 	})
 	.controller('platformController', ['$scope', '$rootScope', '$timeout', '$location', function ($scope, $rootScope, $timeout, $location) {
 
+		/*
 		if ($location.path() !== '/') {
 			$location.path('/');
 		}
+		*/
 
 		/*
 		 $timeout(function(){

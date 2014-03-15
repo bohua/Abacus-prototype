@@ -16,27 +16,29 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 			$scope.compareSeries = null;
 
 			function getEndOfTheMonth(date) {
-				var d0 = new Date(date);
+				var d0 = new Date(getStartOfTheMonth(date));
 				var d1 = new Date(d0.setMonth(d0.getMonth() + 1));
-				var d2 = new Date(d0.setDate(d0.getDate() - 1));
+				var d2 = new Date(d1.setDate(d1.getDate() - 1));
 				return    new Date(d2).format("yyyy-mm-dd");
 				//return lastday.getFullYear() + '-' + (lastday.getMonth()+1) + '-' + lastday.getDate();
 			}
 
 			function getStartOfTheMonth(date) {
-				return date + "-01";
+				var d0 = new Date(date);
+				var d2 = new Date(d0.setDate(1));
+				return    new Date(d2).format("yyyy-mm-dd");
 			}
 
 			/*
-			function getYesterday(date) {
-				var timestamp = new Date(getStartOfTheDay(date)).getTime();
-				timestamp -= 86400000;
+			 function getYesterday(date) {
+			 var timestamp = new Date(getStartOfTheDay(date)).getTime();
+			 timestamp -= 86400000;
 
-				var d = new Date(timestamp);
-				//var d = d0.getFullYear() + '-' + (d0.getMonth()+1) + '-' + d0.getDate();
-				return d;
-			}
-			*/
+			 var d = new Date(timestamp);
+			 //var d = d0.getFullYear() + '-' + (d0.getMonth()+1) + '-' + d0.getDate();
+			 return d;
+			 }
+			 */
 
 			function gatherQueryOptions($scope) {
 				var options = [];
@@ -119,7 +121,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 			}
 
-			$scope.disableCompare = function(){
+			$scope.disableCompare = function () {
 				$scope.compareSeries = null;
 
 				var icon = $('#filterPanel .btn-compare');
@@ -128,7 +130,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 			}
 
 			$scope.toggleData = true;
-			$scope.toggleDataFun = function($event){
+			$scope.toggleDataFun = function ($event) {
 				var target = $($event.currentTarget);
 				target.toggleClass('toggled');
 				$scope.toggleData = target.hasClass('toggled');

@@ -18,12 +18,12 @@ module.exports = function (req, res) {
 				message: err.message,
 				code: 'CHART_SCHEMA_LOAD_FAIL'
 			});
-		}else{
+		} else {
 			var promises = [];
 
 			var series = JSON.parse(req.query.series)
 
-			for(var arg in series){
+			for (var arg in series) {
 				var input = {
 					data_desc: series[arg].data_desc,
 					start_time: series[arg].start_time,
@@ -39,15 +39,18 @@ module.exports = function (req, res) {
 				.then(function (results) {
 					var response;
 
-					for (var result in results){
-						if (results[result].state === "fulfilled") {
-							if(!response){
-								response = results[result].value;
-							}else{
-								if(results[result].value.series[0].data_desc === "current"){
-									response.series.unshift(results[result].value.series[0]);
-								}else{
-									response.series.push(results[result].value.series[0]);
+					for (var j in results) {
+						if (results[j].state === "fulfilled") {
+							for (var i in results[j].value.series) {
+								if (!response) {
+									response = results[j].value;
+									break;
+								} else {
+									if (results[j].value.series[i].data_desc === "current") {
+										response.series.unshift(results[j].value.series[i]);
+									} else {
+										response.series.push(results[j].value.series[i]);
+									}
 								}
 
 							}

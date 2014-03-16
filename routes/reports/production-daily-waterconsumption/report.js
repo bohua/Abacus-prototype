@@ -14,7 +14,7 @@ module.exports = function (input) {
 				between: [start_time, end_time]
 			}
 		},
-		order: 'record_time',
+		order: 'record_time ASC',
 		attributes: [
 			'record_time',
 			'outbound_MPA',

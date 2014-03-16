@@ -1,0 +1,108 @@
+{
+	"chart": {
+		"type": "column"
+	},
+	"credits": {
+		"enabled": false
+	},
+	"title": {
+		"text": "月统计报表"
+	},
+	"xAxis": {
+		"categories": []
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"进水量",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"供水量",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"用电量",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"压力 ",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"电单耗 ",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"耗矾量 ",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"耗氯量 ",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"耗碱量 ",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"原水浊度",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"原水pH值",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"出厂水浊度",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"出厂水余氯",
+			"data": []
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"出厂水pH值",
+			"data": []
+		}
+
+	]
+}

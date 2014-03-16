@@ -17,7 +17,10 @@ module.exports = function (input) {
 		attributes: [
 			'report_date',
 			'daily_sum_inbound_total',
-			'daily_sum_outbound_throughput_total'
+			'daily_sum_outbound_throughput_total',
+			'daily_sum_consumption_cl_total',
+			'daily_sum_consumption_alun_total',
+			'daily_sum_consumption_alkali_total'
 		],
 		order: 'report_date ASC'
 	}).complete(function (err, dailyReport) {
@@ -31,8 +34,12 @@ module.exports = function (input) {
 				for (var i = 0; i < dailyReport.length; i++) {
 					var formattedD = dailyReport[i].report_date.getDate();
 					input.chartData.xAxis.categories.push(formattedD + '日');
+
 					input.chartData.series[0].data.push(dailyReport[i].daily_sum_inbound_total);
 					input.chartData.series[1].data.push(dailyReport[i].daily_sum_outbound_throughput_total);
+					input.chartData.series[5].data.push(dailyReport[i].daily_sum_outbound_throughput_total);
+					input.chartData.series[6].data.push(dailyReport[i].daily_sum_outbound_throughput_total);
+					input.chartData.series[7].data.push(dailyReport[i].daily_sum_outbound_throughput_total);
 				}
 
 				//add series name e.g 2013年5月

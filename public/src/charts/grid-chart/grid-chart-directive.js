@@ -2,7 +2,7 @@
  * Created by Bli on 14-3-17.
  */
 angular.module('chart')
-	.directive('gridChart', ['$http', function ($http) {
+	.directive('gridChart', ['$http', '$timeout', function ($http, $timeout) {
 
 		function getQueryString(queryOption) {
 			var result;
@@ -17,31 +17,35 @@ angular.module('chart')
 
 		function formatGridData(d0) {
 			var grid = {
-				headers: [],
-				data_rows: []
+				aoColumns: [],
+				aaData: []
 			};
 
 			//Generate th array
 			//x-Axis
-			grid.headers.push(d0.xAxis.name);
+			grid.aoColumns.push({ "sTitle": d0.xAxis.name, "sClass": "center" });
 			//series
-			for(var s in d0.series){
-				grid.headers.push(d0.series[s].name);
+			for (var s in d0.series) {
+				grid.aoColumns.push({ "sTitle": d0.series[s].name, "sClass": "center" });
 			}
 
 			//Generate data rows
-			for(var i=0; i< d0.xAxis.categories.length; i++){
+			for (var i = 0; i < d0.xAxis.categories.length; i++) {
 				var row = [];
 
 				//x-Axis data
 				row.push(d0.xAxis.categories[i]);
 
 				//series
-				for(var s in d0.series){
-					row.push(d0.series[s].data[i]);
+				for (var s in d0.series) {
+					var data = d0.series[s].data[i];
+					if(data === null || data === undefined){
+						data = ' ';
+					}
+					row.push(data);
 				}
 
-				grid.data_rows.push(row);
+				grid.aaData.push(row);
 			}
 
 			return grid;
@@ -59,9 +63,18 @@ angular.module('chart')
 							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
-						$scope.grid = formatGridData(chartOption);
+							var grid = formatGridData(chartOption);
+							$.extend(true, grid, {
+								"sScrollY": "250px",
+								"bScrollCollapse": true,
+								"bPaginate": false
+							});
 
-					});
+							if ( $scope.gridChart ) {
+								$scope.gridChart.fnDestroy();
+							}
+							$scope.gridChart = $($element).find("#bleach-grid-chart").dataTable(grid);
+						});
 				}
 
 				$($element).on('reloadChart', reloadChart);

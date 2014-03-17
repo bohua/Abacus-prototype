@@ -14,7 +14,7 @@ var reports = require('./routes/reports');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8081);
 app.set('views', path.join(__dirname, 'public'));
 app.set('view engine', 'jade');
 app.use(express.favicon());

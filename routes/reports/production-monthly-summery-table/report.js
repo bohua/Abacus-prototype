@@ -33,7 +33,7 @@ module.exports = function (input) {
 				//fill in data
 				for (var i = 0; i < dailyReport.length; i++) {
 					var formattedD = dailyReport[i].report_date.getDate();
-					input.chartData.xAxis.categories.push(formattedD + '日');
+					input.chartData.xAxis.categories.push(formattedD);
 
 					input.chartData.series[0].data.push(dailyReport[i].daily_sum_inbound_total);
 					input.chartData.series[1].data.push(dailyReport[i].daily_sum_outbound_throughput_total);

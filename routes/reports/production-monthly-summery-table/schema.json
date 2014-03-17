@@ -9,6 +9,7 @@
 		"text": "月统计报表"
 	},
 	"xAxis": {
+		"name":"日期",
 		"categories": []
 	},
 	"series": [

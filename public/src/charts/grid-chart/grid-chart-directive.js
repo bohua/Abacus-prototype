@@ -46,6 +46,10 @@ angular.module('chart')
 				}
 
 				grid.aaData.push(row);
+				grid.aaData.push(row);
+				grid.aaData.push(row);
+				grid.aaData.push(row);
+				grid.aaData.push(row);
 			}
 
 			return grid;
@@ -65,15 +69,15 @@ angular.module('chart')
 					}).success(function (chartOption) {
 							var grid = formatGridData(chartOption);
 							$.extend(true, grid, {
-								"sScrollY": "250px",
-								"bScrollCollapse": true,
-								"bPaginate": false
+								//"sScrollY": "250px",
+								"bPaginate": true,
+								"bProcessing": true
 							});
 
 							if ( $scope.gridChart ) {
 								$scope.gridChart.fnDestroy();
 							}
-							$scope.gridChart = $($element).find("#bleach-grid-chart").dataTable(grid);
+							$scope.gridChart = $($element).find(".bleach-grid-chart").dataTable(grid);
 						});
 				}
 

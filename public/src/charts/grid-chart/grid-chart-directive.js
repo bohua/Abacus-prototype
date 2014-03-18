@@ -46,10 +46,6 @@ angular.module('chart')
 				}
 
 				grid.aaData.push(row);
-				grid.aaData.push(row);
-				grid.aaData.push(row);
-				grid.aaData.push(row);
-				grid.aaData.push(row);
 			}
 
 			return grid;
@@ -70,8 +66,22 @@ angular.module('chart')
 							var grid = formatGridData(chartOption);
 							$.extend(true, grid, {
 								//"sScrollY": "250px",
+								"fnInfoCallback": function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
+									return "当前显示: " +iStart +"至"+ iEnd + "(共" + iMax +"条)";
+								},
+								"oLanguage": {
+									"oPaginate": {
+										"sPrevious": "上一页",
+										"sNext": "下一页",
+										"sFirst": "首页",
+										"sLast": "末页"
+									}
+								},
+								"iDisplayLength": 10,
 								"bPaginate": true,
-								"bProcessing": true
+								"bLengthChange": false,
+								"bFilter": false,
+								"sPaginationType": "full_numbers"
 							});
 
 							if ( $scope.gridChart ) {

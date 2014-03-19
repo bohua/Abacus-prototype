@@ -9,10 +9,6 @@
 		"text": "月统计报表"
 	},
 	"xAxis": {
-		"span":{
-			"rowspan" : 2,
-			"colspan" : 1
-		},
 		"name":"日期",
 		"categories": []
 	},
@@ -29,20 +25,12 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
-			},
 			"name":"进水量",
 			"data": []
 		},
 		{
 			"dataLabels": {
 				"enabled": false
-			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
 			},
 			"name":"供水量",
 			"data": []
@@ -51,20 +39,12 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
-			},
 			"name":"用电量",
 			"data": []
 		},
 		{
 			"dataLabels": {
 				"enabled": false
-			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
 			},
 			"name":"压力 ",
 			"data": []
@@ -73,20 +53,12 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
-			},
 			"name":"电单耗 ",
 			"data": []
 		},
 		{
 			"dataLabels": {
 				"enabled": false
-			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
 			},
 			"name":"耗矾量 ",
 			"data": []
@@ -95,20 +67,12 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
-			},
 			"name":"耗氯量 ",
 			"data": []
 		},
 		{
 			"dataLabels": {
 				"enabled": false
-			},
-			"span":{
-				"rowspan" : 2,
-				"colspan" : 1
 			},
 			"name":"耗碱量 ",
 			"data": []
@@ -117,9 +81,8 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 1,
-				"colspan" : 2
+			"group":{
+				"name":"原水"
 			},
 			"name":"浊度",
 			"data": []
@@ -128,9 +91,8 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 1,
-				"colspan" : 2
+			"group":{
+				"name":"原水"
 			},
 			"name":"pH值",
 			"data": []
@@ -139,9 +101,8 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 1,
-				"colspan" : 2
+			"group":{
+				"name":"出厂水"
 			},
 			"name":"浊度",
 			"data": []
@@ -150,9 +111,8 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 1,
-				"colspan" : 2
+			"group":{
+				"name":"出厂水"
 			},
 			"name":"余氯",
 			"data": []
@@ -161,9 +121,8 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"span":{
-				"rowspan" : 1,
-				"colspan" : 2
+			"group":{
+				"name":"出厂水"
 			},
 			"name":"pH值",
 			"data": []

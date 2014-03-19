@@ -15,23 +15,45 @@ angular.module('chart')
 			return result;
 		}
 
+		function inArray(arr, obj) {
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i].name === obj.name) {
+					return i;
+				}
+			}
+
+			return -1;
+		}
+
 		function formatGridData(d0) {
 			var grid = {
-				aoColumns: [],
-				aaData: []
+				Columns_level_1: [],
+				Columns_level_2: [],
+				Data: []
 			};
 
 			//Generate th array
 			//x-Axis
-			grid.aoColumns.push({ "sTitle": d0.xAxis.name, "sClass": "center" });
+			grid.Columns_level_1.push({name: d0.xAxis.name, colspan:1, rowspan:2});
 			//series
 			for (var s in d0.series) {
-				var col = { "sTitle": d0.series[s].name, "sClass": "center" };
-				if(d0.series[s].group){
-					col.group = d0.series[s].group;
+
+				if (d0.series[s].group) {
+					//a double layer column header
+					grid.Columns_level_2.push({name:d0.series[s].name});
+					var index = inArray(grid.Columns_level_1, {name: d0.series[s].group.name});
+					if ( index > -1) {
+						grid.Columns_level_1[index].colspan++;
+					}else{
+						grid.Columns_level_1.push({name: d0.series[s].group.name, colspan:1, rowspan:1});
+					}
+				} else {
+					//a single layer column header
+					grid.Columns_level_1.push({name: d0.series[s].name, colspan:1, rowspan:2});
 				}
-				grid.aoColumns.push(col);
 			}
+			//caps
+			//$.extend(true, grid.aoColumnCap, d0.headerCaps);
 
 			//Generate data rows
 			for (var i = 0; i < d0.xAxis.categories.length; i++) {
@@ -43,13 +65,13 @@ angular.module('chart')
 				//series
 				for (var s in d0.series) {
 					var data = d0.series[s].data[i];
-					if(data === null || data === undefined){
+					if (data === null || data === undefined) {
 						data = ' ';
 					}
 					row.push(data);
 				}
 
-				grid.aaData.push(row);
+				grid.Data.push(row);
 			}
 
 			return grid;
@@ -69,11 +91,11 @@ angular.module('chart')
 					}).success(function (chartOption) {
 							$scope.grid = formatGridData(chartOption);
 							/*
-							$.extend(true, grid, */
+							 $.extend(true, grid, */
 							var config = {
 								//"sScrollY": "250px",
-								"fnInfoCallback": function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
-									return "当前显示: " +iStart +"至"+ iEnd + "(共" + iMax +"条)";
+								"fnInfoCallback": function (oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+									return "当前显示: " + iStart + "至" + iEnd + "(共" + iMax + "条)";
 								},
 								"oLanguage": {
 									"oPaginate": {
@@ -91,17 +113,25 @@ angular.module('chart')
 							};
 
 
-							$timeout(function(){
-								if ( $scope.gridChart ) {
+							$timeout(function () {
+								if ($scope.gridChart) {
 									$scope.gridChart.fnDestroy();
 								}
 								$scope.gridChart = $($element).find(".bleach-grid-chart").dataTable(config);
-							},1);
+							}, 1);
 
 						});
 				}
 
 				$($element).on('reloadChart', reloadChart);
+
+				function resize() {
+					var oTable = $scope.gridChart;
+					$(oTable).css({ width: $(oTable).parent().width() });
+					oTable.fnAdjustColumnSizing();
+				};
+
+				$(window).resize(resize);
 			}
 		};
 		return GridChart;

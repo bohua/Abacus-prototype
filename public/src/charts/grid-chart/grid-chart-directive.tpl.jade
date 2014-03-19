@@ -5,12 +5,13 @@
 	table.bleach-grid-chart.table.bordered.hovered.dataTable
 		thead
 			tr
-				th.text-center(ng-repeat="header in grid.aoColumnCaps track by $index")
-					t {{header.name}}
-				th.text-center(ng-repeat="header in grid.aoColumns track by $index", nowrap)
-					t {{header.sTitle}}
+				th.text-center(ng-repeat="header_level_1 in grid.Columns_level_1 track by $index", colspan="{{header_level_1.colspan}}", rowspan="{{header_level_1.rowspan}}", nowrap)
+					t {{header_level_1.name}}
+			tr
+				th.text-center(ng-repeat="header_level_2 in grid.Columns_level_2 track by $index", nowrap)
+					t {{header_level_2.name}}
 		tbody
-			tr(ng-repeat="row in grid.aaData track by $index", post-repeat-directive)
+			tr(ng-repeat="row in grid.Data track by $index", post-repeat-directive)
 				td.text-right(ng-repeat="cell in row track by $index", nowrap, ng-class="{'dimension-cell': $index==0}")
 					t {{cell}}
 

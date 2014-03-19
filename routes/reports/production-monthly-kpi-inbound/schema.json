@@ -1,0 +1,22 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": {
+		"text": "原水水质月平均"
+	},
+	"xAxis": {
+		"categories": ["浊度(NTU)", "pH值"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": ""
+			},
+			"colorful": {
+				"enabled": false
+			},
+			"data": []
+		}
+	]
+}

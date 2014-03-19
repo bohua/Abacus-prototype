@@ -1,14 +1,16 @@
 //Created by Bli on 14-3-17.
 //div.grid-meta
 //div.grid-content
-table.bleach-grid-chart.table.bordered.hovered
-	//table.table.bordered.hovered.dataTable
+		//table.bleach-grid-chart.table.bordered.hovered
+	table.bleach-grid-chart.table.bordered.hovered.dataTable
 		thead
 			tr
-				th.text-center(ng-repeat="header in grid.headers track by $index", nowrap)
-					t {{header}}
+				th.text-center(ng-repeat="header in grid.aoColumnCaps track by $index")
+					t {{header.name}}
+				th.text-center(ng-repeat="header in grid.aoColumns track by $index", nowrap)
+					t {{header.sTitle}}
 		tbody
-			tr(ng-repeat="row in grid.data_rows track by $index", post-repeat-directive)
+			tr(ng-repeat="row in grid.aaData track by $index", post-repeat-directive)
 				td.text-right(ng-repeat="cell in row track by $index", nowrap, ng-class="{'dimension-cell': $index==0}")
 					t {{cell}}
 

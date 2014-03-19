@@ -26,7 +26,11 @@ angular.module('chart')
 			grid.aoColumns.push({ "sTitle": d0.xAxis.name, "sClass": "center" });
 			//series
 			for (var s in d0.series) {
-				grid.aoColumns.push({ "sTitle": d0.series[s].name, "sClass": "center" });
+				var col = { "sTitle": d0.series[s].name, "sClass": "center" };
+				if(d0.series[s].group){
+					col.group = d0.series[s].group;
+				}
+				grid.aoColumns.push(col);
 			}
 
 			//Generate data rows
@@ -63,8 +67,10 @@ angular.module('chart')
 							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
-							var grid = formatGridData(chartOption);
-							$.extend(true, grid, {
+							$scope.grid = formatGridData(chartOption);
+							/*
+							$.extend(true, grid, */
+							var config = {
 								//"sScrollY": "250px",
 								"fnInfoCallback": function( oSettings, iStart, iEnd, iMax, iTotal, sPre ) {
 									return "当前显示: " +iStart +"至"+ iEnd + "(共" + iMax +"条)";
@@ -82,12 +88,16 @@ angular.module('chart')
 								"bLengthChange": false,
 								"bFilter": false,
 								"sPaginationType": "full_numbers"
-							});
+							};
 
-							if ( $scope.gridChart ) {
-								$scope.gridChart.fnDestroy();
-							}
-							$scope.gridChart = $($element).find(".bleach-grid-chart").dataTable(grid);
+
+							$timeout(function(){
+								if ( $scope.gridChart ) {
+									$scope.gridChart.fnDestroy();
+								}
+								$scope.gridChart = $($element).find(".bleach-grid-chart").dataTable(config);
+							},1);
+
 						});
 				}
 

@@ -2,9 +2,11 @@
 	"chart": {
 		"type": "kpi"
 	},
-	"title": {
-		"text": "月投药单耗"
-	},
+	"title": [
+		{
+			"text": "月投药单耗"
+		}
+	],
 	"xAxis": {
 		"categories": ["矾耗", "氯耗", "碱耗"]
 	},

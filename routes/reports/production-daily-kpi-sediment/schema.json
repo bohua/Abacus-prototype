@@ -2,15 +2,17 @@
 	"chart": {
 		"type": "kpi"
 	},
-	"title": {
-		"text": "沉定出水"
-	},
+	"title": [
+		{
+			"text": "沉定出水"
+		}
+	],
 	"xAxis": {
 		"categories": ["1#浊度(NTU)", "2#浊度(NTU)"]
 	},
 	"series": [
 		{
-			"dataLabels":{
+			"dataLabels": {
 				"unit": "%"
 			},
 			"data": []

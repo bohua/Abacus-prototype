@@ -16,7 +16,11 @@ module.exports = function (input) {
 		},
 		attributes: [
 			input.db.sequelize.fn('AVG', input.db.sequelize.col('inbound_NTU')),
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('inbound_PH'))
+			input.db.sequelize.fn('MAX', input.db.sequelize.col('inbound_NTU')),
+			input.db.sequelize.fn('MIN', input.db.sequelize.col('inbound_NTU')),
+			input.db.sequelize.fn('AVG', input.db.sequelize.col('inbound_PH')),
+			input.db.sequelize.fn('MAX', input.db.sequelize.col('inbound_PH')),
+			input.db.sequelize.fn('MIN', input.db.sequelize.col('inbound_PH'))
 		]
 	}).complete(function (err, HourlyReport) {
 			if (err) {
@@ -26,18 +30,18 @@ module.exports = function (input) {
 				});
 			} else {
 
-				for (var entry in HourlyReport.dataValues) {
-					var tmpD = HourlyReport.dataValues[entry];
-					if (isNaN(tmpD)) {
-						tmpD = 0;
-					}
+				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`inbound_NTU`)"].toFixed(2));
+				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`inbound_NTU`)"].toFixed(2));
+				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`inbound_NTU`)"].toFixed(2));
 
-					if (tmpD !== null) {
-						input.chartData.series[0].data.push(parseFloat(tmpD).toFixed(2));
-					}
+				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`inbound_PH`)"].toFixed(2));
+				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`inbound_PH`)"].toFixed(2));
+				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`inbound_PH`)"].toFixed(2));
 
-					input.chartData.series[0].data_desc = input.data_desc;
-				}
+				input.chartData.series[0].data_desc = input.data_desc;
+				input.chartData.series[1].data_desc = input.data_desc;
+				input.chartData.series[2].data_desc = input.data_desc;
+
 				deferred.resolve(input.chartData);
 			}
 		});

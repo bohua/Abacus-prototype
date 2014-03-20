@@ -2,17 +2,31 @@
 	"chart": {
 		"type": "kpi"
 	},
-	"title": {
-		"text": "出厂水水质月平均"
-	},
+	"title": [
+		{
+			"text": "出厂水质"
+		}
+	],
 	"xAxis": {
 		"categories": ["浊度(NTU)", "余氯(mg/L)", "pH值"]
 	},
 	"series": [
 		{
-			"dataLabels": {
-				"unit": ""
+			"name" : "平均",
+			"colorful": {
+				"enabled": false
 			},
+			"data": []
+		},
+		{
+			"name" : "最大",
+			"colorful": {
+				"enabled": false
+			},
+			"data": []
+		},
+		{
+			"name" : "最小",
 			"colorful": {
 				"enabled": false
 			},

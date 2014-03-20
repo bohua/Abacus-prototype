@@ -16,13 +16,14 @@ angular.module('chart')
 		}
 
 		function getSeriesByDesc(series, desc){
+			var result = [];
 			for(var i in series){
 				if(series[i].data_desc === desc){
-					return series[i];
+					result.push(series[i]);
 				}
 			}
 
-			return null;
+			return result;
 		}
 
 		var KpiChart = {
@@ -47,32 +48,57 @@ angular.module('chart')
 							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
+							var series = getSeriesByDesc(chartOption.series, 'current');
+							var compares = getSeriesByDesc(chartOption.series, 'compare');
+
 							var kpis = [];
 							for(var x in chartOption.xAxis.categories){
 								var kpi = {
-									label : chartOption.xAxis.categories[x]
+									label : chartOption.xAxis.categories[x],
+									data : []
 								};
 
-								var value = getSeriesByDesc(chartOption.series, 'current');
-								if(value && value.colorful && value.colorful.enabled === false){
-									kpi.colorful = false;
-								}else{
-									kpi.colorful = true;
+								for(var i in series){
+									var value = series[i];
+
+									if(value.colorful && value.colorful.enabled === false){
+										kpi.colorful = false;
+									}else{
+										kpi.colorful = true;
+									}
+
+									if(value.data && value.data[x]){
+										var entry = {
+											value: value.data[x]
+										}
+										kpi.data.push(entry);
+									}
 								}
 
-								if(value && value.data && value.data[x]){
-									kpi.value = value.data[x];
+								for(var j in compares){
+									var compare = compares[j];
+									if(compare.data && compare.data[x] && kpi.data[j]){
+										kpi.data[j].compare = compare.data[x];
+									}
+								}
+
+								/*
+								if(value.dataLabels && value.dataLabels.unit){
 									kpi.unit = value.dataLabels.unit;
 								}
-								var compare = getSeriesByDesc(chartOption.series, 'compare');
-								if(compare && compare.data && compare.data[x]){
-									kpi.compare = compare.data[x];
-								}
+								*/
 
 								kpis.push(kpi);
 							}
 
-							$scope.title = chartOption.title.text;
+							for(var k in series){
+								//Add sub tiles
+								if(series[k].name){
+									chartOption.title.push({text: series[k].name});
+								}
+							}
+
+							$scope.titles = chartOption.title;
 							$scope.kpis = kpis;
 						});
 				}

@@ -16,8 +16,14 @@ module.exports = function (input) {
 		},
 		attributes: [
 			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_NTU')),
+			input.db.sequelize.fn('MAX', input.db.sequelize.col('outbound_NTU')),
+			input.db.sequelize.fn('MIN', input.db.sequelize.col('outbound_NTU')),
 			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_leftCl')),
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_PH'))
+			input.db.sequelize.fn('MAX', input.db.sequelize.col('outbound_leftCl')),
+			input.db.sequelize.fn('MIN', input.db.sequelize.col('outbound_leftCl')),
+			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_PH')),
+			input.db.sequelize.fn('MAX', input.db.sequelize.col('outbound_PH')),
+			input.db.sequelize.fn('MIN', input.db.sequelize.col('outbound_PH'))
 		]
 	}).complete(function (err, HourlyReport) {
 			if (err) {
@@ -26,19 +32,22 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
+				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`outbound_NTU`)"].toFixed(2));
+				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`outbound_NTU`)"].toFixed(2));
+				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`outbound_NTU`)"].toFixed(2));
 
-				for (var entry in HourlyReport.dataValues) {
-					var tmpD = HourlyReport.dataValues[entry];
-					if (isNaN(tmpD)) {
-						tmpD = 0;
-					}
+				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`outbound_leftCl`)"].toFixed(2));
+				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`outbound_leftCl`)"].toFixed(2));
+				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`outbound_leftCl`)"].toFixed(2));
 
-					if (tmpD !== null) {
-						input.chartData.series[0].data.push(parseFloat(tmpD).toFixed(2));
-					}
+				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`outbound_PH`)"].toFixed(2));
+				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`outbound_PH`)"].toFixed(2));
+				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`outbound_PH`)"].toFixed(2));
 
-					input.chartData.series[0].data_desc = input.data_desc;
-				}
+				input.chartData.series[0].data_desc = input.data_desc;
+				input.chartData.series[1].data_desc = input.data_desc;
+				input.chartData.series[2].data_desc = input.data_desc;
+
 				deferred.resolve(input.chartData);
 			}
 		});

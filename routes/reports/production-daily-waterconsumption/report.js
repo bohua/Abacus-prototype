@@ -29,7 +29,7 @@ module.exports = function (input) {
 				});
 			} else {
 				for (var entry in hourlyReport) {
-					var formattedT = hourlyReport[entry].record_time.getUTCHours() + ':00';
+					var formattedT = hourlyReport[entry].record_time.getHours() + ':00';
 
 					input.chartData.xAxis.categories.push(formattedT);
 
@@ -40,7 +40,7 @@ module.exports = function (input) {
 
 				//add series name e.g 2013年5月1日
 				var d = new Date(start_time);
-				input.chartData.series[0].name = d.getUTCFullYear() + "年" + (d.getUTCMonth() + 1) + "月" + d.getUTCDate() + "日";
+				input.chartData.series[0].name = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
 				input.chartData.series[0].data_desc = input.data_desc;
 
 				deferred.resolve(input.chartData);

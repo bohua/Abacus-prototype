@@ -39,20 +39,20 @@ module.exports = function (req, res) {
 				.then(function (results) {
 					var response;
 
-					for (var j in results) {
-						if (results[j].state === "fulfilled") {
-							for (var i in results[j].value.series) {
-								if (!response) {
-									response = results[j].value;
-									break;
-								} else {
-									if (results[j].value.series[i].data_desc === "current") {
-										response.series.unshift(results[j].value.series[i]);
-									} else {
-										response.series.push(results[j].value.series[i]);
-									}
+					for (var i in results) {
+						if (results[i].state === "fulfilled") {
+							if (!response) {
+								response = results[i].value;
+							}else{
+								var tmpS = [];
+
+								if (results[i].value.series[0].data_desc === "current") {
+									tmpS = results[i].value.series.concat(response.series);
+								}else{
+									tmpS = response.series.concat(results[i].value.series);
 								}
 
+								response.series = tmpS;
 							}
 						}
 					}

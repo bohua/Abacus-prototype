@@ -60,7 +60,7 @@ module.exports = function (input) {
 
 				//add series name e.g 2013年5月1日
 				var d = dailyReport.report_date;
-				//input.chartData.series[0].name = d.getUTCFullYear() + "年" + (d.getUTCMonth() + 1) + "月" + d.getUTCDate() + "日";
+				//input.chartData.series[0].name = d.getFullYear() + "年" + (d.getMonth() + 1) + "月" + d.getDate() + "日";
 				input.chartData.series[0].data_desc = input.data_desc;
 				if (input.data_desc === 'current') {
 					input.chartData.series[0].size = '80%';

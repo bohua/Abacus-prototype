@@ -44,7 +44,7 @@ module.exports = function (input) {
 
 				//add series name e.g 2013年5月
 				var d0 = new Date(start_time);
-				var d = d0.getUTCFullYear() + "年" + (d0.getUTCMonth() + 1) + "月";
+				var d = d0.getFullYear() + "年" + (d0.getMonth() + 1) + "月";
 
 				//add series desc e.g current, compare
 				for (var s in input.chartData.series){

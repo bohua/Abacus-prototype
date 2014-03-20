@@ -2,16 +2,23 @@
 table.table.kpi-chart-bg
 	thead
 		tr
-			th.text-center: t {{title}}
+			th.text-center(nowrap, ng-repeat="title in titles track by $index")
+				t {{title.text}}
 
 	tbody
 		tr(ng-repeat="kpi in kpis")
-			td.kpi-title(nowrap): t {{kpi.label + ": "}}
-			td.kpi-value(nowrap, ng-class="{'compare-mode-current-value': kpi.compare!=null}")
-				t(class='{{getStyle(kpi)}}') {{kpi.value}}
-				span.kpi-unit(ng-bind-html="kpi.unit")
-				i(ng-if="kpi.compare!=null", ng-class="{'icon-arrow-up-right': kpi.value>kpi.compare, 'icon-arrow-down-right': kpi.value<kpi.compare, 'icon-arrow-right':kpi.value==kpi.compare}")
-			td(ng-if="kpi.compare!=null").kpi-value(nowrap, ng-class="{'compare-mode-compare-value': kpi.compare!=null}")
-				t(class='{{getStyle(kpi.compare)}}') {{kpi.compare}}
-				span.kpi-unit(ng-bind-html="kpi.unit")
+
+			td.kpi-title(nowrap)
+				t {{kpi.label + ": "}}
+
+			td.kpi-value(nowrap, ng-repeat="d in kpi.data")
+				div.span2(ng-class="{'compare-mode-current-value': d.compare!=null}")
+					t(class='{{getStyle(d.value)}}') {{d.value}}
+					//span.kpi-unit(ng-bind-html="kpi.unit")
+
+				div.span2.compare-mode-compare-value(ng-if="d.compare!=null")
+					t(class='{{getStyle(d.compare)}}') {{d.compare}}
+					//span.kpi-unit(ng-bind-html="kpi.unit")
+					i(ng-if="d.compare!=null", ng-class="{'icon-arrow-up-right': d.value<d.compare, 'icon-arrow-down-right': d.value>d.compare, 'icon-arrow-right':d.value==d.compare}")
+
 

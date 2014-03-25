@@ -12,9 +12,21 @@
 	},
 	"series": [
 		{
-			"dataLabels": {
-				"unit": ""
+			"name" : "平均",
+			"colorful": {
+				"enabled": false
 			},
+			"data": []
+		},
+		{
+			"name" : "最大",
+			"colorful": {
+				"enabled": false
+			},
+			"data": []
+		},
+		{
+			"name" : "最小",
 			"colorful": {
 				"enabled": false
 			},

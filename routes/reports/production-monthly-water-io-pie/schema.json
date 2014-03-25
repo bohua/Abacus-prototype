@@ -1,0 +1,37 @@
+{
+	"chart": {
+		"type": "pie"
+	},
+	"credits": {
+		"enabled": false
+	},
+	"title": {
+		"text": "月水量统计"
+	},
+	"xAxis": {
+		"categories": ["总进水量", "总供水量"]
+	},
+	"yAxis": {
+		"title": {
+			"text": "Kg"
+		}
+	},
+	"plotOptions":{
+		"pie":{
+			"showInLegend": true,
+			"dataLabels":{
+				"format": "<b>{point.name}</b>: {point.percentage:.2f}%",
+				"distance": 0
+			}
+		}
+	},
+	"series": [
+		{
+			"name": "月水量统计",
+			"dataLabels": {
+				"enabled": false
+			},
+			"data": []
+		}
+	]
+}

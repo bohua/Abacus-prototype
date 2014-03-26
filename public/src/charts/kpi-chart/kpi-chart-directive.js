@@ -72,6 +72,10 @@ angular.module('chart')
 											value: value.data[x]
 										}
 										kpi.data.push(entry);
+									}else{
+										kpi.data.push({
+											value: '-'
+										});
 									}
 								}
 

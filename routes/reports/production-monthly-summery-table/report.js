@@ -30,6 +30,12 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
+				if (dailyReport.length <= 0) {
+					for (var i = (new Date(start_time)).getDate(); i <= (new Date(end_time)).getDate(); ++i) {
+						input.chartData.xAxis.categories.push(i);
+					}
+				}
+
 				//fill in data
 				for (var i = 0; i < dailyReport.length; i++) {
 					var formattedD = dailyReport[i].report_date.getDate();
@@ -47,7 +53,7 @@ module.exports = function (input) {
 				var d = d0.getFullYear() + "年" + (d0.getMonth() + 1) + "月";
 
 				//add series desc e.g current, compare
-				for (var s in input.chartData.series){
+				for (var s in input.chartData.series) {
 					input.chartData.series[s].data_desc = input.data_desc;
 				}
 				input.chartData.series[0].data_desc = input.data_desc;

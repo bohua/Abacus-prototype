@@ -35,7 +35,7 @@ module.exports = function (input) {
 
 					var result = parseFloat(medicine * 1000 / water);
 					if(isNaN(result)){
-						return null;
+						return '-';
 					}
 
 					return result.toFixed(2);

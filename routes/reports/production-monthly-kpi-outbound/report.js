@@ -32,17 +32,29 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`outbound_NTU`)"].toFixed(2));
-				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`outbound_NTU`)"].toFixed(2));
-				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`outbound_NTU`)"].toFixed(2));
+				var avg_outbound_ntu = HourlyReport.selectedValues["AVG(`outbound_NTU`)"]; if(avg_outbound_ntu){avg_outbound_ntu = avg_outbound_ntu.toFixed(2);}
+				var max_outbound_ntu = HourlyReport.selectedValues["MAX(`outbound_NTU`)"]; if(max_outbound_ntu){max_outbound_ntu = max_outbound_ntu.toFixed(2);}
+				var min_outbound_ntu = HourlyReport.selectedValues["MIN(`outbound_NTU`)"]; if(min_outbound_ntu){min_outbound_ntu = min_outbound_ntu.toFixed(2);}
 
-				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`outbound_leftCl`)"].toFixed(2));
-				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`outbound_leftCl`)"].toFixed(2));
-				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`outbound_leftCl`)"].toFixed(2));
+				var avg_outbound_leftcl = HourlyReport.selectedValues["AVG(`outbound_leftCl`)"]; if(avg_outbound_leftcl){avg_outbound_leftcl = avg_outbound_leftcl.toFixed(2);}
+				var max_outbound_leftcl = HourlyReport.selectedValues["MAX(`outbound_leftCl`)"]; if(max_outbound_leftcl){max_outbound_leftcl = max_outbound_leftcl.toFixed(2);}
+				var min_outbound_leftcl = HourlyReport.selectedValues["MIN(`outbound_leftCl`)"]; if(min_outbound_leftcl){min_outbound_leftcl = min_outbound_leftcl.toFixed(2);}
 
-				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`outbound_PH`)"].toFixed(2));
-				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`outbound_PH`)"].toFixed(2));
-				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`outbound_PH`)"].toFixed(2));
+				var avg_outbound_ph = HourlyReport.selectedValues["AVG(`outbound_PH`)"]; if(avg_outbound_ph){avg_outbound_ph = avg_outbound_ph.toFixed(2);}
+				var max_outbound_ph = HourlyReport.selectedValues["MAX(`outbound_PH`)"]; if(max_outbound_ph){max_outbound_ph = max_outbound_ph.toFixed(2);}
+				var min_outbound_ph = HourlyReport.selectedValues["MIN(`outbound_PH`)"]; if(min_outbound_ph){min_outbound_ph = min_outbound_ph.toFixed(2);}
+
+				input.chartData.series[0].data.push(avg_outbound_ntu);
+				input.chartData.series[1].data.push(max_outbound_ntu);
+				input.chartData.series[2].data.push(min_outbound_ntu);
+
+				input.chartData.series[0].data.push(avg_outbound_leftcl);
+				input.chartData.series[1].data.push(max_outbound_leftcl);
+				input.chartData.series[2].data.push(min_outbound_leftcl);
+
+				input.chartData.series[0].data.push(avg_outbound_ph);
+				input.chartData.series[1].data.push(max_outbound_ph);
+				input.chartData.series[2].data.push(min_outbound_ph);
 
 				input.chartData.series[0].data_desc = input.data_desc;
 				input.chartData.series[1].data_desc = input.data_desc;

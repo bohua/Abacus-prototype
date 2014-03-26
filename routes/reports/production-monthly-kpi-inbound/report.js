@@ -29,14 +29,21 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
+				var avg_inbound_ntu = HourlyReport.selectedValues["AVG(`inbound_NTU`)"]; if(avg_inbound_ntu){avg_inbound_ntu = avg_inbound_ntu.toFixed(2)}
+				var max_inbound_ntu = HourlyReport.selectedValues["MAX(`inbound_NTU`)"]; if(max_inbound_ntu){max_inbound_ntu = max_inbound_ntu.toFixed(2)}
+				var min_inbound_ntu = HourlyReport.selectedValues["MIN(`inbound_NTU`)"]; if(min_inbound_ntu){min_inbound_ntu = min_inbound_ntu.toFixed(2)}
 
-				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`inbound_NTU`)"].toFixed(2));
-				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`inbound_NTU`)"].toFixed(2));
-				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`inbound_NTU`)"].toFixed(2));
+				var avg_inbound_ph = HourlyReport.selectedValues["AVG(`inbound_PH`)"]; if(avg_inbound_ph){avg_inbound_ph = avg_inbound_ph.toFixed(2)}
+				var max_inbound_ph = HourlyReport.selectedValues["MAX(`inbound_PH`)"]; if(max_inbound_ph){max_inbound_ph = max_inbound_ph.toFixed(2)}
+				var min_inbound_ph = HourlyReport.selectedValues["MIN(`inbound_PH`)"]; if(min_inbound_ph){min_inbound_ph = min_inbound_ph.toFixed(2)}
 
-				input.chartData.series[0].data.push(HourlyReport.selectedValues["AVG(`inbound_PH`)"].toFixed(2));
-				input.chartData.series[1].data.push(HourlyReport.selectedValues["MAX(`inbound_PH`)"].toFixed(2));
-				input.chartData.series[2].data.push(HourlyReport.selectedValues["MIN(`inbound_PH`)"].toFixed(2));
+				input.chartData.series[0].data.push(avg_inbound_ntu);
+				input.chartData.series[1].data.push(max_inbound_ntu);
+				input.chartData.series[2].data.push(min_inbound_ntu);
+
+				input.chartData.series[0].data.push(avg_inbound_ph);
+				input.chartData.series[1].data.push(max_inbound_ph);
+				input.chartData.series[2].data.push(min_inbound_ph);
 
 				input.chartData.series[0].data_desc = input.data_desc;
 				input.chartData.series[1].data_desc = input.data_desc;

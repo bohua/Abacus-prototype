@@ -34,22 +34,22 @@ angular.module('chart')
 
 			//Generate th array
 			//x-Axis
-			grid.Columns_level_1.push({name: d0.xAxis.name, colspan:1, rowspan:2});
+			grid.Columns_level_1.push({name: d0.xAxis.name, colspan: 1, rowspan: 2});
 			//series
 			for (var s in d0.series) {
 
 				if (d0.series[s].group) {
 					//a double layer column header
-					grid.Columns_level_2.push({name:d0.series[s].name});
+					grid.Columns_level_2.push({name: d0.series[s].name});
 					var index = inArray(grid.Columns_level_1, {name: d0.series[s].group.name});
-					if ( index > -1) {
+					if (index > -1) {
 						grid.Columns_level_1[index].colspan++;
-					}else{
-						grid.Columns_level_1.push({name: d0.series[s].group.name, colspan:1, rowspan:1});
+					} else {
+						grid.Columns_level_1.push({name: d0.series[s].group.name, colspan: 1, rowspan: 1});
 					}
 				} else {
 					//a single layer column header
-					grid.Columns_level_1.push({name: d0.series[s].name, colspan:1, rowspan:2});
+					grid.Columns_level_1.push({name: d0.series[s].name, colspan: 1, rowspan: 2});
 				}
 			}
 			//caps
@@ -66,7 +66,7 @@ angular.module('chart')
 				for (var s in d0.series) {
 					var data = d0.series[s].data[i];
 					if (data === null || data === undefined || data === '') {
-						data = 0;
+						data = '-';
 					}
 					row.push(data);
 				}
@@ -83,13 +83,20 @@ angular.module('chart')
 			templateUrl: '/src/charts/grid-chart/grid-chart-directive.tpl.html',
 			link: function ($scope, $element, $attributes) {
 				function reloadChart(event, queryOption, renderOption) {
+					if ($scope.gridChart) {
+						$scope.gridChart.fnDestroy();
+						$scope.gridChart = null;
+					}
+
 					$http.get('/getReport', {
 						params: {
 							reportId: $attributes.reportId,
 							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
-							$scope.grid = formatGridData(chartOption);
+
+
+							//$scope.grid = formatGridData(chartOption);
 							/*
 							 $.extend(true, grid, */
 							var config = {
@@ -115,10 +122,13 @@ angular.module('chart')
 
 
 							$timeout(function () {
-								if ($scope.gridChart) {
-									$scope.gridChart.fnDestroy();
-								}
-								$scope.gridChart = $($element).find(".bleach-grid-chart").dataTable(config);
+								$scope.grid = formatGridData(chartOption);
+								$scope.$apply();
+
+								$timeout(function () {
+									$scope.gridChart = $($element).find("#bleach-grid-chart").dataTable(config);
+								}, 1000);
+
 							}, 1);
 
 						});

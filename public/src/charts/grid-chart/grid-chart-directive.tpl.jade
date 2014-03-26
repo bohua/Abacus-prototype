@@ -12,6 +12,5 @@
 					t {{header_level_2.name}}
 		tbody
 			tr(ng-repeat="row in grid.Data track by $index", post-repeat-directive)
-				td.text-right(ng-repeat="cell in row track by $index", nowrap, ng-class="{'dimension-cell': $index==0}")
-					t {{cell}}
+				td.text-right(ng-repeat="cell in row track by $index", nowrap, ng-class="{'dimension-cell': $index==0}") {{cell}}
 

@@ -6,12 +6,15 @@
 			button.btn-date
 
 		div.func-button-panel
+			div.btn-dataplot.hint--top(data-hint="表格", ng-click="toggleGridView($event)")
+				i.icon-grid-view
 			div.btn-dataplot.hint--top.toggled(data-hint="数据", ng-click="toggleDataFun($event)")
 				i.icon-attachment
 			popup-dialog.btn-compare.hint--top(data-hint="对比", dialog-style="comparison", dialog-config="comparisonDialogConfig", on-compare="enableCompare(date)", on-cancel="disableCompare()")
 				i.icon-eye-2
 
-	div.bleach-content-panel
+
+	div.bleach-content-panel(ng-show="viewMode==='chartView'")
 		div.dashboard-row(style="height:320px")
 			div.chart-wrapper#monthly-report-view-chart-kpi-1
 				kpi-chart.monthly-report-view-chart(report-id="production-monthly-kpi-outbound")
@@ -27,6 +30,7 @@
 			div.chart-wrapper#monthly-report-view-chart-1
 				chart.monthly-report-view-chart(report-id="production-monthly-water-throughput", toggle-data="toggleData")
 
+	div.bleach-content-panel(ng-show="viewMode==='gridView'")
 		div.dashboard-row(style="height:350px")
 			div.chart-wrapper#monthly-report-view-chart-2
 				grid-chart.monthly-report-view-chart(report-id="production-monthly-summery-table", toggle-data="toggleData")

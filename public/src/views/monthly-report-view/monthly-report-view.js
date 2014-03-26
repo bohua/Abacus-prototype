@@ -135,4 +135,17 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				target.toggleClass('toggled');
 				$scope.toggleData = target.hasClass('toggled');
 			}
+
+			$scope.viewMode = 'chartView';
+			$scope.toggleGridView = function ($event) {
+				var target = $($event.currentTarget);
+				target.toggleClass('toggled');
+
+				if(target.hasClass('toggled')){
+					$scope.viewMode = 'gridView';
+				}else{
+					$scope.viewMode = 'chartView';
+				}
+
+			}
 		}]);

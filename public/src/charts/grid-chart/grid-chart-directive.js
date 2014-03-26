@@ -60,13 +60,13 @@ angular.module('chart')
 				var row = [];
 
 				//x-Axis data
-				row.push(d0.xAxis.categories[i]);
+				row.push(parseInt(d0.xAxis.categories[i]));
 
 				//series
 				for (var s in d0.series) {
 					var data = d0.series[s].data[i];
-					if (data === null || data === undefined) {
-						data = ' ';
+					if (data === null || data === undefined || data === '') {
+						data = 0;
 					}
 					row.push(data);
 				}
@@ -106,10 +106,11 @@ angular.module('chart')
 									}
 								},
 								"iDisplayLength": 10,
-								"bPaginate": true,
 								"bLengthChange": false,
 								"bFilter": false,
-								"sPaginationType": "full_numbers"
+								"sPaginationType": "full_numbers",
+
+								"bPaginate": false
 							};
 
 

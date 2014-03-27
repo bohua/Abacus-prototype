@@ -61,7 +61,7 @@ angular.module('daily-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 					$scope.end_time = getEndOfTheDay(date);
 					$scope.$apply();
 
-					$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+					//$('.daily-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				}
 			});
 

@@ -2,7 +2,7 @@
  * Created by Bli on 14-3-17.
  */
 angular.module('chart')
-	.directive('gridChart', ['$http', '$timeout', function ($http, $timeout) {
+	.directive('gridChart', ['$http', '$timeout','$compile', function ($http, $timeout, $compile) {
 
 		function getQueryString(queryOption) {
 			var result;
@@ -80,13 +80,18 @@ angular.module('chart')
 		var GridChart = {
 			restrict: 'E',
 			scope: {},
-			templateUrl: '/src/charts/grid-chart/grid-chart-directive.tpl.html',
+			//templateUrl: '/src/charts/grid-chart/grid-chart-directive.tpl.html',
 			link: function ($scope, $element, $attributes) {
+				var templateUrl = '/src/charts/grid-chart/grid-chart-directive.tpl.html';
+
 				function reloadChart(event, queryOption, renderOption) {
-					if ($scope.gridChart) {
-						$scope.gridChart.fnDestroy();
-						$scope.gridChart = null;
-					}
+//					if ($scope.gridChart) {
+//						$scope.gridChart.fnDestroy();
+//						delete $scope.gridChart;
+//						delete $scope.grid;
+//
+//						$scope.$apply();
+//					}
 
 					$http.get('/getReport', {
 						params: {
@@ -94,9 +99,6 @@ angular.module('chart')
 							series: getQueryString(queryOption)
 						}
 					}).success(function (chartOption) {
-
-
-							//$scope.grid = formatGridData(chartOption);
 							/*
 							 $.extend(true, grid, */
 							var config = {
@@ -120,17 +122,38 @@ angular.module('chart')
 								"bPaginate": false
 							};
 
+							$($element).empty().load(templateUrl, function (response, status, xhr) {
+								if (status == "error") {
+									return xhr.status + " " + xhr.statusText;
+								}
 
+								$scope.grid = formatGridData(chartOption);
+								$compile($element.children(".bleach-grid-chart"))($scope);
+
+								$scope.$apply();
+								//$scope.gridChart = $($element).children(".bleach-grid-chart").dataTable(config);
+
+								//$scope.gridChart = $($element).find(".bleach-grid-chart").dataTable(config);
+
+
+								/*
+								$timeout(function () {
+									$scope.gridChart = $($element).children(".bleach-grid-chart").dataTable(config);
+								}, 1000);
+*/
+							});
+
+							/*
 							$timeout(function () {
 								$scope.grid = formatGridData(chartOption);
 								$scope.$apply();
 
 								$timeout(function () {
 									$scope.gridChart = $($element).find("#bleach-grid-chart").dataTable(config);
-								}, 1000);
+								}, 1);
 
 							}, 1);
-
+*/
 						});
 				}
 

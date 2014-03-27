@@ -68,7 +68,6 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				selected: function (date) {
 					$scope.start_time = getStartOfTheMonth(date);
 					$scope.end_time = getEndOfTheMonth(date);
-					$scope.$apply();
 
 					$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				}
@@ -78,11 +77,15 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				$scope.start_time = getStartOfTheMonth(today);
 				$scope.end_time = getEndOfTheMonth(today);
 
+				$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
+
+				/*
 				$scope.$watch('start_time', function (newValue, oldValue) {
 					//if(newValue === oldValue)return;
 
 					$('.monthly-report-view-chart').trigger('reloadChart', [gatherQueryOptions($scope)]);
 				});
+				*/
 			}, 100);
 
 			$scope.comparisonDialogConfig = {
@@ -136,7 +139,7 @@ angular.module('monthly-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 				$scope.toggleData = target.hasClass('toggled');
 			}
 
-			$scope.viewMode = 'chartView';
+			$scope.viewMode = 'gridView';
 			$scope.toggleGridView = function ($event) {
 				var target = $($event.currentTarget);
 				target.toggleClass('toggled');

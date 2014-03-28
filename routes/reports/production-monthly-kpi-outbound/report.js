@@ -15,15 +15,10 @@ module.exports = function (input) {
 			}
 		},
 		attributes: [
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_NTU')),
-			input.db.sequelize.fn('MAX', input.db.sequelize.col('outbound_NTU')),
-			input.db.sequelize.fn('MIN', input.db.sequelize.col('outbound_NTU')),
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_leftCl')),
-			input.db.sequelize.fn('MAX', input.db.sequelize.col('outbound_leftCl')),
-			input.db.sequelize.fn('MIN', input.db.sequelize.col('outbound_leftCl')),
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('outbound_PH')),
-			input.db.sequelize.fn('MAX', input.db.sequelize.col('outbound_PH')),
-			input.db.sequelize.fn('MIN', input.db.sequelize.col('outbound_PH'))
+			'record_time',
+			'outbound_NTU',
+			'outbound_leftCl',
+			'outbound_PH'
 		]
 	}).complete(function (err, HourlyReport) {
 			if (err) {
@@ -32,29 +27,77 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				var avg_outbound_ntu = HourlyReport.selectedValues["AVG(`outbound_NTU`)"]; if(avg_outbound_ntu){avg_outbound_ntu = avg_outbound_ntu.toFixed(2);}
-				var max_outbound_ntu = HourlyReport.selectedValues["MAX(`outbound_NTU`)"]; if(max_outbound_ntu){max_outbound_ntu = max_outbound_ntu.toFixed(2);}
-				var min_outbound_ntu = HourlyReport.selectedValues["MIN(`outbound_NTU`)"]; if(min_outbound_ntu){min_outbound_ntu = min_outbound_ntu.toFixed(2);}
+				function getMax(arr, field) {
+					var max;
+					for (var i in arr) {
+						if (!max || arr[i].selectedValues[field] > max.selectedValues[field]) {
+							max = arr[i];
+						}
+					}
 
-				var avg_outbound_leftcl = HourlyReport.selectedValues["AVG(`outbound_leftCl`)"]; if(avg_outbound_leftcl){avg_outbound_leftcl = avg_outbound_leftcl.toFixed(2);}
-				var max_outbound_leftcl = HourlyReport.selectedValues["MAX(`outbound_leftCl`)"]; if(max_outbound_leftcl){max_outbound_leftcl = max_outbound_leftcl.toFixed(2);}
-				var min_outbound_leftcl = HourlyReport.selectedValues["MIN(`outbound_leftCl`)"]; if(min_outbound_leftcl){min_outbound_leftcl = min_outbound_leftcl.toFixed(2);}
+					var d = max.selectedValues['record_time'];
+					if (!d) {
+						d = null;
+					} else {
+						d = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+					}
 
-				var avg_outbound_ph = HourlyReport.selectedValues["AVG(`outbound_PH`)"]; if(avg_outbound_ph){avg_outbound_ph = avg_outbound_ph.toFixed(2);}
-				var max_outbound_ph = HourlyReport.selectedValues["MAX(`outbound_PH`)"]; if(max_outbound_ph){max_outbound_ph = max_outbound_ph.toFixed(2);}
-				var min_outbound_ph = HourlyReport.selectedValues["MIN(`outbound_PH`)"]; if(min_outbound_ph){min_outbound_ph = min_outbound_ph.toFixed(2);}
+					return {
+						time: d,
+						value: max.selectedValues[field].toFixed(2)
+					};
+				}
 
-				input.chartData.series[0].data.push(avg_outbound_ntu);
-				input.chartData.series[1].data.push(max_outbound_ntu);
-				input.chartData.series[2].data.push(min_outbound_ntu);
+				function getMin(arr, field) {
+					var min;
+					for (var i in arr) {
+						if (!min || arr[i].selectedValues[field] < min.selectedValues[field]) {
+							min = arr[i];
+						}
+					}
 
-				input.chartData.series[0].data.push(avg_outbound_leftcl);
-				input.chartData.series[1].data.push(max_outbound_leftcl);
-				input.chartData.series[2].data.push(min_outbound_leftcl);
+					var d = min.selectedValues['record_time'];
+					if (!d) {
+						d = null;
+					} else {
+						d = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+					}
+					return {
+						time: d,
+						value: min.selectedValues[field].toFixed(2)
+					};
+				}
 
-				input.chartData.series[0].data.push(avg_outbound_ph);
-				input.chartData.series[1].data.push(max_outbound_ph);
-				input.chartData.series[2].data.push(min_outbound_ph);
+				function getAvg(arr, field) {
+					var sum = 0;
+					var elem = 0;
+					for (var i in arr) {
+						if (isNaN(parseFloat(arr[i].selectedValues[field]))) {
+							continue;
+						}
+
+						sum += arr[i].selectedValues[field];
+						++elem;
+					}
+
+					if (elem === 0 || isNaN(elem)) {
+						return null;
+					}
+
+					return parseFloat(sum / elem).toFixed(2);
+				}
+
+				input.chartData.series[0].data.push(getAvg(HourlyReport, 'outbound_NTU'));
+				input.chartData.series[1].data.push(getMax(HourlyReport, 'outbound_NTU'));
+				input.chartData.series[2].data.push(getMin(HourlyReport, 'outbound_NTU'));
+
+				input.chartData.series[0].data.push(getAvg(HourlyReport, 'outbound_leftCl'));
+				input.chartData.series[1].data.push(getMax(HourlyReport, 'outbound_leftCl'));
+				input.chartData.series[2].data.push(getMin(HourlyReport, 'outbound_leftCl'));
+
+				input.chartData.series[0].data.push(getAvg(HourlyReport, 'outbound_PH'));
+				input.chartData.series[1].data.push(getMax(HourlyReport, 'outbound_PH'));
+				input.chartData.series[2].data.push(getMin(HourlyReport, 'outbound_PH'));
 
 				input.chartData.series[0].data_desc = input.data_desc;
 				input.chartData.series[1].data_desc = input.data_desc;

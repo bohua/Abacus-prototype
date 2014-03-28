@@ -8,19 +8,16 @@ module.exports = function (input) {
 	var start_time = input.start_time;
 	var end_time = input.end_time;
 
-	input.db.HourlyReport.find({
+	input.db.HourlyReport.findAll({
 		where: {
 			record_time: {
 				between: [start_time, end_time]
 			}
 		},
 		attributes: [
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('inbound_NTU')),
-			input.db.sequelize.fn('MAX', input.db.sequelize.col('inbound_NTU')),
-			input.db.sequelize.fn('MIN', input.db.sequelize.col('inbound_NTU')),
-			input.db.sequelize.fn('AVG', input.db.sequelize.col('inbound_PH')),
-			input.db.sequelize.fn('MAX', input.db.sequelize.col('inbound_PH')),
-			input.db.sequelize.fn('MIN', input.db.sequelize.col('inbound_PH'))
+			'record_time',
+			'inbound_NTU',
+			'inbound_PH'
 		]
 	}).complete(function (err, HourlyReport) {
 			if (err) {
@@ -29,21 +26,73 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				var avg_inbound_ntu = HourlyReport.selectedValues["AVG(`inbound_NTU`)"]; if(avg_inbound_ntu){avg_inbound_ntu = avg_inbound_ntu.toFixed(2)}
-				var max_inbound_ntu = HourlyReport.selectedValues["MAX(`inbound_NTU`)"]; if(max_inbound_ntu){max_inbound_ntu = max_inbound_ntu.toFixed(2)}
-				var min_inbound_ntu = HourlyReport.selectedValues["MIN(`inbound_NTU`)"]; if(min_inbound_ntu){min_inbound_ntu = min_inbound_ntu.toFixed(2)}
+				function getMax(arr, field) {
+					var max;
+					for (var i in arr) {
+						if (!max || arr[i].selectedValues[field] > max.selectedValues[field]) {
+							max = arr[i];
+						}
+					}
 
-				var avg_inbound_ph = HourlyReport.selectedValues["AVG(`inbound_PH`)"]; if(avg_inbound_ph){avg_inbound_ph = avg_inbound_ph.toFixed(2)}
-				var max_inbound_ph = HourlyReport.selectedValues["MAX(`inbound_PH`)"]; if(max_inbound_ph){max_inbound_ph = max_inbound_ph.toFixed(2)}
-				var min_inbound_ph = HourlyReport.selectedValues["MIN(`inbound_PH`)"]; if(min_inbound_ph){min_inbound_ph = min_inbound_ph.toFixed(2)}
+					var d = max.selectedValues['record_time'];
+					if (!d) {
+						d = null;
+					} else {
+						d = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+					}
 
-				input.chartData.series[0].data.push(avg_inbound_ntu);
-				input.chartData.series[1].data.push(max_inbound_ntu);
-				input.chartData.series[2].data.push(min_inbound_ntu);
+					return {
+						time: d,
+						value: max.selectedValues[field].toFixed(2)
+					};
+				}
 
-				input.chartData.series[0].data.push(avg_inbound_ph);
-				input.chartData.series[1].data.push(max_inbound_ph);
-				input.chartData.series[2].data.push(min_inbound_ph);
+				function getMin(arr, field) {
+					var min;
+					for (var i in arr) {
+						if (!min || arr[i].selectedValues[field] < min.selectedValues[field]) {
+							min = arr[i];
+						}
+					}
+
+					var d = min.selectedValues['record_time'];
+					if (!d) {
+						d = null;
+					} else {
+						d = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+					}
+					return {
+						time: d,
+						value: min.selectedValues[field].toFixed(2)
+					};
+				}
+
+				function getAvg(arr, field) {
+					var sum = 0;
+					var elem = 0;
+					for (var i in arr) {
+						if (isNaN(parseFloat(arr[i].selectedValues[field]))) {
+							continue;
+						}
+
+						sum += arr[i].selectedValues[field];
+						++elem;
+					}
+
+					if (elem === 0 || isNaN(elem)) {
+						return null;
+					}
+
+					return parseFloat(sum / elem).toFixed(2);
+				}
+
+				input.chartData.series[0].data.push(getAvg(HourlyReport, 'inbound_NTU'));
+				input.chartData.series[1].data.push(getMax(HourlyReport, 'inbound_NTU'));
+				input.chartData.series[2].data.push(getMin(HourlyReport, 'inbound_NTU'));
+
+				input.chartData.series[0].data.push(getAvg(HourlyReport, 'inbound_PH'));
+				input.chartData.series[1].data.push(getMax(HourlyReport, 'inbound_PH'));
+				input.chartData.series[2].data.push(getMin(HourlyReport, 'inbound_PH'));
 
 				input.chartData.series[0].data_desc = input.data_desc;
 				input.chartData.series[1].data_desc = input.data_desc;

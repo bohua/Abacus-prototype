@@ -68,8 +68,15 @@ angular.module('chart')
 									}
 
 									if(value.data && value.data[x]){
+										var d = value.data[x];
+										if(typeof(d) !== 'object'){
+											d = {
+												value: d
+											}
+										}
+
 										var entry = {
-											value: value.data[x]
+											value: d
 										}
 										kpi.data.push(entry);
 									}else{
@@ -126,7 +133,15 @@ angular.module('chart')
 						return 'bad-value';
 					}
 					return 'warning-value';
-				}
+				};
+
+				$scope.getKpiValue = function(v){
+					if(v.value){
+						return v.value;
+					}else{
+						return value;
+					}
+				};
 			}
 		};
 

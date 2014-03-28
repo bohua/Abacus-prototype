@@ -13,8 +13,12 @@ table.table.kpi-chart-bg
 
 			td.kpi-value(nowrap, ng-repeat="d in kpi.data")
 				div.span2(ng-class="{'compare-mode-current-value': d.compare!=null}")
-					t(class='{{getStyle(d.value)}}') {{d.value}}
+					span(class='{{getStyle(d.value)}}') {{d.value.value}}
+					span(ng-if="d.value.time !== null").kpi-time {{d.value.time}}
 					//span.kpi-unit(ng-bind-html="kpi.unit")
+
+				//div.span2(ng-if="typeof(d.value) !== 'object'", ng-class="{'compare-mode-current-value': d.compare!=null}")
+					t(class='{{getStyle(d.value)}}') {{d.value}}
 
 				div.span2.compare-mode-compare-value(ng-if="d.compare!=null")
 					t(class='{{getStyle(d.compare)}}') {{d.compare}}

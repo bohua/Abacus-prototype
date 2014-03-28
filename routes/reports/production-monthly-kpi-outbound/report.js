@@ -8,7 +8,7 @@ module.exports = function (input) {
 	var start_time = input.start_time;
 	var end_time = input.end_time;
 
-	input.db.HourlyReport.find({
+	input.db.HourlyReport.findAll({
 		where: {
 			record_time: {
 				between: [start_time, end_time]

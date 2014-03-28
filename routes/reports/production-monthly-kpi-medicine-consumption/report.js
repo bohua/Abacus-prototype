@@ -28,30 +28,52 @@ module.exports = function (input) {
 					code: 'CHART_DATA_QUERY_FAIL'
 				});
 			} else {
-				function calcConsumption(medicine, water){
-					if(water <=0){
+				function calcConsumption(medicine, water) {
+					if (water <= 0) {
 						return null;
 					}
 
 					var result = parseFloat(medicine * 1000 / water);
-					if(isNaN(result)){
+					if (isNaN(result)) {
 						return '-';
 					}
 
 					return result.toFixed(2);
 				}
 
-				function getSum(field){
+				function getSum(field) {
 					var result = 0;
-					for(var i in DailyReport){
+					for (var i in DailyReport) {
 						var num = parseFloat(DailyReport[i].selectedValues[field]);
-						if(isNaN(num)){
+						if (isNaN(num)) {
 							continue;
 						}
 						result += num;
 					}
 
 					return result;
+				}
+
+				function getMax(arr, field) {
+					var max;
+					for(var i in arr){
+						if(!max || arr[i][field] > max[field]){
+							max = arr[i];
+						}
+					}
+
+					return max;
+				}
+
+				function getMin(arr, field){
+					var min;
+					for(var i in arr){
+						if(!min || arr[i][field] < min[field]){
+							min = arr[i];
+						}
+					}
+
+					return min;
 				}
 
 				var total_water = getSum('daily_sum_inbound_total');
@@ -62,26 +84,33 @@ module.exports = function (input) {
 				var cl_consumptions = [];
 				var alun_consumptions = [];
 				var alkali_consumptions = [];
-				for(var i in DailyReport){
-					cl_consumptions.push(calcConsumption(DailyReport[i].selectedValues['daily_sum_consumption_cl_total'],
-						DailyReport[i].selectedValues['daily_sum_inbound_total']));
-					alun_consumptions.push(calcConsumption(DailyReport[i].selectedValues['daily_sum_consumption_alun_total'],
-						DailyReport[i].selectedValues['daily_sum_inbound_total']));
-					alkali_consumptions.push(calcConsumption(DailyReport[i].selectedValues['daily_sum_consumption_alkali_total'],
-						DailyReport[i].selectedValues['daily_sum_inbound_total']));
+				for (var i in DailyReport) {
+					var d = DailyReport[i].report_date;
+					cl_consumptions.push({
+						time: d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(),
+						value: calcConsumption(DailyReport[i].selectedValues['daily_sum_consumption_cl_total'], DailyReport[i].selectedValues['daily_sum_inbound_total'])
+					});
+					alun_consumptions.push({
+						time: d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(),
+						value: calcConsumption(DailyReport[i].selectedValues['daily_sum_consumption_alun_total'], DailyReport[i].selectedValues['daily_sum_inbound_total'])
+					});
+					alkali_consumptions.push({
+						time: d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate(),
+						value: calcConsumption(DailyReport[i].selectedValues['daily_sum_consumption_alkali_total'], DailyReport[i].selectedValues['daily_sum_inbound_total'])
+					});
 				}
 
-				input.chartData.series[0].data.push(calcConsumption(total_alun, total_water));
-				input.chartData.series[1].data.push(Math.max.apply(Math, alun_consumptions));
-				input.chartData.series[2].data.push(Math.min.apply(Math, alun_consumptions));
+				input.chartData.series[0].data.push({value: calcConsumption(total_alun, total_water)});
+				input.chartData.series[1].data.push(getMax(alun_consumptions, 'value'));
+				input.chartData.series[2].data.push(getMin(alun_consumptions, 'value'));
 
-				input.chartData.series[0].data.push(calcConsumption(total_cl, total_water));
-				input.chartData.series[1].data.push(Math.max.apply(Math, cl_consumptions));
-				input.chartData.series[2].data.push(Math.min.apply(Math, cl_consumptions));
+				input.chartData.series[0].data.push({value: calcConsumption(total_cl, total_water)});
+				input.chartData.series[1].data.push(getMax(cl_consumptions, 'value'));
+				input.chartData.series[2].data.push(getMin(cl_consumptions, 'value'));
 
-				input.chartData.series[0].data.push(calcConsumption(total_alkali, total_water));
-				input.chartData.series[1].data.push(Math.max.apply(Math, alkali_consumptions));
-				input.chartData.series[2].data.push(Math.min.apply(Math, alkali_consumptions));
+				input.chartData.series[0].data.push({value: calcConsumption(total_alkali, total_water)});
+				input.chartData.series[1].data.push(getMax(alkali_consumptions, 'value'));
+				input.chartData.series[2].data.push(getMin(alkali_consumptions, 'value'));
 
 				input.chartData.series[0].data_desc = input.data_desc;
 				input.chartData.series[1].data_desc = input.data_desc;

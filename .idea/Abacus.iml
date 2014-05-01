@@ -5,6 +5,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Node.js Dependencies for Abacus" level="project" />
+    <orderEntry type="library" name="Abacus node_modules" level="project" />
   </component>
 </module>
 

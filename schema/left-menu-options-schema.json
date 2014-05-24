@@ -24,10 +24,22 @@
 				"link": "#/production/productionMonthlyReport"
 			},
 			{
-				"id": "productionCustomReport",
-				"title": "自由查询",
+				"id": "productionCostReport",
+				"title": "成本分析",
 				"icon": "icon-equalizer",
-				"link": "#/production/productionCustomReport"
+				"link": "#/production/productionCostReport"
+			},
+			{
+				"id": "productionThroughputReport",
+				"title": "流量分析",
+				"icon": "icon-equalizer",
+				"link": "#/production/productionThroughputReport"
+			},
+			{
+				"id": "productionMedicineReport",
+				"title": "药量分析",
+				"icon": "icon-equalizer",
+				"link": "#/production/productionMedicineReport"
 			}
 		]
 	},

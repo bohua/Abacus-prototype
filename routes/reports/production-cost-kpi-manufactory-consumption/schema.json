@@ -1,0 +1,21 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": [
+		{
+			"text": "区间统计值"
+		}
+	],
+	"xAxis": {
+		"categories": ["平均配水单耗", "最大配水单耗", "最小配水单耗"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "%"
+			},
+			"data": []
+		}
+	]
+}

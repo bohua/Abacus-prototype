@@ -99,8 +99,12 @@ angular.module('chart', ['ngSanitize'])
 								s.color = colorList.getColorByDesc(s.data_desc);
 								s.dataLabels.enabled = $scope.toggleData;
 							}
-
-							$scope.chart = new Highcharts.Chart(chartOption);
+							if($attributes.highstock !== undefined){
+								$scope.chart = new Highcharts.StockChart(chartOption);
+							}
+							else{
+								$scope.chart = new Highcharts.Chart(chartOption);
+							}
 						});
 				});
 

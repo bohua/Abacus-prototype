@@ -1,0 +1,18 @@
+{
+	"chart": {},
+	"rangeSelector": {
+		"selected": 1
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"配水单耗 ",
+			"data": [],
+			"tooltip": {
+				"valueDecimals": 2
+			}
+		}
+	]
+}

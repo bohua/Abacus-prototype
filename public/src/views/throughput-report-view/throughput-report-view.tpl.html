@@ -4,8 +4,20 @@
     </div>
     <div class="bleach-content-panel">
         <div style="height:320px" class="dashboard-row">
-            <div id="production-throughput-report-chart-0" class="chart-wrapper">
-                <chart report-id="production-monthly-water-io-pie" toggle-data="toggleData" class="monthly-report-view-chart"></chart>
+            <div id="throughput-report-view-chart-kpi-1" class="chart-wrapper">
+                <kpi-chart report-id="production-throughput-kpi-outbound"
+                           class="throughput-report-view-chart"></kpi-chart>
+            </div>
+            <div id="throughput-report-view-chart-kpi-2" class="chart-wrapper">
+                <kpi-chart report-id="production-throughput-kpi-inbound"
+                           class="throughput-report-view-chart"></kpi-chart>
+            </div>
+        </div>
+        <div class="dashboard-row">
+            <div id="throughput-report-view-chart-kpi-3" class="chart-wrapper">
+                <chart report-id="production-throughput-kpi-detail" highstock
+                       toggle-data="toggleData"
+                       class="throughput-report-view-chart"></chart>
             </div>
         </div>
     </div>

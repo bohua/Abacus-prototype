@@ -1,0 +1,28 @@
+{
+	"chart": {},
+	"rangeSelector": {
+		"selected": 1
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"进水量 ",
+			"data": [],
+			"tooltip": {
+				"valueDecimals": 2
+			}
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"供水量 ",
+			"data": [],
+			"tooltip": {
+				"valueDecimals": 2
+			}
+		}
+	]
+}

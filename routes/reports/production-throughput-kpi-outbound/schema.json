@@ -1,0 +1,21 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": [
+		{
+			"text": "供水量区间统计值"
+		}
+	],
+	"xAxis": {
+		"categories": ["平均供水量", "最大供水量", "最小供水量"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "%"
+			},
+			"data": []
+		}
+	]
+}

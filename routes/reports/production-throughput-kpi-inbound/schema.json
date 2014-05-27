@@ -1,0 +1,21 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": [
+		{
+			"text": "进水量区间统计值"
+		}
+	],
+	"xAxis": {
+		"categories": ["平均进水量", "最大进水量", "最小进水量"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "%"
+			},
+			"data": []
+		}
+	]
+}

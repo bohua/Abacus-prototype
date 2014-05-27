@@ -1,0 +1,21 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": [
+		{
+			"text": "氯单耗区间统计值"
+		}
+	],
+	"xAxis": {
+		"categories": ["平均氯单耗", "最大氯单耗", "最小氯单耗"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "%"
+			},
+			"data": []
+		}
+	]
+}

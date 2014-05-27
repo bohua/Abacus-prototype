@@ -1,0 +1,21 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": [
+		{
+			"text": "矾单耗区间统计值"
+		}
+	],
+	"xAxis": {
+		"categories": ["平均矾单耗", "最大矾单耗", "最小矾单耗"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "%"
+			},
+			"data": []
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"chart": {
+		"type": "kpi"
+	},
+	"title": [
+		{
+			"text": "碱单耗区间统计值"
+		}
+	],
+	"xAxis": {
+		"categories": ["平均碱单耗", "最大碱单耗", "最小碱单耗"]
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"unit": "%"
+			},
+			"data": []
+		}
+	]
+}

@@ -1,0 +1,38 @@
+{
+	"chart": {},
+	"rangeSelector": {
+		"selected": 1
+	},
+	"series": [
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"氯单耗 ",
+			"data": [],
+			"tooltip": {
+				"valueDecimals": 2
+			}
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"矾单耗 ",
+			"data": [],
+			"tooltip": {
+				"valueDecimals": 2
+			}
+		},
+		{
+			"dataLabels": {
+				"enabled": false
+			},
+			"name":"碱单耗 ",
+			"data": [],
+			"tooltip": {
+				"valueDecimals": 2
+			}
+		}
+	]
+}

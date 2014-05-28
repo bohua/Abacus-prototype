@@ -8,6 +8,9 @@ module.exports = function (input) {
 	var deferred = Q.defer();
 	var start_time = input.start_time;
 	var end_time = input.end_time;
+	var show_max = input.show_max;
+	var show_min = input.show_min;
+	var throughput_type = input.throughput_type;
 
 	input.db.DailyReport.findAll({
 		where: {
@@ -33,23 +36,45 @@ module.exports = function (input) {
 			var rows = dailyReport;
 			var dailyInboundThroughputArray = [];
 			var dailyOutbountThroughputArray = [];
-			var sum = 0;
+			var dataArray = [];
+			var seriesValueArray = [];
 
 			for(var i= 0,maxi=rows.length; i<maxi; i++){
 				var row = rows[i].dataValues;
 				var report_date = row['report_date'];
+				var value;
 				report_date = moment(report_date).valueOf();
-				var daily_sum_inbound_throughput_total = row['daily_sum_inbound_total'];
-				var daily_sum_outbound_throughput_total = row['daily_sum_outbound_throughput_total'];
-				dailyInboundThroughputArray.push([report_date, daily_sum_inbound_throughput_total]);
-				dailyOutbountThroughputArray.push([report_date, daily_sum_outbound_throughput_total]);
+				if(throughput_type === 'inbound'){
+					value = row['daily_sum_inbound_total'];
+				}
+				else{
+					value = row['daily_sum_outbound_throughput_total'];
+				}
+
+				seriesValueArray.push([report_date, value]);
+				dataArray.push(value);
 			}
 
-			input.chartData.series[0].data = dailyInboundThroughputArray;
-			input.chartData.series[0].data_desc = input.data_desc;
+			var max = _.max(dataArray);
+			var min = _.min(dataArray);
 
-			input.chartData.series[1].data = dailyOutbountThroughputArray;
-			input.chartData.series[1].data_desc = input.data_desc;
+			input.chartData.series[0].data = seriesValueArray;
+			input.chartData.series[0].data_desc = input.data_desc;
+			if(throughput_type === 'inbound'){
+				input.chartData.series[0].name = "进水量";
+			}
+			else{
+				input.chartData.series[0].name = "出水量";
+			}
+
+			if(show_max === true){
+				input.chartData.yAxis.plotLines[0].value = max;
+			}
+
+			if(show_min === true){
+				input.chartData.yAxis.plotLines[1].value = min;
+			}
+
 			deferred.resolve(input.chartData);
 		}
 	});

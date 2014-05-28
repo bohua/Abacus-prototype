@@ -32,6 +32,19 @@ module.exports = function (req, res) {
 					chartData: extend(true, {}, chartData)
 				}
 
+				if(series[arg].show_max !== undefined){
+					input.show_max = series[arg].show_max;
+				}
+				if(series[arg].show_min !== undefined){
+					input.show_min = series[arg].show_min;
+				}
+				if(series[arg].throughput_type !== undefined){
+					input.throughput_type = series[arg].throughput_type;
+				}
+				if(series[arg].medicine_type !== undefined){
+					input.medicine_type = series[arg].medicine_type;
+				}
+
 				promises.push(requstedReport(input));
 			}
 

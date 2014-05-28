@@ -9,6 +9,8 @@ module.exports = function (input) {
 	var deferred = Q.defer();
 	var start_time = input.start_time;
 	var end_time = input.end_time;
+	var show_max = input.show_max;
+	var show_min = input.show_min;
 
 	input.db.DailyReport.findAndCountAll({
 		where: {
@@ -37,6 +39,7 @@ module.exports = function (input) {
 		} else {
 			var rows = dailyReport.rows;
 			var manufactoryConsumptionArray = [];
+			var dataArray = [];
 			var pressure = 0.36;
 
 			for(var i= 0,maxi=rows.length; i<maxi; i++){
@@ -51,11 +54,24 @@ module.exports = function (input) {
 					+ row['daily_sum_electron_lowprofile_washroom_marktotal'];
 				var value = daily_sum_electron_total * 1000 / daily_sum_outbound_throughput_total/ pressure;
 				value = Math.round(value*100)/100;
+				dataArray.push(value);
 				manufactoryConsumptionArray.push([report_date, value]);
 			}
 
+			var max = _.max(dataArray);
+			var min = _.min(dataArray);
+
 			input.chartData.series[0].data = manufactoryConsumptionArray;
 			input.chartData.series[0].data_desc = input.data_desc;
+
+			if(show_max === true){
+				input.chartData.yAxis.plotLines[0].value = max;
+			}
+
+			if(show_min === true){
+				input.chartData.yAxis.plotLines[1].value = min;
+			}
+
 			deferred.resolve(input.chartData);
 		}
 	});

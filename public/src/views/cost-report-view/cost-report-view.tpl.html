@@ -4,6 +4,11 @@
     </div>
     <div class="bleach-content-panel">
         <div style="height:320px" class="dashboard-row">
+            <div id="cost-report-view-chart-parameters" class="chart-wrapper">
+                <span>分析参数</span>
+                <input type="checkbox" ng-model="showMax"> 峰值基准线
+                <input type="checkbox" ng-model="showMin"> 谷值基准线
+            </div>
             <div id="cost-report-view-chart-kpi-1" class="chart-wrapper">
                 <kpi-chart report-id="production-cost-kpi-manufactory-consumption"
                            class="cost-report-view-chart"></kpi-chart>

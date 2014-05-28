@@ -8,21 +8,39 @@
 			"dataLabels": {
 				"enabled": false
 			},
-			"name":"进水量 ",
-			"data": [],
-			"tooltip": {
-				"valueDecimals": 2
-			}
-		},
-		{
-			"dataLabels": {
-				"enabled": false
-			},
-			"name":"供水量 ",
+			"name": null,
 			"data": [],
 			"tooltip": {
 				"valueDecimals": 2
 			}
 		}
-	]
+	],
+	"yAxis": {
+		"plotLines": [
+			{
+				"value": null,
+				"width": 1,
+				"color": "red",
+				"dashStyle": "dash",
+				"label": {
+					"text": "峰值基准线",
+					"align": "right",
+					"y": 12,
+					"x": 0
+				}
+			},
+			{
+				"value": null,
+				"width": 1,
+				"color": "green",
+				"dashStyle": "dash",
+				"label": {
+					"text": "谷值基准线",
+					"align": "right",
+					"y": 12,
+					"x": 0
+				}
+			}
+		]
+	}
 }

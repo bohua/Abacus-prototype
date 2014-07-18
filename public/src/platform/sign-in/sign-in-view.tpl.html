@@ -1,0 +1,14 @@
+
+<!--Created by Bohua on 2014-06-13.-->
+<div id="sign-in-panel" ng-controller="signInController">
+  <form ng-submit="signin()" class="container-fluid"><img src="/images/logo.png"/>
+    <!--h2 CBMS 登录small &nbsp;&nbsp;Login
+    -->
+    <div class="box">
+      <input type="text" placeholder="用户名" ng-model="username" required="required"/>
+      <input type="password" placeholder="密码" ng-model="password" required="required"/>
+      <button type="submit" class="btn btn-primary full-width"><i class="fa fa-sign-in fa-fw">&nbsp;&nbsp;</i><span>登录</span></button>
+      <div id="sign-in-error-message" ng-show="loginFail" class="text-danger"><i class="fa fa-warning fa-fw">&nbsp;</i><span>用户名或密码错误，请重试</span></div>
+    </div>
+  </form>
+</div>

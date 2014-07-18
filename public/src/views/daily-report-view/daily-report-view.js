@@ -4,7 +4,8 @@
 angular.module('daily-report-view', ['ngRoute', 'chart', 'popup-dialog'])
 	.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.
-			when('/production/productionDailyReport', {templateUrl: '/src/views/daily-report-view/daily-report-view.tpl.html', controller: 'dailyReportViewController'});
+			//when('/production/productionDailyReport', {templateUrl: '/src/views/daily-report-view/daily-report-view.tpl.html', controller: 'dailyReportViewController'});
+			when('/', {templateUrl: '/src/views/daily-report-view/daily-report-view.tpl.html', controller: 'dailyReportViewController'});
 	}])
 	.controller('dailyReportViewController', [
 		'$scope',

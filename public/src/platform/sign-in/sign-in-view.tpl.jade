@@ -1,0 +1,17 @@
+//Created by Bohua on 2014-06-13.
+#sign-in-panel(ng-controller="signInController")
+	form.container-fluid(ng-submit="signin()")
+		img(src="/images/logo.png")
+		//h2 CBMS 登录
+			small &nbsp;&nbsp;Login
+		div.box
+			input(type="text", placeholder="用户名", ng-model="username", required)
+			input(type="password", placeholder="密码", ng-model="password", required)
+
+			button.btn.btn-primary.full-width(type="submit")
+				i.fa.fa-sign-in.fa-fw &nbsp;&nbsp;
+				span 登录
+
+			#sign-in-error-message.text-danger(ng-show="loginFail")
+				i.fa.fa-warning.fa-fw &nbsp;
+				span 用户名或密码错误，请重试

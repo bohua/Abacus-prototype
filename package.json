@@ -20,6 +20,7 @@
 		"lodash":"*",
 		"extend":"*",
 		"q": "*",
+		"moment": "*",
 
 		"grunt": "*",
 		"grunt-contrib-less": "*",

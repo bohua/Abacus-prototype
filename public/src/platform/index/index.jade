@@ -26,10 +26,10 @@ html(ng-app='app')
 		each jsFile in jsFilesToAppend
 			script(src= jsFile)
 
-	body.metro.unselectable(ng-controller='platformController')
-		#preload-mask(preload-mask-directive, ng-show='enablePreload')
-		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"')
-		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu/left-menu.tpl.html"')
-		#right-stage.bleach-stage
+	body.metro.unselectable(ng-controller='appController')
+		#sign-in(ng-include='"/src/platform/sign-in/sign-in-view.tpl.html"', ng-if="!hasSignIn")
+		#top-bar.bleach-stage(ng-include='"/src/platform/top-bar/top-bar.tpl.html"', ng-if="hasSignIn")
+		#left-stage.bleach-stage(ng-include='"/src/platform/left-menu/left-menu.tpl.html"', ng-if="hasSignIn")
+		#right-stage.bleach-stage(ng-if="hasSignIn")
 			#router-guide(ng-include='"/src/platform/router-guide/router-guide.tpl.html"')
 			#view-port(ng-view)

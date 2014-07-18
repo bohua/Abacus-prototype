@@ -1,64 +1,32 @@
 [
 	{
 		"id": "home",
-		"title": "主页",
-		"icon": "icon-home",
+		"title": "日报表",
+		"icon": "icon-stats-up",
 		"link": "#/"
 	},
-
 	{
-		"id": "production",
-		"title": "生产报表",
-		"icon": "icon-meter-fast",
-		"submenus": [
-			{
-				"id": "productionDailyReport",
-				"title": "日报表",
-				"icon": "icon-stats-up",
-				"link": "#/production/productionDailyReport"
-			},
-			{
-				"id": "productionMonthlyReport",
-				"title": "月报表",
-				"icon": "icon-calendar",
-				"link": "#/production/productionMonthlyReport"
-			},
-			{
-				"id": "productionCostReport",
-				"title": "成本分析",
-				"icon": "icon-equalizer",
-				"link": "#/production/productionCostReport"
-			},
-			{
-				"id": "productionThroughputReport",
-				"title": "流量分析",
-				"icon": "icon-equalizer",
-				"link": "#/production/productionThroughputReport"
-			},
-			{
-				"id": "productionMedicineReport",
-				"title": "药量分析",
-				"icon": "icon-equalizer",
-				"link": "#/production/productionMedicineReport"
-			}
-		]
+		"id": "productionMonthlyReport",
+		"title": "月报表",
+		"icon": "icon-calendar",
+		"link": "#/production/productionMonthlyReport"
 	},
-
 	{
-		"id": "water",
-		"title": "水质分析",
-		"icon": "icon-droplet"
+		"id": "productionCostReport",
+		"title": "成本分析",
+		"icon": "icon-power",
+		"link": "#/production/productionCostReport"
 	},
-
 	{
-		"id": "medicine",
+		"id": "productionThroughputReport",
+		"title": "流量分析",
+		"icon": "icon-droplet",
+		"link": "#/production/productionThroughputReport"
+	},
+	{
+		"id": "productionMedicineReport",
 		"title": "药量分析",
-		"icon": "icon-lab"
-	},
-
-	{
-		"id": "system",
-		"title": "电量分析",
-		"icon": "icon-power"
+		"icon": "icon-lab",
+		"link": "#/production/productionMedicineReport"
 	}
 ]

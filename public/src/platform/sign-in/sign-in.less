@@ -1,0 +1,78 @@
+#sign-in {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('/images/bg.jpg');
+}
+
+#sign-in-panel{
+  opacity: 0;
+  text-align: center;
+  width: 30rem;
+  height: 42rem;
+  border-radius: 0.5rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: 4% auto;
+  background-color: #fff;
+  padding: 2rem;
+
+  z-index: 9999;
+
+  img{
+    width: 100%;
+  }
+
+  input {
+    font-size: 12pt;
+    width: 100%;
+    margin-bottom: 1.4rem;
+    padding: 1rem;
+    background-color: @grey;
+    border-radius: 0.2rem;
+    border: 2px solid @grey-border;
+  }
+  h2 {
+    margin-bottom: 3rem;
+    color: #ababab;
+  }
+  .btn {
+    border-radius: 0.2rem;
+    font-size: 14pt;
+    margin-bottom: 10px;
+  }
+  .btn .glyphicon {
+    font-size: 3rem;
+    color: #fff;
+  }
+  .full-width {
+    width: 100%;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 3rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  label {
+    text-align: left;
+  }
+
+  #sign-in-error-message{
+    position: absolute;
+    font-size: 12pt;
+  }
+}

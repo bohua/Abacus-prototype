@@ -21,7 +21,6 @@
 		"extend":"*",
 		"q": "*",
 		"moment": "*",
-
 		"grunt": "*",
 		"grunt-contrib-less": "*",
 		"grunt-contrib-concat": "*",
@@ -30,6 +29,7 @@
 		"grunt-html2js": "*",
 		"grunt-contrib-uglify": "*",
 		"grunt-contrib-copy": "*",
-		"grunt-contrib-jade": "*"
+		"grunt-contrib-jade": "*",
+		"grunt-contrib-cssmin": "*"
 	}
 }

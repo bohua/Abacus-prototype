@@ -22,9 +22,9 @@ html(ng-app='app')
 		script(src='/lib/highstock/highstock.src.js')
 		script(src='/lib/highcharts/modules/no-data-to-display.src.js')
 
-	- var jsFilesToAppend = data || [];
-		each jsFile in jsFilesToAppend
-			script(src= jsFile)
+		- var jsFilesToAppend = data || [];
+			each jsFile in jsFilesToAppend
+				script(src= jsFile)
 
 	body.metro.unselectable(ng-controller='appController')
 		#sign-in(ng-include='"/src/platform/sign-in/sign-in-view.tpl.html"', ng-if="!hasSignIn")

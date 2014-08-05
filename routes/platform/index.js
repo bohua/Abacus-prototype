@@ -5,3 +5,4 @@ module.exports.getLeftMenu = require('./getLeftMenu.js');
 module.exports.getLocationArray = require('./getLocationArray.js');
 module.exports.loadJsScript = require('./loadJsScript.js');
 module.exports.readJsonSchema = require('./readJsonSchema.js');
+module.exports.loadJsScriptDist = require('./loadJsScriptDist.js');

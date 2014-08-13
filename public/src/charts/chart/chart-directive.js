@@ -1,7 +1,7 @@
 /**
  * Created by bli on 14-2-28.
  */
-angular.module('chart', ['ngSanitize'])
+angular.module('chart', ['ngSanitize', 'grid-chart', 'kpi-chart'])
 	.directive('chart', ['$http', function ($http) {
 
 		var colorList = (function () {

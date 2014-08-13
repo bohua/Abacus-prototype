@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 14-3-17.
  */
-angular.module('chart')
+angular.module('grid-chart', [])
 	.directive('gridChart', ['$http', '$timeout','$compile', function ($http, $timeout, $compile) {
 
 		function getQueryString(queryOption) {

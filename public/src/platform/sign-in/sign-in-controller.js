@@ -11,8 +11,8 @@ angular.module('sign-in', ['login-session-service'])
 			$scope.loginFail = false;
 
 
-//			$scope.username = '管理员';
-//			$scope.password = '8888';
+			$scope.username = 'admin';
+			$scope.password = 'admin';
 //			$timeout(function () {
 //				$scope.signin();
 //			}, 500);

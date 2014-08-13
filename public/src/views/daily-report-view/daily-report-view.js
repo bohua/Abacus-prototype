@@ -1,7 +1,7 @@
 /**
  * Created by Bli on 14-2-21.
  */
-angular.module('daily-report-view', ['ngRoute', 'chart', 'popup-dialog'])
+angular.module('daily-report-view', ['ngRoute', 'popup-dialog'])
 	.config(['$routeProvider', function ($routeProvider) {
 		$routeProvider.
 			//when('/production/productionDailyReport', {templateUrl: '/src/views/daily-report-view/daily-report-view.tpl.html', controller: 'dailyReportViewController'});

@@ -4,11 +4,12 @@
 angular.module('app', [
 	'login-session-service',
 	'platform',
+	'chart',
 	'daily-report-view',
 	'monthly-report-view',
 	'cost-report-view',
 	'medicine-report-view',
-	'throughput-report-view'
+	'throughput-report-view',
 ]).controller('appController', [
 	'$scope',
 	'loginSessionService',
